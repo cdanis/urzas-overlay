@@ -1,0 +1,99 @@
+<html>
+<head>
+	<title>overlay viewer</title>
+	<link rel="stylesheet/less" type="text/css" href="style2.less.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Francois+One|Oswald:400,700" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Germania+One|Macondo+Swash+Caps|Metal+Mania|Modern+Antiqua|Nova+Cut|Ravi+Prakash|Uncial+Antiqua" rel="stylesheet">
+
+
+  <link href="https://fonts.googleapis.com/css?family=Sigmar+One" rel="stylesheet">
+
+  <link href="css/mana.css" rel="stylesheet" type="text/css" />
+  <link href="css/keyrune.css" rel="stylesheet" type="text/css" />
+
+
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+  <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
+  <script type="text/javascript" src="countdown.min.js"></script>
+
+  <script src="less.min.js"></script>
+
+
+  <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+  <script>
+  // Initialize Firebase
+  var config = {
+  	apiKey: "AIzaSyDqDSKWpdJJIDBIX5Xq7w24hYss0zliBp8",
+  	authDomain: "urzaslunchbreak.firebaseapp.com",
+  	databaseURL: "https://urzaslunchbreak.firebaseio.com",
+  	storageBucket: "",
+  };
+  firebase.initializeApp(config);
+
+  firebase.auth().signInWithEmailAndPassword("cdanis@gmail.com", "Za/Eqv3D3~M]").catch(function(error) {
+  	console.log(error);
+  });
+
+</script>
+</head>
+<body>
+  <div class="overlay">
+    <div class="horizbar top">
+      <div class="playerinfo left">
+        <div class="name">Tom</div>
+        <div class="deckname">Grixis Delver</div>
+      </div>
+      <div id="gamewins">
+        <div><span id="p1wins">1</span><small><small> vs </small></small><span id="p2wins">0</span></div>
+        <div id="timer">39:44</div>
+      </div>
+      <div class="playerinfo right">
+        <div class="name">Terry</div>
+        <div class="deckname">Jeskai Nahiri</div>
+      </div>
+
+    </div>
+    <div class="sidebar left">
+      <div class="lifetotal left">15</div>
+      <div class="hand left">
+        <ul class="handlist">
+          <li><i class="ms ms-cost ms-r"></i> Lightning Bolt</li>
+          <li><i class="ms ms-cost ms-r"></i> Lightning Bolt</li>
+          <li><i class="ms ms-cost ms-1"></i><i class="ms ms-cost ms-u"></i> Snapcaster Mage</li>
+          <li><i class="ms ms-cost ms-u"></i><i class="ms ms-cost ms-b"></i> Countersquall</li>
+          <li><i class="ms ms-cost ms-u"></i> Distortion Strike</li>
+        </ul>
+      </div>
+
+      <div id="logotype"> 
+          <big>Urza's</big><br/> Lunch Break
+      </div>
+    </div>
+    <div class="sidebar right">
+      <div class="lifetotal right">6 <small><small>&amp;</small></small> 9<i class="ss ss-nph"></i></div>
+      <div class="hand right">
+        <ul class="handlist">
+          <li>Island</li>
+          <li>Island</li>
+          <li>Island</li>
+          <li>Ancestral Vision <i class="ms ms-cost ms-u"></i></li>
+          <li>Ancestral Vision <i class="ms ms-cost ms-u"></i></li>
+          <li>Remand <i class="ms ms-cost ms-1"></i><i class="ms ms-cost ms-u"></i></li>
+        </ul>
+      </div>
+      <div id="chat">
+      <div><span class="chatname">UrzasLunchBreak:</span> Welcome folks!</div>
+      <div><span class="chatname">solemnstorm:</span> wow these topdecks</div>
+      <div><span class="chatname">rando666:</span> lol get rekt terry</div>
+      <div><span class="chatname">draw_for_turn:</span> woooow so dead</div>
+
+      </div>
+    </div>
+    <div class="horizbar bottom">
+    </div>
+
+  </div>
+</body>
+</html>

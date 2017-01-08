@@ -1,0 +1,135 @@
+@sidebar-width: 20%;
+
+body {
+	color: white;
+	font: 20pt 'Francois One';
+	/*font: bold 20pt 'Oswald';*/
+	/*text-shadow: -0.5px -0.5px 0 darkorange,  
+		0.5px -0.5px 0 darkorange,
+		-0.5px 0.5px 0 darkorange,
+		0.5px 0.5px 0 darkorange;*/
+		text-shadow: 2px 2px 2px #333;
+}
+
+.ms {
+	text-shadow: none;
+	vertical-align: baseline !important;
+	font-size: 80% !important;
+}
+
+.overlay {
+	position: absolute;
+	margin: auto;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 1280px;
+	height: 720px;
+
+}
+.sidebar, .horizbar {
+	background-color: midnightblue;
+	position: absolute;
+}
+.sidebar {
+	width: @sidebar-width;
+	height: 100%;
+	top: 0;
+}
+
+.sidebar.right {
+	right: 0;
+}
+
+.horizbar {
+	height: 10%;
+	width: 100%;
+}
+.horizbar.top {
+	top: 0;
+}
+
+.horizbar.bottom {
+	bottom: 0;
+	z-index: -1;
+	height: 5%;
+	text-align: center;
+}
+#gamewins {
+	text-align: center;
+	position: absolute;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	/*top: 10%;*/
+
+}
+.playerinfo.left {
+	left: @sidebar-width;
+	position: absolute;
+}
+.playerinfo.right {
+	right: @sidebar-width;
+	position: absolute;
+	text-align: right;
+}
+.deckname {
+	font-size: 80%;
+}
+.name {
+	font-size: 120%;
+}
+.lifetotal {
+	font-size: 300%;
+	top: -16;
+}
+.lifetotal.left {
+	right: 10;
+	position: absolute;
+	text-align: right;
+}
+
+.lifetotal.right {
+	left: 10;
+	position: absolute;
+
+}
+
+.hand {
+	position: absolute;
+	top: 20%;
+	font-size: 80%;
+	width: 100%;
+	line-height: 1.75;
+}
+
+.hand.left {
+	right: 10;
+	text-align: right;
+}
+
+.handlist {
+	list-style: none;
+	padding-left: 10;
+}
+
+#logotype {
+	position: absolute;
+	bottom: 0;
+	text-align: center;
+	font-family: 'Metal Mania', cursive;
+	font-size: 170%;
+	width: 100%;
+}
+
+#chat {
+	position: absolute;
+	bottom: 0;
+	left: 2;
+	font-size: 50%;
+}
+.chatname {
+	font-weight: bold;
+}

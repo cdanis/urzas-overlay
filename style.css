@@ -1,0 +1,101 @@
+body {
+	color: white;
+	font: 36pt 'Roboto';
+	text-shadow: -1px -1px 0 #000,  
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+}
+
+/*#game {
+	visibility: visible;
+}
+
+#sideboard {
+	visibility: hidden;
+}*/
+
+#title {
+	font: 72pt 'Sigmar One';
+	text-align: center;
+	margin-top: 30%;
+	color: #eee;
+}
+
+#freetext {
+	font-size: 48pt;
+	text-align: center;
+	margin-top: 40%;	
+}
+
+.decklist {
+	position: absolute;
+	top: 400px;
+	font: 16pt 'Roboto Condensed';
+	background-color: #555;
+	column-count: 2;
+	width: 40%;
+	border: 10px solid #555;
+	border-radius: 25px;
+
+	padding-left: 1em;
+
+	white-space: pre-line;
+}
+
+.decklist.left {
+	left: 5%;
+}
+
+.decklist.right {
+	right: 5%;
+}
+
+
+.lifetotal {
+	font-size: 64pt;
+}
+
+.scorebox, .lifetotal {
+	position: absolute;
+	top: 575px;
+}
+
+.game {
+	position: absolute;
+	top: 575px;
+	background-color: rgba(0, 0, 0, 0.5);
+	height: 200px;
+}
+
+.scorebox.left {
+	left: 25%;
+}
+.scorebox.right {
+	right: 25%;
+	text-align: right;
+}
+
+.gamerecord {
+	margin-top: 0px;
+	width: 100%;
+	text-align: center;;
+}
+
+.timer {
+	margin-top: 50px;
+	width: 100%;
+	text-align: center;
+}
+
+.overtime {
+	color: orange;
+}
+
+.lifetotal.left {
+	left: 15%;
+}
+.lifetotal.right {
+	right: 15%;
+	text-align: right;
+}
