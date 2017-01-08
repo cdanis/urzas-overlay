@@ -13,12 +13,14 @@ function fillHand(handElt, deck) {
     for (var i = 0; i < deck.length; i++) {
         var card = deck[i];
         if (card.inhand) {
-            var cardElt = $("<div>", {"class": "card"});
-            cardElt.text(card.name);
-            var costElt = $("<span>", {"class": "mana"});
-            costElt.html(toCost(card.cost && ("" + card.cost)));
-            cardElt.append(costElt);
-            handElt.append(cardElt);
+            for (var j = 0; j < card.inhand; j++) {
+                var cardElt = $("<div>", {"class": "card"});
+                cardElt.text(card.name);
+                var costElt = $("<span>", {"class": "mana"});
+                costElt.html(toCost(card.cost && ("" + card.cost)));
+                cardElt.append(costElt);
+                handElt.append(cardElt);
+            }
         }
     }
 }
