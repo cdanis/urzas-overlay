@@ -1,20 +1,15 @@
 var modeRef = firebase.database().ref('mode');
-console.log(modeRef);
 modeRef.on('value', function (v) {
     mode = v.val();
-    console.log(mode);
     modes = ["sideboard", "game", "title", "freetext"];
     _.each(modes, function (ele, idx, list) {
-        console.log(ele);
         $("#" + ele).hide();
     });
     if (_.contains(modes, mode)) {
-        console.log(mode);
         $("#" + mode).show();
     }
 });
 firebase.database().ref('player1').on('value', function (v) {
-    console.log(v.val());
     $(".left .life").text(v.val().life);
     var poison = v.val().poison;
     var poisonElt = $(".left .poison");
@@ -29,7 +24,6 @@ firebase.database().ref('p1deck').on('value', function (v) {
     fillHand($("#p1hand"), v.val());
 });
 firebase.database().ref('player2').on('value', function (v) {
-    console.log(v.val());
     $(".right .life").text(v.val().life);
     var poison = v.val().poison;
     var poisonElt = $(".right .poison");
