@@ -1,0 +1,62 @@
+#p1, #p2 {
+  display: inline-block;
+  padding: 20px 40px;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.button {
+  border: 2px solid #888;
+  border-radius: 8px;
+}
+
+.button:active {
+  background-color: lightcoral;
+}
+
+.selected {
+  background-color: maroon;
+  color: white;
+}
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.cards > * {
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+
+.cardControl {
+  padding: 10px;
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+}
+
+.cardControl > * ~ * {
+  margin-left: 10px;
+}
+
+.minus, .plus {
+  padding: 5px 20px;
+  font-size: 25px;
+}
+
+.count {
+  font-size: 26px;
+}
+
+.name {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  min-width: 0;
+  flex-grow: 1;
+}
