@@ -18,7 +18,7 @@ function fillHand(handElt, deck) {
             var costElt = $("<span>", {"class": "mana"});
             costElt.html(toCost(card.cost && ("" + card.cost)));
             cardElt.append(costElt);
-            handElt.append(cardElt)
+            handElt.append(cardElt);
         }
     }
 }
