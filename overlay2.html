@@ -22,20 +22,14 @@
 
 
   <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+  <script type="text/javascript" src="config.js"></script>
   <script>
   // Initialize Firebase
-  var config = {
-  	apiKey: "AIzaSyDqDSKWpdJJIDBIX5Xq7w24hYss0zliBp8",
-  	authDomain: "urzaslunchbreak.firebaseapp.com",
-  	databaseURL: "https://urzaslunchbreak.firebaseio.com",
-  	storageBucket: "",
-  };
   firebase.initializeApp(config);
 
-  firebase.auth().signInWithEmailAndPassword("cdanis@gmail.com", "Za/Eqv3D3~M]").catch(function(error) {
-  	console.log(error);
+  firebase.auth().signInWithEmailAndPassword(firebaseUsername, firebasePassword).catch(function(error) {
+    console.log(error);
   });
-
 </script>
 </head>
 <body>
