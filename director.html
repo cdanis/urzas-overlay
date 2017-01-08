@@ -1,0 +1,79 @@
+<html>
+<head>
+    <title>director dashboard</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="director.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Metal+Mania" rel="stylesheet">
+    <link href="css/mana.css" rel="stylesheet" type="text/css"/>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"
+            integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+    <script type="text/javascript" src="config.js"></script>
+    <script type="text/javascript" src="firebase.js"></script>
+    <script type="text/javascript" src="director.js"></script>
+</head>
+<body>
+<select id="mode">
+    <option>sideboard</option>
+    <option>game</option>
+    <option>title</option>
+    <option>freetext</option>
+</select>
+<div class="player" id="p1">
+    <input id="player1_name" type="text"/>
+    <input id="player1_deck" type="text"/>
+    <input id="player1_gamewins" class="gamewins" type="number"/> wins
+    <div class="counter">
+        <input id="player1_life" type="number"/>
+        <div class="button plus1">+1</div>
+        <div class="button plus2">+2</div>
+        <div class="button plus3">+3</div>
+        <div class="button minus1">-1</div>
+        <div class="button minus2">-2</div>
+        <div class="button minus3">-3</div>
+    </div>
+    <div class="counter">
+        &#x03d5;
+        <input id="player1_poison" class="poison" type="number"/>
+        <div class="button plus1">+1</div>
+        <div class="button plus2">+2</div>
+        <div class="button plus3">+3</div>
+        <div class="button minus1">-1</div>
+        <div class="button minus2">-2</div>
+        <div class="button minus3">-3</div>
+    </div>
+    <div class="win button" data-winner="player1">WIN</div>
+</div>
+<div class="player" id="p2">
+    <input id="player2_name" type="text"/>
+    <input id="player2_deck" type="text"/>
+    <input id="player2_gamewins" class="gamewins" type="number"/> wins
+    <div class="counter">
+        <input id="player2_life" type="number"/>
+        <div class="button plus1">+1</div>
+        <div class="button plus2">+2</div>
+        <div class="button plus3">+3</div>
+        <div class="button minus1">-1</div>
+        <div class="button minus2">-2</div>
+        <div class="button minus3">-3</div>
+    </div>
+    <div class="counter">
+        &#x03d5;
+        <input id="player2_poison" class="poison" type="number"/>
+        <div class="button plus1">+1</div>
+        <div class="button plus2">+2</div>
+        <div class="button plus3">+3</div>
+        <div class="button minus1">-1</div>
+        <div class="button minus2">-2</div>
+        <div class="button minus3">-3</div>
+    </div>
+    <div class="win button" data-winner="player2">WIN</div>
+</div>
+<div>
+    Free text:
+    <textarea id="freetext" rows="5"></textarea>
+</div>
+</body>

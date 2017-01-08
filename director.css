@@ -1,0 +1,48 @@
+body, select, input, textarea {
+  font-size: 20px;
+  font-family: 'Roboto';
+}
+
+select, div {
+  margin: 20px;
+}
+
+select, input[type=text] {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.player {
+  display: inline-block;
+}
+
+input[type=number] {
+  width: 4em;
+}
+
+.counter {
+  margin-left: 0;
+}
+
+.button {
+  display: inline-block;
+  font-size: 16px;
+  padding: 5px;
+  border: 1px solid #555;
+  border-radius: 3px;
+  margin: 5px;
+  user-select: none;
+  cursor: pointer;
+}
+
+input.poison {
+  width: 3em;
+}
+
+textarea {
+  vertical-align: top;
+}
+
+input, textarea {
+  padding: 10px;
+}
