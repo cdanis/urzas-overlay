@@ -1,0 +1,76 @@
+<html>
+<head>
+    <title>overlay viewer</title>
+    <link rel="stylesheet" type="text/css" href="style-terry1.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Metal+Mania" rel="stylesheet">
+    <link href="css/mana.css" rel="stylesheet" type="text/css"/>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"
+            integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
+    <script type="text/javascript" src="countdown.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+    <script type="text/javascript" src="config.js"></script>
+    <script type="text/javascript" src="gamestate.js"></script>
+
+</head>
+<body>
+<!--
+  	Want to support:
+  	* show title only
+	* show freetext over battlefield
+	* show logo / show a card
+	* show chat off/on
+
+	need to split up body into a few divs, title screen optional at the top level
+
+	alternate idea: it's going to be hard to keep the webcam size & position the same as the game div
+	maybe we use the scene switcher in OBS for some of this, and also, multiple HTML files ?
+	could have a card-or-logo one, could have a chat one
+	could have a 'title' scene in OBS
+	will perhaps want to switch between commentator video as well.
+-->
+
+<div id="title">
+    Urza's Lunch Break
+</div>
+<div id="freetext"></div>
+<div id="game">
+    <div class="header">
+        <div class="scorebox left">
+            <div id="p1name" class="name">mmmmm</div>
+            <div id="p1deck" class="deck">dddddddd</div>
+        </div>
+        <div class="lifetotal left">
+            <div class="life">xx</div>
+            <div class="poison"></div>
+        </div>
+        <div class="recordAndTime">
+            <div class="gamerecord"><span id="p1wins">x</span>&ndash;<span id="p2wins">y</span></div>
+            <div class="timer">tttt</div>
+        </div>
+        <div class="lifetotal right">
+            <div class="life">xx</div>
+            <div class="poison"></div>
+        </div>
+        <div class="scorebox right">
+            <div id="p2name" class="name">mmmmm</div>
+            <div id="p2deck" class="deck">dddddddd</div>
+        </div>
+    </div>
+    <div class="sidebars">
+        <div class="hand left" id="p1hand"></div>
+        <div class="hand right" id="p2hand"></div>
+    </div>
+    <div class="bug">
+        <div class="logo">ULB</div>
+        <div class="name">Urza's Lunch Break</div>
+    </div>
+</div>
+<div id="sideboard">
+    <div class="left"></div>
+    <div class="right"></div>
+</div>
+</body>
+</html>
