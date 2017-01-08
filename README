@@ -1,0 +1,19 @@
+This is an overlay for streaming live MtG games via OBS.
+
+The overlay is implemented in HTML/CSS/JS and the data source is Firebase.
+
+TODOs:
+  * Get a logotype
+  * Make overlay2.html pretty
+  * Make overlay2.html integrate with Firebase
+  * A more reasonable Firebase schema?
+  	* At least, one that supports cards-in-hand
+  	* Poison counters
+  * Integrate with mtgjson or something similar to render mana costs given card names
+
+  * A second HTML page, editor.html or director.html or such, which writes into Firebase
+  	* Quick buttons for -1/-2/-3 life
+  	* A "won the game" button for each player that increments gamewins and resets life totals to 20
+  	* Store names and sideboards (and whole decklists?) somewhere else in Firebase, and copy them into player1 & player2
+  * Functionality for spotters to keep hands up to date, with autocomplete. Usable from mobile is ideal
+  
