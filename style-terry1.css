@@ -212,3 +212,24 @@ body {
 .featuredcard > div {
   padding: 3px 10px;
 }
+
+.sideboard {
+  position: absolute;
+  top: 400px;
+  font: 16pt 'Roboto Condensed';
+  background-color: #555;
+  column-count: 2;
+  width: 40%;
+  border: 10px solid #555;
+  border-radius: 25px;
+  padding-left: 1em;
+  white-space: pre-line;
+}
+
+.sideboard.p1 {
+  left: 5%;
+}
+
+.sideboard.p2 {
+  right: 5%;
+}

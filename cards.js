@@ -37,3 +37,14 @@ function fillCards(outputElt, deck, minInHand) {
         }
     }
 }
+
+function showSideboard(sideboardElt, deck) {
+    var text = "";
+    for (var i = 0; i < deck.length; i++) {
+        var card = deck[i];
+        if (card.sideboard) {
+            text += card.count + " " + card.name + "\n";
+        }
+    }
+    sideboardElt.text(text);
+}

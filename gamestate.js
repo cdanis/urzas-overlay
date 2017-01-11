@@ -18,12 +18,12 @@ firebase.database().ref('player1').on('value', function (v) {
     $(".p1.name").text(v.val().name);
     $(".p1.deck").text(v.val().deck);
     $(".p1.wins").text(v.val().gamewins);
-    $(".sideboard .left").text(v.val().sideboard.replace(/_/g, "\n"));
 });
 firebase.database().ref('p1deck').on('value', function (v) {
     var handElt = $(".p1.hand");
     handElt.empty();
     fillHand(handElt, v.val());
+    showSideboard($(".p1.sideboard"), v.val());
 });
 firebase.database().ref('player2').on('value', function (v) {
     $(".p2.life").text(v.val().life);
@@ -34,12 +34,12 @@ firebase.database().ref('player2').on('value', function (v) {
     $(".p2.name").text(v.val().name);
     $(".p2.deck").text(v.val().deck);
     $(".p2.wins").text(v.val().gamewins);
-    $(".sideboard .right").text(v.val().sideboard.replace(/_/g, "\n"));
 });
 firebase.database().ref('p2deck').on('value', function (v) {
     var handElt = $(".p2.hand");
     handElt.empty();
     fillHand(handElt, v.val());
+    showSideboard($(".p2.sideboard"), v.val());
 });
 firebase.database().ref('freetext').on('value', function (v) {
     $("#freetext").text(v.val());
