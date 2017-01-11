@@ -1,7 +1,7 @@
 var modeRef = firebase.database().ref('mode');
 modeRef.on('value', function (v) {
     mode = v.val();
-    modes = ["sideboard", "game", "title", "freetext"];
+    modes = ["sideboard", "game", "title", "freetext", "featuredcard"];
     _.each(modes, function (ele, idx, list) {
         $("#" + ele).hide();
     });
@@ -43,6 +43,18 @@ firebase.database().ref('p2deck').on('value', function (v) {
 });
 firebase.database().ref('freetext').on('value', function (v) {
     $("#freetext").text(v.val());
+});
+firebase.database().ref('featuredcard').on('value', function (v) {
+    $.get("https://api.magicthegathering.io/v1/cards?name=" + v.val(),
+        function (data) {
+            if (data.cards && data.cards.length > 0) {
+                var card = data.cards[0];
+                $(".featuredcard .img").attr("src", card.imageUrl);
+                $(".featuredCard .cardName").text(card.name);
+                $(".featuredCard .cardType").text(card.types.join(" "));
+                $(".featuredCard .rarityAndSet").text(card.rarity + ", " + card.setName);
+            }
+        });
 });
 var timerId = null;
 firebase.database().ref('end_of_round_epoch_ms').on('value', function (v) {
