@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title>deck import</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="deckimport.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Metal+Mania" rel="stylesheet">
+    <link href="css/mana.css" rel="stylesheet" type="text/css"/>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"
+            integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+    <script type="text/javascript" src="config.js"></script>
+    <script type="text/javascript" src="firebase.js"></script>
+    <script type="text/javascript" src="cards.js"></script>
+    <script type="text/javascript" src="deckimport.js"></script>
+    <script type="text/javascript" src="http://mtgjson.com/json/AllCards.jsonp"></script>
+</head>
+<body>
+<div class="player" id="p1">
+    <div class="name"></div>
+    Deck
+    <textarea class="maindeck" rows="20"></textarea>
+    Sideboard
+    <textarea class="sideboard" rows="10"></textarea>
+    <button class="import" data-player="p1deck">Import</button>
+    <div class="output"></div>
+    <div class="deck"></div>
+</div>
+<div class="player" id="p2">
+    <div class="name"></div>
+    Deck
+    <textarea class="maindeck" rows="20"></textarea>
+    Sideboard
+    <textarea class="sideboard" rows="10"></textarea>
+    <button class="import" data-player="p2deck">Import</button>
+    <div class="output"></div>
+    <div class="deck"></div>
+</div>
+</body>
+</html>

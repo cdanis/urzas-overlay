@@ -21,7 +21,9 @@ firebase.database().ref('player1').on('value', function (v) {
     $(".sideboard .left").text(v.val().sideboard.replace(/_/g, "\n"));
 });
 firebase.database().ref('p1deck').on('value', function (v) {
-    fillHand($("#p1hand"), v.val());
+    var handElt = $("#p1hand");
+    handElt.empty();
+    fillHand(handElt, v.val());
 });
 firebase.database().ref('player2').on('value', function (v) {
     $(".right .life").text(v.val().life);
@@ -35,7 +37,9 @@ firebase.database().ref('player2').on('value', function (v) {
     $(".sideboard .right").text(v.val().sideboard.replace(/_/g, "\n"));
 });
 firebase.database().ref('p2deck').on('value', function (v) {
-    fillHand($("#p2hand"), v.val());
+    var handElt = $("#p2hand");
+    handElt.empty();
+    fillHand(handElt, v.val());
 });
 firebase.database().ref('freetext').on('value', function (v) {
     $("#freetext").text(v.val());

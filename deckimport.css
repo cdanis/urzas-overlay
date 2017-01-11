@@ -1,0 +1,44 @@
+body, textarea, button {
+  font-family: 'Roboto';
+}
+
+body {
+  font-size: 20px;
+}
+
+textarea, button {
+  display: block;
+}
+
+button {
+  font-size: 16px;
+  padding: 5px;
+  border: 1px solid #555;
+  border-radius: 3px;
+  margin: 5px;
+  background: none;
+}
+
+textarea {
+  font-size: 10px;
+}
+
+.player {
+  margin: 20px;
+  display: inline-block;
+  vertical-align: top;
+  width: 15em;
+}
+
+.name {
+  margin-bottom: 20px;
+}
+
+.output, .deck {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.error {
+  color: #CC0000;
+}
