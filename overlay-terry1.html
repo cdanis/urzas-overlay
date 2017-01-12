@@ -15,7 +15,6 @@
     <script type="text/javascript" src="cards.js"></script>
     <script type="text/javascript" src="firebase.js"></script>
     <script type="text/javascript" src="gamestate.js"></script>
-
 </head>
 <body>
 
@@ -26,29 +25,65 @@
 <div id="game">
     <div class="header">
         <div class="scorebox left">
-            <div id="p1name" class="name">mmmmm</div>
-            <div id="p1deck" class="deck">dddddddd</div>
+            <div class="name p1">mmmmm</div>
+            <div class="deck p1">dddddddd</div>
         </div>
         <div class="lifetotal left">
-            <div class="life">xx</div>
-            <div class="poison"></div>
+            <div class="life p1">xx</div>
+            <div class="poison p1"></div>
         </div>
         <div class="recordAndTime">
-            <div class="gamerecord"><span id="p1wins">x</span>&ndash;<span id="p2wins">y</span></div>
+            <div class="gamerecord"><span class="wins p1">x</span>&ndash;<span class="wins p2">y</span></div>
             <div class="timer">tttt</div>
         </div>
         <div class="lifetotal right">
-            <div class="life">xx</div>
-            <div class="poison"></div>
+            <div class="life p2">xx</div>
+            <div class="poison p2"></div>
         </div>
         <div class="scorebox right">
-            <div id="p2name" class="name">mmmmm</div>
-            <div id="p2deck" class="deck">dddddddd</div>
+            <div class="name p2">mmmmm</div>
+            <div class="deck p2">dddddddd</div>
         </div>
     </div>
     <div class="sidebars">
-        <div class="hand left" id="p1hand"></div>
-        <div class="hand right" id="p2hand"></div>
+        <div class="hand left p1"></div>
+        <div class="hand right p2"></div>
+    </div>
+    <div class="bug">
+        <div class="logo">ULB</div>
+        <div class="name">Urza's Lunch Break</div>
+    </div>
+</div>
+<div id="featuredcard">
+    <div class="header">
+        <div class="scorebox left">
+            <div class="name p1">mmmmm</div>
+            <div class="deck p1">dddddddd</div>
+        </div>
+        <div class="lifetotal left">
+            <div class="life p1">xx</div>
+            <div class="poison p1"></div>
+        </div>
+        <div class="recordAndTime">
+            <div class="gamerecord"><span class="wins p1">x</span>&ndash;<span class="wins p2">y</span></div>
+            <div class="timer">tttt</div>
+        </div>
+        <div class="lifetotal right">
+            <div class="life p2">xx</div>
+            <div class="poison p2"></div>
+        </div>
+        <div class="scorebox right">
+            <div class="name p2">mmmmm</div>
+            <div class="deck p2">dddddddd</div>
+        </div>
+    </div>
+    <div class="sidebars">
+        <div class="featuredcard">
+            <img class="img" src="">
+            <div class="cardName"></div>
+            <div class="cardType"></div>
+            <div class="rarityAndSet"></div>
+        </div>
     </div>
     <div class="bug">
         <div class="logo">ULB</div>
@@ -56,8 +91,8 @@
     </div>
 </div>
 <div id="sideboard">
-    <div class="left"></div>
-    <div class="right"></div>
+    <div class="sideboard p1"></div>
+    <div class="sideboard p2"></div>
 </div>
 </body>
 </html>

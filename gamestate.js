@@ -1,7 +1,7 @@
 var modeRef = firebase.database().ref('mode');
 modeRef.on('value', function (v) {
     mode = v.val();
-    modes = ["sideboard", "game", "title", "freetext"];
+    modes = ["sideboard", "game", "title", "freetext", "featuredcard"];
     _.each(modes, function (ele, idx, list) {
         $("#" + ele).hide();
     });
@@ -10,35 +10,51 @@ modeRef.on('value', function (v) {
     }
 });
 firebase.database().ref('player1').on('value', function (v) {
-    $(".left .life").text(v.val().life);
+    $(".p1.life").text(v.val().life);
     var poison = v.val().poison;
-    var poisonElt = $(".left .poison");
+    var poisonElt = $(".p1.poison");
     poisonElt.text(v.val().poison);
     poisonElt.toggle(!!v.val().poison);
-    $("#p1name").text(v.val().name);
-    $("#p1deck").text(v.val().deck);
-    $("#p1wins").text(v.val().gamewins);
-    $(".sideboard .left").text(v.val().sideboard.replace(/_/g, "\n"));
+    $(".p1.name").text(v.val().name);
+    $(".p1.deck").text(v.val().deck);
+    $(".p1.wins").text(v.val().gamewins);
 });
 firebase.database().ref('p1deck').on('value', function (v) {
-    fillHand($("#p1hand"), v.val());
+    var handElt = $(".p1.hand");
+    handElt.empty();
+    fillHand(handElt, v.val());
+    showSideboard($(".p1.sideboard"), v.val());
 });
 firebase.database().ref('player2').on('value', function (v) {
-    $(".right .life").text(v.val().life);
+    $(".p2.life").text(v.val().life);
     var poison = v.val().poison;
-    var poisonElt = $(".right .poison");
+    var poisonElt = $(".p2.poison");
     poisonElt.text(v.val().poison);
     poisonElt.toggle(!!v.val().poison);
-    $("#p2name").text(v.val().name);
-    $("#p2deck").text(v.val().deck);
-    $("#p2wins").text(v.val().gamewins);
-    $(".sideboard .right").text(v.val().sideboard.replace(/_/g, "\n"));
+    $(".p2.name").text(v.val().name);
+    $(".p2.deck").text(v.val().deck);
+    $(".p2.wins").text(v.val().gamewins);
 });
 firebase.database().ref('p2deck').on('value', function (v) {
-    fillHand($("#p2hand"), v.val());
+    var handElt = $(".p2.hand");
+    handElt.empty();
+    fillHand(handElt, v.val());
+    showSideboard($(".p2.sideboard"), v.val());
 });
 firebase.database().ref('freetext').on('value', function (v) {
     $("#freetext").text(v.val());
+});
+firebase.database().ref('featuredcard').on('value', function (v) {
+    $.get("https://api.magicthegathering.io/v1/cards?name=" + v.val(),
+        function (data) {
+            if (data.cards && data.cards.length > 0) {
+                var card = data.cards[0];
+                $(".featuredcard .img").attr("src", card.imageUrl);
+                $(".featuredCard .cardName").text(card.name);
+                $(".featuredCard .cardType").text(card.types.join(" "));
+                $(".featuredCard .rarityAndSet").text(card.rarity + ", " + card.setName);
+            }
+        });
 });
 var timerId = null;
 firebase.database().ref('end_of_round_epoch_ms').on('value', function (v) {
