@@ -31,7 +31,7 @@ function fillCards(outputElt, deck, minInHand) {
                 cardElt.text(card.name);
                 var costElt = $("<span>", {"class": "mana"});
                 costElt.html(toCost(card.cost && ("" + card.cost)));
-                cardElt.append(costElt);
+                cardElt.prepend(costElt);
                 outputElt.append(cardElt);
             }
         }

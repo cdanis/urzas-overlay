@@ -200,7 +200,7 @@ body {
 }
 
 .hand {
-  width: 18%;
+  width: 235px;
   font-size: 15px;
   font-family: "Merriweather";
   color: black;
@@ -213,17 +213,21 @@ body {
 .card {
   margin-bottom: 6px;
   padding: 6px 12px;
+  width: 235px;
+  height: 29px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .left .card {
   background: url(ned-card-background.svg) no-repeat;
-  background-size: cover;
   clip-path: url(#cardLeft);
 }
 
 .right .card {
   background: url(ned-card-background-right.svg) no-repeat;
-  background-size: cover;
   clip-path: url(#cardRight);
 }
 
