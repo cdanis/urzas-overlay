@@ -27,7 +27,7 @@ function fillCards(outputElt, deck, minInHand) {
         var card = deck[i];
         if (card.inhand >= minInHand) {
             for (var j = 0; j < card.inhand || (minInHand == 0 && j == 0); j++) {
-                var cardElt = $("<div>", {"class": "card"});
+                var cardElt = $("<div>", {"class": "card card-" + card.color});
                 cardElt.text(card.name);
                 var costElt = $("<span>", {"class": "mana"});
                 costElt.html(toCost(card.cost && ("" + card.cost)));

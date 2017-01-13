@@ -1,0 +1,112 @@
+<html>
+<head>
+    <title>overlay viewer</title>
+    <link rel="stylesheet" type="text/css" href="style-ned1.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Metal+Mania" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cantata+One" rel="stylesheet">
+    <link href="css/mana.css" rel="stylesheet" type="text/css"/>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"
+            integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
+    <script type="text/javascript" src="countdown.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+    <script type="text/javascript" src="config.js"></script>
+    <script type="text/javascript" src="cards.js"></script>
+    <script type="text/javascript" src="firebase.js"></script>
+    <script type="text/javascript" src="gamestate.js"></script>
+</head>
+<body>
+
+<svg height="0" width="0">
+    <defs>
+        <clipPath id="clipLeft" clipPathUnits="objectBoundingBox">
+            <path d="M 0 0 L 1 0 L 1 1 C .46 1, .54 0, 0 0"/>
+        </clipPath>
+        <clipPath id="clipRight" clipPathUnits="objectBoundingBox">
+            <path d="M 1 0 L 0 0 L 0 1 C .54 1, .46 0, 1 0"/>
+        </clipPath>
+        <clipPath id="cardLeft" transform="translate(-67, -2) scale(1.06)">
+            <path d="M200.430496,3 L299.319838,3 C299.319838,3 302.564538,6.89754972 302.718477,16.5 C302.872416,26.1024503 299.319838,30 299.319838,30 L200.430496,30 L3.40350126,30 C3.40350126,30 -0.149076946,26.1024503 0.00486211923,16.5 C0.158801185,6.89754972 3.40350126,3 3.40350126,3 L200.430496,3 Z"></path>
+        </clipPath>
+        <clipPath id="cardRight" transform="translate(5, -2) scale(1.06)">
+            <path d="M200.430496,3 L299.319838,3 C299.319838,3 302.564538,6.89754972 302.718477,16.5 C302.872416,26.1024503 299.319838,30 299.319838,30 L200.430496,30 L3.40350126,30 C3.40350126,30 -0.149076946,26.1024503 0.00486211923,16.5 C0.158801185,6.89754972 3.40350126,3 3.40350126,3 L200.430496,3 Z"
+                  id="path-1"></path>
+        </clipPath>
+    </defs>
+</svg>
+
+<div id="title">
+    Urza's Lunch Break
+</div>
+<div id="freetext"></div>
+<div id="game">
+    <div class="header">
+        <div class="scorebox left">
+            <div class="name p1">mmmmm</div>
+            <div class="deck p1">dddddddd</div>
+        </div>
+        <div class="lifetotal left">
+            <div class="life p1">xx</div>
+            <div class="poison p1"></div>
+        </div>
+        <div class="recordAndTime">
+            <div class="gamerecord"><span class="wins p1">x</span>&ndash;<span class="wins p2">y</span></div>
+            <div class="timer">tttt</div>
+        </div>
+        <div class="logo">ULB</div>
+        <div class="lifetotal right">
+            <div class="life p2">xx</div>
+            <div class="poison p2"></div>
+        </div>
+        <div class="scorebox right">
+            <div class="name p2">mmmmm</div>
+            <div class="deck p2">dddddddd</div>
+        </div>
+    </div>
+    <div class="sidebars">
+        <div class="hand left p1"></div>
+        <div class="hand right p2"></div>
+    </div>
+</div>
+<div id="featuredcard">
+    <div class="header">
+        <div class="scorebox left">
+            <div class="name p1">mmmmm</div>
+            <div class="deck p1">dddddddd</div>
+        </div>
+        <div class="lifetotal left">
+            <div class="life p1">xx</div>
+            <div class="poison p1"></div>
+        </div>
+        <div class="recordAndTime">
+            <div class="gamerecord"><span class="wins p1">x</span>&ndash;<span class="wins p2">y</span></div>
+            <div class="timer">tttt</div>
+        </div>
+        <div class="logo">ULB</div>
+        <div class="lifetotal right">
+            <div class="life p2">xx</div>
+            <div class="poison p2"></div>
+        </div>
+        <div class="scorebox right">
+            <div class="name p2">mmmmm</div>
+            <div class="deck p2">dddddddd</div>
+        </div>
+    </div>
+    <div class="sidebars">
+        <div class="featuredcard">
+            <img class="img" src="">
+            <div class="cardName"></div>
+            <div class="cardType"></div>
+            <div class="rarityAndSet"></div>
+        </div>
+    </div>
+</div>
+<div id="sideboard">
+    <div class="sideboard p1"></div>
+    <div class="sideboard p2"></div>
+</div>
+</body>
+</html>

@@ -1,7 +1,6 @@
-var deckLine = /^(\d+)x? *(.*)$/g;
+var deckLine = /^(\d+) ?x? *(.*)$/g;
 
 function parseDeck(text, deck, output, sideboard, callback) {
-    var error = false;
     var lines = text.split("\n");
     var names = [];
     var counts = {};
@@ -18,13 +17,26 @@ function parseDeck(text, deck, output, sideboard, callback) {
             }
         }
     }
-    $.get("https://api.magicthegathering.io/v1/cards?name=" + names.join("|"),
+    doRequest(names, counts, deck, output, sideboard, callback, 0);
+}
+
+function doRequest(names, counts, deck, output, sideboard, callback, page) {
+    $.get("https://api.magicthegathering.io/v1/cards?page=" + page + "&name=" + names.join("|"),
         function (data) {
             for (i = 0; i < data.cards.length; i++) {
                 var card = data.cards[i];
                 if (counts.hasOwnProperty(card.name.toLowerCase())) {
+                    var color;
+                    if (!card.colorIdentity) {
+                        color = "C";
+                    } else if (card.colorIdentity.length == 1) {
+                        color = card.colorIdentity[0];
+                    } else {
+                        color = "M";
+                    }
                     deck.push({
                         name: card.name,
+                        color: color,
                         cost: card.manaCost ? card.manaCost.replace(/[{}]/g, "") : "",
                         count: counts[card.name.toLowerCase()],
                         inhand: 0,
@@ -34,8 +46,13 @@ function parseDeck(text, deck, output, sideboard, callback) {
                 }
             }
             if (deck.length != names.length) {
-                output.append($("<div class='error'>Ended up with wrong number of cards</div>"));
-                deck = [];
+                if (page > 20) {
+                    output.append($("<div class='error'>Ended up with wrong number of cards</div>"));
+                    deck = [];
+                    callback();
+                } else {
+                    doRequest(names, counts, deck, output, sideboard, callback, page + 1);
+                }
             } else {
                 deck.sort(function (c1, c2) {
                     if (c1.name < c2.name) {
@@ -46,8 +63,8 @@ function parseDeck(text, deck, output, sideboard, callback) {
                         return 0;
                     }
                 });
+                callback();
             }
-            callback();
         })
         .fail(function () {
             output.append($("<div class='error'>Request failed</div>"));
