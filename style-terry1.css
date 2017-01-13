@@ -172,6 +172,8 @@ body {
 
 .mana {
   font-size: 80%;
+  float: right;
+  padding-top: 2px;
 }
 
 .mana i {
