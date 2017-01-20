@@ -9,6 +9,11 @@ body {
   text-align: center;
   margin-top: 30%;
   color: #eee;
+    text-shadow: -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+
 }
 
 #freetext {
