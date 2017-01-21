@@ -1,4 +1,6 @@
-var spotterControlTemplate = _.template(`<div class="cardControl" id="card_<%= player %>_<%= index %>">
+var spotterControlTemplate = _.template(`
+<div class="cardControl <% if (count > 0) { %>inHand<% } %>" 
+        id="card_<%= player %>_<%= index %>">
     <div class="minus button">-</div>
     <div class="name"><%= name %></div>
     <div class="count"><%= count %></div>
@@ -63,13 +65,25 @@ $(function () {
     $("#p1").click(function () {
         $("#p1").addClass("selected");
         $("#p2").removeClass("selected");
-        $("#cards1").show();
-        $("#cards2").hide();
+        $("#p1tab").show();
+        $("#p2tab").hide();
     });
     $("#p2").click(function () {
         $("#p2").addClass("selected");
         $("#p1").removeClass("selected");
-        $("#cards2").show();
-        $("#cards1").hide();
+        $("#p2tab").show();
+        $("#p1tab").hide();
+    });
+    $(".reset").click(function () {
+        firebase.database().ref($(this).data('player')).transaction(
+            function (deck) {
+                if (deck) {
+                    for (var i = 0; i < deck.length; i++) {
+                        deck[i].inhand = 0;
+                    }
+                }
+                return deck;
+            }
+        );
     });
 });

@@ -19,6 +19,13 @@
   color: white;
 }
 
+.reset {
+  display: block;
+  padding: 15px;
+  width: fit-content;
+  margin: 10px 40px;
+}
+
 .cards {
   display: flex;
   flex-direction: row;
@@ -38,6 +45,11 @@
   justify-content: space-between;
   align-items: center;
   width: 300px;
+}
+
+.cardControl.inHand {
+  font-weight: bold;
+  background: #eee;
 }
 
 .cardControl > * ~ * {
