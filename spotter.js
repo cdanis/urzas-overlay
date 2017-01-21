@@ -1,4 +1,6 @@
-var spotterControlTemplate = _.template(`<div class="cardControl" id="card_<%= player %>_<%= index %>">
+var spotterControlTemplate = _.template(`
+<div class="cardControl <% if (count > 0) { %>inHand<% } %>" 
+        id="card_<%= player %>_<%= index %>">
     <div class="minus button">-</div>
     <div class="name"><%= name %></div>
     <div class="count"><%= count %></div>

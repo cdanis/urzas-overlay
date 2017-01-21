@@ -40,6 +40,11 @@
   width: 300px;
 }
 
+.cardControl.inHand {
+  font-weight: bold;
+  background: #eee;
+}
+
 .cardControl > * ~ * {
   margin-left: 10px;
 }
