@@ -35,6 +35,10 @@ input[type=number] {
   cursor: pointer;
 }
 
+.freetext-option {
+  display: block;
+}
+
 input.poison {
   width: 3em;
 }

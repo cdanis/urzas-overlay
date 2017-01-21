@@ -29,7 +29,7 @@ $(function () {
     $("#mode").change(function () {
         firebase.database().ref('mode').set($(this).val());
     });
-    $("input").change(function () {
+    $("input, textarea").change(function () {
         firebase.database().ref($(this).attr("id").replace("_", "/")).set($(this).val());
     });
     $(".plus1").click(function () {
@@ -59,5 +59,8 @@ $(function () {
         values[$(this).data("winner") + "/gamewins"] =
             parseInt($(this).siblings(".gamewins").val()) + 1;
         firebase.database().ref().update(values);
+    });
+    $(".freetext-option").click(function () {
+        firebase.database().ref('freetext').set($(this).text());
     });
 });
