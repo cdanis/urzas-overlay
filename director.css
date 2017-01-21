@@ -35,6 +35,12 @@ input[type=number] {
   cursor: pointer;
 }
 
+.swap {
+  display: block;
+  width: fit-content;
+  margin-left: 25px;
+}
+
 .freetext-option {
   display: block;
 }

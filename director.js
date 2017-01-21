@@ -3,18 +3,22 @@ modeRef.on('value', function (v) {
     $("#mode").val(v.val());
 });
 firebase.database().ref('player1').on('value', function (v) {
-    $("#player1_name").val(v.val().name);
-    $("#player1_deck").val(v.val().deck);
-    $("#player1_life").val(v.val().life);
-    $("#player1_poison").val(v.val().poison);
-    $("#player1_gamewins").val(v.val().gamewins);
+    if (v.val()) {
+        $("#player1_name").val(v.val().name);
+        $("#player1_deck").val(v.val().deck);
+        $("#player1_life").val(v.val().life);
+        $("#player1_poison").val(v.val().poison);
+        $("#player1_gamewins").val(v.val().gamewins);
+    }
 });
 firebase.database().ref('player2').on('value', function (v) {
-    $("#player2_name").val(v.val().name);
-    $("#player2_deck").val(v.val().deck);
-    $("#player2_life").val(v.val().life);
-    $("#player2_poison").val(v.val().poison);
-    $("#player2_gamewins").val(v.val().gamewins);
+    if (v.val()) {
+        $("#player2_name").val(v.val().name);
+        $("#player2_deck").val(v.val().deck);
+        $("#player2_life").val(v.val().life);
+        $("#player2_poison").val(v.val().poison);
+        $("#player2_gamewins").val(v.val().gamewins);
+    }
 });
 firebase.database().ref('freetext').on('value', function (v) {
     $("#freetext").val(v.val());
@@ -62,5 +66,23 @@ $(function () {
     });
     $(".freetext-option").click(function () {
         firebase.database().ref('freetext').set($(this).text());
+    });
+    $(".swap").click(function () {
+        firebase.database().ref().transaction(function (data) {
+            if (data) {
+                var tmp = data.player1.name;
+                data.player1.name = data.player2.name;
+                data.player2.name = tmp;
+
+                tmp = data.player1.deck;
+                data.player1.deck = data.player2.deck;
+                data.player2.deck = tmp;
+
+                tmp = data.p1deck;
+                data.p1deck = data.p2deck;
+                data.p2deck = tmp;
+            }
+            return data;
+        });
     });
 });
