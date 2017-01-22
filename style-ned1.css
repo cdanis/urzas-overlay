@@ -7,19 +7,32 @@ body {
 #title {
   font: 72pt 'Metal Mania';
   text-align: center;
-  margin-top: 30%;
+  top: 30%;
   color: #eee;
   text-shadow: -1px -1px 0 #000,
   1px -1px 0 #000,
   -1px 1px 0 #000,
   1px 1px 0 #000;
-
 }
 
 #freetext {
   font-size: 48pt;
   text-align: center;
-  margin-top: 40%;
+  top: 40%;
+}
+
+#title, #freetext {
+  position: absolute;
+  left: 0;
+  right: 0;
+  transition: transform 400ms cubic-bezier(0.4, 0.0, 0.2, 1),
+  opacity 400ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+#title.inactive, #freetext.inactive {
+  display: block;
+  opacity: 0;
+  transform: translateY(50px) scale(0.9);
 }
 
 .decklist {
@@ -45,7 +58,7 @@ body {
   right: 5%;
 }
 
-#game, #featuredcard {
+#game {
   position: absolute;
   top: 0;
   left: 0;
@@ -54,6 +67,12 @@ body {
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  transition: transform 400ms cubic-bezier(0.4, 0.0, 0.2, 1),
+  opacity 400ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+#game.inactive {
+  opacity: 0;
 }
 
 .header {
@@ -332,14 +351,27 @@ body {
   border-radius: 25px;
   padding-left: 1em;
   white-space: pre-line;
+  transition: transform 500ms cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.inactive .sideboard {
+  transition: transform 500ms cubic-bezier(0.4, 0.0, 1, 1);
 }
 
 .sideboard.p1 {
   left: 5%;
 }
 
+.inactive .sideboard.p1 {
+  transform: translateX(-150%);
+}
+
 .sideboard.p2 {
   right: 5%;
+}
+
+.inactive .sideboard.p2 {
+  transform: translateX(150%);
 }
 
 .left.offscreen {
