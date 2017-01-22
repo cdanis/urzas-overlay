@@ -1,13 +1,12 @@
 function toCost(text) {
     var cost = "&nbsp;";
     if (text) {
-        for (var i = 0; i < text.length; i++) {
-            var symbol = text[i];
-            if (i + 2 < text.length && text[i + 1] == "/") {
-                symbol += text[i + 2];
-                i += 2;
-            }
-            cost += "<i class='ms ms-cost ms-" + symbol + "'></i>";
+        var r = /\{([^\}]+)\}/g;
+        var match;
+        while (match = r.exec(text)) {
+            cost += "<i class='ms ms-cost ms-" + match[1].replace(/\//g, "") +
+                ((match[1].includes("/") && !match[1].includes("/P")) ? " ms-split" : "") +
+                "'></i>";
         }
     }
     return cost;

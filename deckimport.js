@@ -37,7 +37,7 @@ function doRequest(names, counts, deck, output, sideboard, callback, page) {
                     deck.push({
                         name: card.name,
                         color: color,
-                        cost: card.manaCost ? card.manaCost.replace(/[{}]/g, "") : "",
+                        cost: card.manaCost || "",
                         count: counts[card.name.toLowerCase()],
                         inhand: 0,
                         sideboard: sideboard
