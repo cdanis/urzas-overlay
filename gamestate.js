@@ -31,7 +31,6 @@ $.get("https://api.magicthegathering.io/v1/sets",
 
 function fillFeaturedCard(cardName, featuredCardSelector, handSelector) {
     if (cardName != "") {
-        $(featuredCardSelector + " .img").attr("src", "back.jpg");
         // exact match on the name, because autocomplete in director.html should have
         // put an exact name there for us
         $.get("https://api.magicthegathering.io/v1/cards?name=\"" + cardName + "\"",
@@ -47,21 +46,29 @@ function fillFeaturedCard(cardName, featuredCardSelector, handSelector) {
                         imageUrl = ("http://magiccards.info/scans/en/" + gathererToMagiccardsInfo[card.set]
                                     + "/" + card.number + ".jpg").toLowerCase();
                     }
-                    $(featuredCardSelector + " .img").attr("src", imageUrl);
-                    // fall back to Gatherer if we unexpectedly have to
-                    $(featuredCardSelector + " .img").on("error", function() {$(this).attr("src", card.imageUrl)});
-                    // TODO: would be nice to do all of the above using the jQuery load API and then don't switch
-                    // div visibility until we know the right image has loaded (or don't at all if we can't load anything!)
-                    $(featuredCardSelector + " .cardName").text(card.name);
-                    $(featuredCardSelector + " .cardType").text(card.types.join(" "));
-                    $(featuredCardSelector + " .rarityAndSet").text(card.rarity + ", " + card.setName);
-                    $(handSelector).hide();
-                    $(featuredCardSelector).show();
+                    var img = $(featuredCardSelector).find(".img");
+                    img.attr("src", imageUrl);
+                    img.on("load", function () {
+                        $(featuredCardSelector).find(".cardName").text(card.name);
+                        $(featuredCardSelector).find(".cardType").text(card.types.join(" "));
+                        $(featuredCardSelector).find(".rarityAndSet").text(card.rarity + ", " + card.setName);
+                        $(featuredCardSelector).removeClass("offscreen");
+                    });
+                    img.on("error", function () {
+                        if ($(this).attr("src") != card.imageUrl) {
+                            // fall back to Gatherer if we unexpectedly have to
+                            $(this).attr("src", card.imageUrl)
+                        } else {
+                            // Gatherer failed too, sandwich time
+                            $(this).attr("src", "back.jpg");
+                        }
+                    });
                 }
             });
     } else {
-        $(handSelector).show();
-        $(featuredCardSelector).hide();
+        $(featuredCardSelector).addClass("offscreen");
+        $(featuredCardSelector).find(".img").off("load");
+        $(featuredCardSelector).find(".img").off("error");
     }
 }
 
