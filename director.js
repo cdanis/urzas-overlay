@@ -9,6 +9,8 @@ firebase.database().ref('player1').on('value', function (v) {
         $("#player1_life").val(v.val().life);
         $("#player1_poison").val(v.val().poison);
         $("#player1_gamewins").val(v.val().gamewins);
+        $("#player1_featuredcard").val(v.val().featuredcard);
+
     }
 });
 firebase.database().ref('player2').on('value', function (v) {
@@ -18,6 +20,7 @@ firebase.database().ref('player2').on('value', function (v) {
         $("#player2_life").val(v.val().life);
         $("#player2_poison").val(v.val().poison);
         $("#player2_gamewins").val(v.val().gamewins);
+        $("#player2_featuredcard").val(v.val().featuredcard);
     }
 });
 firebase.database().ref('freetext').on('value', function (v) {
@@ -30,11 +33,31 @@ function adjustVaue(amount) {
 }
 
 $(function () {
+
+    $("#player1_featuredcard, #player2_featuredcard").autocomplete({
+    minLength: 3,
+    source: function(request, response) {
+        $.get("https://api.magicthegathering.io/v1/cards?name=" + request.term,
+            function(data) {
+                response(_.uniq(_.map(data.cards, function(x) { return x.name })))
+            })
+    },
+    select: function(event, ui) {
+        firebase.database().ref($(this).attr("id").replace("_", "/")).set(ui.item.value);
+    },
+});
+
     $("#mode").change(function () {
         firebase.database().ref('mode').set($(this).val());
     });
-    $("input, textarea").change(function () {
+    // don't stomp on the autocomplete change eventhandler
+    $("input[id!='player1_featuredcard'][id!='player2_featuredcard'], textarea").change(function () {
         firebase.database().ref($(this).attr("id").replace("_", "/")).set($(this).val());
+    });
+    $(".clear").click(function () {
+        var input = $(this).siblings("input");
+        input.val("");
+        firebase.database().ref(input.attr("id").replace("_", "/")).set(input.val());
     });
     $(".plus1").click(function () {
         adjustVaue.call(this, 1);

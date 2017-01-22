@@ -6,8 +6,13 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Metal+Mania" rel="stylesheet">
     <link href="css/mana.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"
             integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+            <script
+  src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  crossorigin="anonymous"></script>
     <script type="text/javascript" src="underscore-min.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
@@ -19,7 +24,6 @@
 <select id="mode">
     <option>title</option>
     <option>game</option>
-    <option>featuredcard</option>
     <option>sideboard</option>
     <option>freetext</option>
 </select>
@@ -46,6 +50,12 @@
         <div class="button minus2">-2</div>
         <div class="button minus3">-3</div>
     </div>
+    <div>
+        Featured card:
+        <input id="player1_featuredcard"/>
+        <div class="button clear">clear</div>
+    </div>
+
     <div class="win button" data-winner="player1">WIN</div>
 </div>
 <div class="player" id="p2">
@@ -71,6 +81,12 @@
         <div class="button minus2">-2</div>
         <div class="button minus3">-3</div>
     </div>
+        <div>
+        Featured card:
+        <input id="player2_featuredcard"/>
+        <div class="button clear">clear</div>
+    </div>
+
     <div class="win button" data-winner="player2">WIN</div>
 </div>
 <div class="swap button">Swap</div>
@@ -78,9 +94,5 @@
     Free text:
     <textarea id="freetext" rows="5"></textarea>
     <button class="freetext-option">😻 😻 please like and subscribe 😻 😻</button>
-</div>
-<div>
-    Featured card name:
-    <input id="featuredcard" type="text"/>
 </div>
 </body>
