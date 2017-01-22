@@ -17,7 +17,8 @@ $.get("https://api.magicthegathering.io/v1/sets",
     function(data) {
         gathererToMagiccardsInfo = _.object(
             _.map(data.sets, function(x) { return x.gathererCode || x.code; }),
-            _.map(data.sets, function(x) { return x.magicCardsInfoCode; }));
+            // If there's no magicCardsInfoCode, give up and return the normal code; fixes Kaladesh.
+            _.map(data.sets, function(x) { return x.magicCardsInfoCode || x.code; }));
     });
 
 function fillFeaturedCard(cardName, featuredCardSelector, handSelector) {
