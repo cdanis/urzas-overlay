@@ -23,7 +23,6 @@ $.get("https://api.magicthegathering.io/v1/sets",
 
 function fillFeaturedCard(cardName, featuredCardSelector, handSelector) {
     if (cardName != "") {
-        $(handSelector).hide();
         // exact match on the name, because autocomplete in director.html should have
         // put an exact name there for us
         $.get("https://api.magicthegathering.io/v1/cards?name=\"" + cardName + "\"",
@@ -42,9 +41,10 @@ function fillFeaturedCard(cardName, featuredCardSelector, handSelector) {
                     $(featuredCardSelector + " .cardName").text(card.name);
                     $(featuredCardSelector + " .cardType").text(card.types.join(" "));
                     $(featuredCardSelector + " .rarityAndSet").text(card.rarity + ", " + card.setName);
+                    $(handSelector).hide();
+                    $(featuredCardSelector).show();
                 }
             });
-        $(featuredCardSelector).show();
     } else {
         $(handSelector).show();
         $(featuredCardSelector).hide();
