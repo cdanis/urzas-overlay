@@ -48,17 +48,29 @@ function createSpotterControls(cards, deck, player) {
     }
 }
 
+function cardsInHand(deck) {
+    return _.reduce(deck, function (memo, card) {
+        return memo + card.inhand;
+    }, 0);
+}
+
 firebase.database().ref('player1').on('value', function (v) {
     $("#p1").text(v.val().name);
 });
 firebase.database().ref('p1deck').on('value', function (v) {
-    createSpotterControls($("#cards1"), v.val(), 1);
+    var p1tab = $("#p1tab");
+    var deck = v.val();
+    createSpotterControls(p1tab.find(".cards"), deck, 1);
+    p1tab.find(".total").text(cardsInHand(deck) + " in hand");
 });
 firebase.database().ref('player2').on('value', function (v) {
     $("#p2").text(v.val().name);
 });
 firebase.database().ref('p2deck').on('value', function (v) {
-    createSpotterControls($("#cards2"), v.val(), 2);
+    var p2tab = $("#p2tab");
+    var deck = v.val();
+    createSpotterControls(p2tab.find(".cards"), deck, 2);
+    p2tab.find(".total").text(cardsInHand(deck) + " in hand");
 });
 
 $(function () {
