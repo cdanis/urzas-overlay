@@ -69,9 +69,7 @@
 }
 
 .name {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  max-height: 2em;
   min-width: 0;
   flex-grow: 1;
 }
