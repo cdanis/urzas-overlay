@@ -41,9 +41,6 @@ function fillFeaturedCard(cardName, featuredCardSelector, handSelector) {
                         return sets.indexOf(c.set);
                     });
                     var card = data.cards[0];
-                    // for (var i = 0; i < data.cards.length; i++) {
-                    //     if (data.cards[i].)
-                    // }
                     imageUrl = card.imageUrl;
                     if (card.set && card.number) {
                         // not all cards have a number (e.g. LEA Lightning Bolt)
