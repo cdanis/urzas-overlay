@@ -16,7 +16,7 @@ var gathererToMagiccardsInfo = [];
 $.get("https://api.magicthegathering.io/v1/sets",
     function(data) {
         gathererToMagiccardsInfo = _.object(
-            _.map(data.sets, function(x) { return x.gathererCode || x.code; }),
+            _.map(data.sets, function(x) { return x.code; }),
             // If there's no magicCardsInfoCode, give up and return the normal code; fixes Kaladesh.
             _.map(data.sets, function(x) { return x.magicCardsInfoCode || x.code; }));
     });
@@ -37,6 +37,8 @@ function fillFeaturedCard(cardName, featuredCardSelector, handSelector) {
                                     + "/" + card.number + ".jpg").toLowerCase();
                     }
                     $(featuredCardSelector + " .img").attr("src", imageUrl);
+                    // fall back to Gatherer if we unexpectedly have to
+                    $(featuredCardSelector + " .img").on("error", function() {$(this).attr("src", card.imageUrl)});
                     $(featuredCardSelector + " .cardName").text(card.name);
                     $(featuredCardSelector + " .cardType").text(card.types.join(" "));
                     $(featuredCardSelector + " .rarityAndSet").text(card.rarity + ", " + card.setName);
