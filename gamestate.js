@@ -38,6 +38,8 @@ function fillFeaturedCard(cardName, featuredCardSelector, handSelector) {
                     $(featuredCardSelector + " .img").attr("src", imageUrl);
                     // fall back to Gatherer if we unexpectedly have to
                     $(featuredCardSelector + " .img").on("error", function() {$(this).attr("src", card.imageUrl)});
+                    // TODO: would be nice to do all of the above using the jQuery load API and then don't switch
+                    // div visibility until we know the right image has loaded (or don't at all if we can't load anything!)
                     $(featuredCardSelector + " .cardName").text(card.name);
                     $(featuredCardSelector + " .cardType").text(card.types.join(" "));
                     $(featuredCardSelector + " .rarityAndSet").text(card.rarity + ", " + card.setName);
