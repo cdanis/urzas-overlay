@@ -73,3 +73,7 @@
   min-width: 0;
   flex-grow: 1;
 }
+
+.game1 .sideboard {
+  display: none;
+}
