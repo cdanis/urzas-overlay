@@ -10,25 +10,40 @@ modeRef.on('value', function (v) {
     }
 });
 
+var sets;
 // Gatherer card images are low-res and blocky and ugly, so if we can, we want to use magiccards.info images.
 // We need to translate from what Gatherer calls the set to what magiccards.info calls the set, though.
 var gathererToMagiccardsInfo = [];
 $.get("https://api.magicthegathering.io/v1/sets",
     function(data) {
+        data.sets = _.sortBy(data.sets, function (x) {
+            return (x.type == "promo" ? "p" : "") + x.releaseDate;
+        });
+        sets = _.map(data.sets, function (x) {
+            return x.code;
+        });
+
         gathererToMagiccardsInfo = _.object(
-            _.map(data.sets, function(x) { return x.code; }),
+            sets,
             // If there's no magicCardsInfoCode, give up and return the normal code; fixes Kaladesh.
             _.map(data.sets, function(x) { return x.magicCardsInfoCode || x.code; }));
     });
 
 function fillFeaturedCard(cardName, featuredCardSelector, handSelector) {
     if (cardName != "") {
+        $(featuredCardSelector + " .img").attr("src", "back.jpg");
         // exact match on the name, because autocomplete in director.html should have
         // put an exact name there for us
         $.get("https://api.magicthegathering.io/v1/cards?name=\"" + cardName + "\"",
             function (data) {
                 if (data.cards && data.cards.length > 0) {
+                    data.cards = _.sortBy(data.cards, function (c) {
+                        return sets.indexOf(c.set);
+                    });
                     var card = data.cards[0];
+                    // for (var i = 0; i < data.cards.length; i++) {
+                    //     if (data.cards[i].)
+                    // }
                     imageUrl = card.imageUrl;
                     if (card.set && card.number) {
                         // not all cards have a number (e.g. LEA Lightning Bolt)
