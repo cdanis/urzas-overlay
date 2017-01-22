@@ -9,6 +9,50 @@ modeRef.on('value', function (v) {
         $("#" + mode).show();
     }
 });
+
+// Gatherer card images are low-res and blocky and ugly, so if we can, we want to use magiccards.info images.
+// We need to translate from what Gatherer calls the set to what magiccards.info calls the set, though.
+var gathererToMagiccardsInfo = [];
+$.get("https://api.magicthegathering.io/v1/sets",
+    function(data) {
+        gathererToMagiccardsInfo = _.object(
+            _.map(data.sets, function(x) { return x.code; }),
+            // If there's no magicCardsInfoCode, give up and return the normal code; fixes Kaladesh.
+            _.map(data.sets, function(x) { return x.magicCardsInfoCode || x.code; }));
+    });
+
+function fillFeaturedCard(cardName, featuredCardSelector, handSelector) {
+    if (cardName != "") {
+        // exact match on the name, because autocomplete in director.html should have
+        // put an exact name there for us
+        $.get("https://api.magicthegathering.io/v1/cards?name=\"" + cardName + "\"",
+            function (data) {
+                if (data.cards && data.cards.length > 0) {
+                    var card = data.cards[0];
+                    imageUrl = card.imageUrl;
+                    if (card.set && card.number) {
+                        // not all cards have a number (e.g. LEA Lightning Bolt)
+                        imageUrl = ("http://magiccards.info/scans/en/" + gathererToMagiccardsInfo[card.set]
+                                    + "/" + card.number + ".jpg").toLowerCase();
+                    }
+                    $(featuredCardSelector + " .img").attr("src", imageUrl);
+                    // fall back to Gatherer if we unexpectedly have to
+                    $(featuredCardSelector + " .img").on("error", function() {$(this).attr("src", card.imageUrl)});
+                    // TODO: would be nice to do all of the above using the jQuery load API and then don't switch
+                    // div visibility until we know the right image has loaded (or don't at all if we can't load anything!)
+                    $(featuredCardSelector + " .cardName").text(card.name);
+                    $(featuredCardSelector + " .cardType").text(card.types.join(" "));
+                    $(featuredCardSelector + " .rarityAndSet").text(card.rarity + ", " + card.setName);
+                    $(handSelector).hide();
+                    $(featuredCardSelector).show();
+                }
+            });
+    } else {
+        $(handSelector).show();
+        $(featuredCardSelector).hide();
+    }
+}
+
 firebase.database().ref('player1').on('value', function (v) {
     $(".p1.life").text(v.val().life);
     var poison = v.val().poison;
@@ -18,6 +62,7 @@ firebase.database().ref('player1').on('value', function (v) {
     $(".p1.name").text(v.val().name);
     $(".p1.deck").text(v.val().deck);
     $(".p1.wins").text(v.val().gamewins);
+    fillFeaturedCard(v.val().featuredcard, ".p1.featuredcard", ".p1.hand");
 });
 firebase.database().ref('p1deck').on('value', function (v) {
     var handElt = $(".p1.hand");
@@ -34,6 +79,7 @@ firebase.database().ref('player2').on('value', function (v) {
     $(".p2.name").text(v.val().name);
     $(".p2.deck").text(v.val().deck);
     $(".p2.wins").text(v.val().gamewins);
+    fillFeaturedCard(v.val().featuredcard, ".p2.featuredcard", ".p2.hand");
 });
 firebase.database().ref('p2deck').on('value', function (v) {
     var handElt = $(".p2.hand");
@@ -43,18 +89,6 @@ firebase.database().ref('p2deck').on('value', function (v) {
 });
 firebase.database().ref('freetext').on('value', function (v) {
     $("#freetext").text(v.val());
-});
-firebase.database().ref('featuredcard').on('value', function (v) {
-    $.get("https://api.magicthegathering.io/v1/cards?name=" + v.val(),
-        function (data) {
-            if (data.cards && data.cards.length > 0) {
-                var card = data.cards[0];
-                $(".featuredcard .img").attr("src", card.imageUrl);
-                $(".featuredCard .cardName").text(card.name);
-                $(".featuredCard .cardType").text(card.types.join(" "));
-                $(".featuredCard .rarityAndSet").text(card.rarity + ", " + card.setName);
-            }
-        });
 });
 var timerId = null;
 firebase.database().ref('end_of_round_epoch_ms').on('value', function (v) {

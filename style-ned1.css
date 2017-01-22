@@ -281,11 +281,23 @@ body {
   padding: 30px;
   padding-bottom: 100px;
   box-sizing: border-box;
-  border-top-right-radius: 10px;
+  font-style: italic;
+}
+
+.featuredcard.left {
+    border-top-right-radius: 10px;
+}
+.featuredcard.right {
+    border-top-left-radius: 10px;
+}
+
+.featuredcard .cardname {
+  font-size: 140%;
+  font-style: oblique;
 }
 
 .featuredcard .img {
-  width: 85%;
+  width: 100%;
   border-radius: 13px;
   margin-bottom: 20px;
 }
