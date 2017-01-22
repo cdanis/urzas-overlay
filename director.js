@@ -27,26 +27,24 @@ firebase.database().ref('freetext').on('value', function (v) {
     $("#freetext").val(v.val());
 });
 
-function adjustVaue(amount) {
+function adjustValue(amount) {
     var input = $(this).siblings("input");
     input.val(parseInt(input.val()) + amount).change();
 }
 
 $(function () {
-
     $("#player1_featuredcard, #player2_featuredcard").autocomplete({
-    minLength: 3,
-    source: function(request, response) {
-        $.get("https://api.magicthegathering.io/v1/cards?name=" + request.term,
-            function(data) {
-                response(_.uniq(_.map(data.cards, function(x) { return x.name })))
-            })
-    },
-    select: function(event, ui) {
-        firebase.database().ref($(this).attr("id").replace("_", "/")).set(ui.item.value);
-    },
-});
-
+        minLength: 3,
+        source: function(request, response) {
+            $.get("https://api.magicthegathering.io/v1/cards?name=" + request.term,
+                function(data) {
+                    response(_.uniq(_.map(data.cards, function(x) { return x.name })))
+                })
+        },
+        select: function(event, ui) {
+            firebase.database().ref($(this).attr("id").replace("_", "/")).set(ui.item.value);
+        },
+    });
     $("#mode").change(function () {
         firebase.database().ref('mode').set($(this).val());
     });
@@ -60,22 +58,22 @@ $(function () {
         firebase.database().ref(input.attr("id").replace("_", "/")).set(input.val());
     });
     $(".plus1").click(function () {
-        adjustVaue.call(this, 1);
+        adjustValue.call(this, 1);
     });
     $(".plus2").click(function () {
-        adjustVaue.call(this, 2);
+        adjustValue.call(this, 2);
     });
     $(".plus3").click(function () {
-        adjustVaue.call(this, 3);
+        adjustValue.call(this, 3);
     });
     $(".minus1").click(function () {
-        adjustVaue.call(this, -1);
+        adjustValue.call(this, -1);
     });
     $(".minus2").click(function () {
-        adjustVaue.call(this, -2);
+        adjustValue.call(this, -2);
     });
     $(".minus3").click(function () {
-        adjustVaue.call(this, -3);
+        adjustValue.call(this, -3);
     });
     $(".win").click(function () {
         var values = {};
