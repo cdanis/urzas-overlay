@@ -21,6 +21,9 @@ function fillDeck(deckElt, deck) {
 }
 
 function fillCards(outputElt, deck, minInHand) {
+    deck = _.sortBy(deck, function (card) {
+        return (card.cost ? "" : "_") + card.name;
+    });
     outputElt.empty();
     for (var i = 0; i < deck.length; i++) {
         var card = deck[i];
