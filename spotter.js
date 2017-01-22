@@ -1,5 +1,5 @@
 var spotterControlTemplate = _.template(`
-<div class="cardControl <% if (count > 0) { %>inHand<% } %>" 
+<div class="cardControl <% if (count > 0) { %>inHand<% } %> <% if (sideboard) { %>sideboard<% } %>" 
         id="card_<%= player %>_<%= index %>">
     <div class="minus button">-</div>
     <div class="name"><%= name %></div>
@@ -30,7 +30,7 @@ function incrementCard(player, index) {
 function createSpotterControl(card, player, index) {
     var control = $(
         spotterControlTemplate(
-            {name: card.name, count: card.inhand, player: player, index: index}));
+            {name: card.name, count: card.inhand, sideboard: card.sideboard, player: player, index: index}));
     control.find(".minus").click(function () {
         decrementCard(player, index);
     });
@@ -42,10 +42,19 @@ function createSpotterControl(card, player, index) {
 
 function createSpotterControls(cards, deck, player) {
     cards.empty();
-    for (var i = 0; i < deck.length; i++) {
-        var card = deck[i];
-        cards.append(createSpotterControl(card, player, i));
+    var deckSorted = _.sortBy(deck, function (card) {
+        return (card.cost ? "_" : "") + card.name + (card.sideboard ? "s" : "");
+    });
+    var cardsCreated = [];
+    for (var i = 0; i < deckSorted.length; i++) {
+        var card = deckSorted[i];
+        if (cardsCreated.indexOf(card.name) != -1) {
+            continue;
+        }
+        cards.append(createSpotterControl(card, player, deck.indexOf(card)));
+        cardsCreated.push(card.name);
     }
+
 }
 
 function cardsInHand(deck) {
@@ -54,8 +63,16 @@ function cardsInHand(deck) {
     }, 0);
 }
 
+var p1wins = 0;
+var p2wins = 0;
+function updateGame() {
+    $("body").toggleClass("game1", p1wins + p2wins == 0);
+}
+
 firebase.database().ref('player1').on('value', function (v) {
     $("#p1").text(v.val().name);
+    p1wins = v.val().gamewins;
+    updateGame();
 });
 firebase.database().ref('p1deck').on('value', function (v) {
     var p1tab = $("#p1tab");
@@ -65,6 +82,8 @@ firebase.database().ref('p1deck').on('value', function (v) {
 });
 firebase.database().ref('player2').on('value', function (v) {
     $("#p2").text(v.val().name);
+    p2wins = v.val().gamewins;
+    updateGame();
 });
 firebase.database().ref('p2deck').on('value', function (v) {
     var p2tab = $("#p2tab");
