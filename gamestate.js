@@ -72,15 +72,33 @@ function fillFeaturedCard(cardName, featuredCardSelector, handSelector) {
     }
 }
 
+function updateValue(elt, newValue, toggleOnZero) {
+    if (elt.text() != newValue) {
+        elt.off("transitionend");
+        elt.addClass("updating");
+        var fallback;
+        var update = function () {
+            elt.text(newValue);
+            elt.removeClass("updating");
+            elt.off("transitionend");
+            if (toggleOnZero) {
+                elt.toggle(!!parseInt(newValue));
+            }
+            clearTimeout(fallback);
+        };
+        fallback = setTimeout(update, 500);
+        elt.on("transitionend", update);
+    }
+}
+
 firebase.database().ref('player1').on('value', function (v) {
-    $(".p1.life").text(v.val().life);
+    updateValue($(".p1.life"), v.val().life);
     var poison = v.val().poison;
     var poisonElt = $(".p1.poison");
-    poisonElt.text(v.val().poison);
-    poisonElt.toggle(!!v.val().poison);
+    updateValue(poisonElt, v.val().poison, true);
     $(".p1.name").text(v.val().name);
     $(".p1.deck").text(v.val().deck);
-    $(".p1.wins").text(v.val().gamewins);
+    updateValue($(".p1.wins"), v.val().gamewins);
     fillFeaturedCard(v.val().featuredcard, ".p1.featuredcard", ".p1.hand");
 });
 firebase.database().ref('p1deck').on('value', function (v) {
@@ -90,14 +108,13 @@ firebase.database().ref('p1deck').on('value', function (v) {
     showSideboard($(".p1.sideboard"), v.val());
 });
 firebase.database().ref('player2').on('value', function (v) {
-    $(".p2.life").text(v.val().life);
+    updateValue($(".p2.life"), v.val().life);
     var poison = v.val().poison;
     var poisonElt = $(".p2.poison");
-    poisonElt.text(v.val().poison);
-    poisonElt.toggle(!!v.val().poison);
+    updateValue(poisonElt, v.val().poison, true);
     $(".p2.name").text(v.val().name);
     $(".p2.deck").text(v.val().deck);
-    $(".p2.wins").text(v.val().gamewins);
+    updateValue($(".p2.wins"), v.val().gamewins);
     fillFeaturedCard(v.val().featuredcard, ".p2.featuredcard", ".p2.hand");
 });
 firebase.database().ref('p2deck').on('value', function (v) {
