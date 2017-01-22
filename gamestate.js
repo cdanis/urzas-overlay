@@ -3,10 +3,10 @@ modeRef.on('value', function (v) {
     mode = v.val();
     modes = ["sideboard", "game", "title", "freetext", "featuredcard"];
     _.each(modes, function (ele, idx, list) {
-        $("#" + ele).hide();
+        $("#" + ele).addClass("inactive");
     });
     if (_.contains(modes, mode)) {
-        $("#" + mode).show();
+        $("#" + mode).removeClass("inactive");
     }
 });
 
