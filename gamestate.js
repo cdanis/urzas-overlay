@@ -103,7 +103,6 @@ firebase.database().ref('player1').on('value', function (v) {
 });
 firebase.database().ref('p1deck').on('value', function (v) {
     var handElt = $(".p1.hand");
-    handElt.empty();
     fillHand(handElt, v.val());
     showSideboard($(".p1.sideboard"), v.val());
 });
@@ -119,7 +118,6 @@ firebase.database().ref('player2').on('value', function (v) {
 });
 firebase.database().ref('p2deck').on('value', function (v) {
     var handElt = $(".p2.hand");
-    handElt.empty();
     fillHand(handElt, v.val());
     showSideboard($(".p2.sideboard"), v.val());
 });
