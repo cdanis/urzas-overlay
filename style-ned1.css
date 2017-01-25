@@ -247,6 +247,16 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  transition: transform 400ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.card.entering {
+  transition: transform 400ms cubic-bezier(0.4, 0.0, 1, 1);
+}
+
+.card.leaving {
+  transition: transform 400ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  position: absolute;
 }
 
 .left .card {
@@ -257,6 +267,14 @@ body {
 .right .card {
   background: url(ned-card-background-right.svg) no-repeat;
   clip-path: url(#cardRight);
+}
+
+.left .card.entering, .left .card.leaving {
+  transform: translateX(-100%);
+}
+
+.right .card.entering, .right .card.leaving {
+  transform: translateX(100%);
 }
 
 .card-C {
