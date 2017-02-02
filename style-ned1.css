@@ -208,6 +208,9 @@ body {
   font-family: "Metal Mania";
   text-align: center;
   font-size: 30px;
+}
+
+.header .logo {
   color: #705134;
   position: absolute;
   bottom: 0;
@@ -402,4 +405,55 @@ body {
 
 .updating {
   transform: rotateX(90deg);
+}
+
+#chyron {
+  position: absolute;
+  bottom: 0;
+  left: 50px;
+  right: 50px;
+  height: 200px;
+  background: linear-gradient(to right, #2c2c2c, #121212);
+  transition: transform 500ms cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+#chyron.inactive {
+  transition: transform 500ms cubic-bezier(0.4, 0.0, 1, 1);
+  transform: translateY(100%);
+}
+
+#chyron > * {
+  line-height: 230px;
+}
+
+#chyronLeft {
+  float: left;
+  margin-left: 200px;
+}
+
+#chyronRight {
+  float: right;
+  margin-right: 200px;
+}
+
+#chyron:before, #chyron:after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  top: 0;
+  height: 250px;
+}
+
+#chyron:before {
+  background: #2c2c2c;
+  left: -100px;
+  clip-path: url(#clipLeft);
+  transform: scaleY(-1);
+}
+
+#chyron:after {
+  background: #121212;
+  right: -100px;
+  clip-path: url(#clipRight);
+  transform: scaleY(-1);
 }

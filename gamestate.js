@@ -1,7 +1,7 @@
 var modeRef = firebase.database().ref('mode');
 modeRef.on('value', function (v) {
     mode = v.val();
-    modes = ["sideboard", "game", "title", "freetext", "featuredcard"];
+    modes = ["sideboard", "chyron", "game", "title", "freetext"];
     _.each(modes, function (ele, idx, list) {
         $("#" + ele).addClass("inactive");
     });
@@ -123,6 +123,10 @@ firebase.database().ref('p2deck').on('value', function (v) {
 });
 firebase.database().ref('freetext').on('value', function (v) {
     $("#freetext").text(v.val());
+});
+firebase.database().ref('chyron').on('value', function (v) {
+    $("#chyronLeft").text(v.val().left);
+    $("#chyronRight").text(v.val().right);
 });
 var timerId = null;
 firebase.database().ref('end_of_round_epoch_ms').on('value', function (v) {
