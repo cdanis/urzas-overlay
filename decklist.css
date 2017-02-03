@@ -1,0 +1,40 @@
+body {
+  color: white;
+  font: 36pt 'Roboto';
+  margin: 0;
+  background: #2c2c2c;
+  background: linear-gradient(to right, #2c2c2c, #121212);
+  text-align: center;
+}
+
+.title {
+  font: 72pt 'Metal Mania';
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  color: #eee;
+}
+
+.player {
+  display: inline-block;
+  vertical-align: top;
+  text-align: left;
+}
+
+.player + .player {
+  margin-left: 50px;
+}
+
+.deck, .side {
+  font-size: 16px;
+  line-height: 30px;
+}
+
+.sideTitle {
+  font-size: 20px;
+  line-height: 40px;
+}
+
+.mana {
+  float: right;
+}

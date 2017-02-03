@@ -12,16 +12,21 @@ function toCost(text) {
     return cost;
 }
 
-function fillDeck(outputElt, deck) {
+function fillDeck(outputElt, deck, sideboard) {
     outputElt.empty();
+    deck = _.sortBy(deck, function (card) {
+        return (card.cost ? "" : "_") + card.name;
+    });
     for (var i = 0; i < deck.length; i++) {
         var card = deck[i];
-        var cardElt = $("<div>", {"class": "card card-" + card.color});
-        cardElt.text(card.name);
-        var costElt = $("<span>", {"class": "mana"});
-        costElt.html(toCost(card.cost && ("" + card.cost)));
-        cardElt.prepend(costElt);
-        outputElt.append(cardElt);
+        if (typeof sideboard == "undefined" || card.sideboard == sideboard) {
+            var cardElt = $("<div>", {"class": "card card-" + card.color});
+            cardElt.text(card.count + "x " + card.name);
+            var costElt = $("<span>", {"class": "mana"});
+            costElt.html(toCost(card.cost && ("" + card.cost)));
+            cardElt.prepend(costElt);
+            outputElt.append(cardElt);
+        }
     }
 }
 
