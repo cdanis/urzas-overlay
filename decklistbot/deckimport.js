@@ -12,6 +12,9 @@ function parseDeck(text, deck, output, sideboard, callback, requestor) {
             if (match) {
                 var count = parseInt(match[1]);
                 var name = match[2];
+                if (name.includes("/")) {
+                    name = name.split("/")[0];
+                }
                 counts[name.toLowerCase()] = count;
                 names.push(name);
             }
@@ -34,14 +37,28 @@ function doRequest(names, counts, deck, output, sideboard, callback, page, reque
                     } else {
                         color = "M";
                     }
-                    deck.push({
-                        name: card.name,
+                    var name = card.name;
+                    var cost = card.manaCost || "";
+                    var altCost;
+                    if (card.layout == "split") {
+                        name = card.names.join("//");
+                        var altCostMatch = card.originalText.match(new RegExp("//\n" + card.names[1] + "\n([^\n]+)"));
+                        if (altCostMatch && altCostMatch.length > 1) {
+                            altCost = altCostMatch[1];
+                        }
+                    }
+                    var cardOut = {
+                        name: name,
                         color: color,
-                        cost: card.manaCost || "",
+                        cost: cost,
                         count: counts[card.name.toLowerCase()],
                         inhand: 0,
                         sideboard: sideboard
-                    });
+                    };
+                    if (altCost) {
+                        cardOut.altCost = altCost;
+                    }
+                    deck.push(cardOut);
                     delete counts[card.name.toLowerCase()];
                 }
             }
@@ -98,7 +115,7 @@ if (typeof window !== "undefined") {
             output.empty();
             output.append($("<div>Importing...</div>"));
             var outputFun = function (text) {
-                output.append($("div class='error'>" + text + "</div>"));
+                output.append($("<div class='error'>" + text + "</div>"));
             };
             var maindeck = [];
             var sideboard = [];
