@@ -1,4 +1,4 @@
-function toCost(text) {
+function toCost(text, altText) {
     var cost = "&nbsp;";
     if (text) {
         var r = /\{([^\}]+)\}/g;
@@ -8,6 +8,9 @@ function toCost(text) {
                 ((match[1].includes("/") && !match[1].includes("/P")) ? " ms-split" : "") +
                 "'></i>";
         }
+    }
+    if (altText) {
+        cost += "/" + toCost(altText).substring("&nbsp;".length);
     }
     return cost;
 }
@@ -23,7 +26,7 @@ function fillDeck(outputElt, deck, sideboard) {
             var cardElt = $("<div>", {"class": "card card-" + card.color});
             cardElt.text(card.count + "x " + card.name);
             var costElt = $("<span>", {"class": "mana"});
-            costElt.html(toCost(card.cost && ("" + card.cost)));
+            costElt.html(toCost(card.cost && ("" + card.cost), card.altCost));
             cardElt.prepend(costElt);
             outputElt.append(cardElt);
         }
@@ -70,7 +73,7 @@ function fillHand(outputElt, deck) {
                 cardElt = $("<div>", {"class": "card card-" + card.color + " entering"});
                 cardElt.text(card.name);
                 var costElt = $("<span>", {"class": "mana"});
-                costElt.html(toCost(card.cost && ("" + card.cost)));
+                costElt.html(toCost(card.cost && ("" + card.cost), card.altCost));
                 cardElt.prepend(costElt);
                 transitioningElements++;
             }
