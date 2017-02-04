@@ -412,7 +412,7 @@ body {
   bottom: 0;
   left: 50px;
   right: 50px;
-  height: 200px;
+  height: 100px;
   background: linear-gradient(to right, #2c2c2c, #121212);
   transition: transform 500ms cubic-bezier(0.0, 0.0, 0.2, 1);
 }
@@ -423,7 +423,7 @@ body {
 }
 
 #chyron > * {
-  line-height: 230px;
+  line-height: 100px;
 }
 
 #chyronLeft {
