@@ -23,7 +23,8 @@
 <body>
 <select id="mode">
     <option>title</option>
-    <option>chyron</option>
+    <option>chyron.single</option>
+    <option>chyron.split</option>
     <option>game</option>
     <option>sideboard</option>
     <option>freetext</option>
@@ -92,14 +93,18 @@
 </div>
 <div class="swap button">Swap</div>
 <div>
-    Free text:
-    <textarea id="freetext" rows="5"></textarea>
-    <button class="freetext-option">😻 😻 please like and subscribe 😻 😻</button>
+    Chyron single text:
+    <textarea id="chyron_single" rows="5"></textarea>
+    <button class="preset-option">😻 😻 please like and subscribe 😻 😻</button>
 </div>
 <div>
-    Chyron left text: <input id="chyron_left" type="text"/>
+    Chyron left:
+    <textarea id="chyron_left" rows="2"></textarea>
+    <button class="preset-option">Ned Burns</button>
 </div>
 <div>
-    Chyron right text: <input id="chyron_right" type="text"/>
+    Chyron right:
+    <textarea id="chyron_right" rows="2"></textarea>
+    <button class="preset-option">Mitch Foley</button>
 </div>
 </body>

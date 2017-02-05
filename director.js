@@ -23,8 +23,10 @@ firebase.database().ref('player2').on('value', function (v) {
         $("#player2_featuredcard").val(v.val().featuredcard);
     }
 });
-firebase.database().ref('freetext').on('value', function (v) {
-    $("#freetext").val(v.val());
+firebase.database().ref('chyron').on('value', function (v) {
+    $("#chyron_single").val(v.val().single);
+    $("#chyron_left").val(v.val().left);
+    $("#chyron_right").val(v.val().right);
 });
 
 function adjustValue(amount) {
@@ -85,8 +87,8 @@ $(function () {
             parseInt($(this).siblings(".gamewins").val()) + 1;
         firebase.database().ref().update(values);
     });
-    $(".freetext-option").click(function () {
-        firebase.database().ref('freetext').set($(this).text());
+    $(".preset-option").click(function () {
+        $(this).siblings("textarea").val($(this).text()).change();
     });
     $(".swap").click(function () {
         firebase.database().ref().transaction(function (data) {

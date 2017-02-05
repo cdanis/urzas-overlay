@@ -5,8 +5,23 @@ modeRef.on('value', function (v) {
     _.each(modes, function (ele, idx, list) {
         $("#" + ele).addClass("inactive");
     });
-    if (_.contains(modes, mode)) {
-        $("#" + mode).removeClass("inactive");
+    var modeSplit = mode.split("\.");
+    var modePrefix = modeSplit[0];
+    if (_.contains(modes, modePrefix)) {
+        $("#" + modePrefix).removeClass("inactive");
+    }
+    if (modePrefix == "chyron") {
+        if (modeSplit[1] == "single") {
+            $("#chyronSingle").css("opacity", 1);
+            $("#chyronLeft").css("opacity", 0);
+            $("#chyronRight").css("opacity", 0);
+            $("#chyron .logo").css("opacity", 0);
+        } else {
+            $("#chyronSingle").css("opacity", 0);
+            $("#chyronLeft").css("opacity", 1);
+            $("#chyronRight").css("opacity", 1);
+            $("#chyron .logo").css("opacity", 1);
+        }
     }
 });
 
@@ -121,10 +136,8 @@ firebase.database().ref('p2deck').on('value', function (v) {
     fillHand(handElt, v.val());
     showSideboard($(".p2.sideboard"), v.val());
 });
-firebase.database().ref('freetext').on('value', function (v) {
-    $("#freetext").text(v.val());
-});
 firebase.database().ref('chyron').on('value', function (v) {
+    $("#chyronSingle").text(v.val().single);
     $("#chyronLeft").text(v.val().left);
     $("#chyronRight").text(v.val().right);
 });
