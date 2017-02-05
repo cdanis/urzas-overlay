@@ -159,7 +159,9 @@ firebase.database().ref('p2deck').on('value', function (v) {
     showSideboard($(".p2.sideboard"), v.val());
 });
 firebase.database().ref('chyron').on('value', function (v) {
-    $("#chyronSingle").text(v.val().single);
+    var single = $("#chyronSingle");
+    single.text(v.val().single);
+    single.Emoji({path: 'https://bowercdn.net/c/jqueryemoji-1.0.1/img/apple40/'});
     $("#chyronLeft").text(v.val().left);
     $("#chyronRight").text(v.val().right);
 });
