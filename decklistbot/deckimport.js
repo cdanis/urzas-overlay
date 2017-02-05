@@ -13,7 +13,7 @@ function parseDeck(text, deck, output, sideboard, callback, requestor) {
                 var count = parseInt(match[1]);
                 var name = match[2];
                 if (name.includes("/")) {
-                    name = name.split("/")[0];
+                    name = name.split("/")[0].trim();
                 }
                 counts[name.toLowerCase()] = count;
                 names.push(name);
