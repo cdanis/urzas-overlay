@@ -52,7 +52,7 @@ function createSpotterControls(lands, cards, deck, player) {
     lands.empty();
     cards.empty();
     var deckSorted = _.sortBy(deck, function (card) {
-        return (card.cost ? "_" : "") + card.name + (card.sideboard ? "s" : "");
+        return card.name + (card.sideboard ? "s" : "");
     });
     var cardsCreated = [];
 
@@ -68,10 +68,10 @@ function createSpotterControls(lands, cards, deck, player) {
     }
 
     createControls(lands, _.filter(deckSorted, function (card) {
-        return !card.cost && card.color == "C";
+        return card.type.includes("Land");
     }));
     createControls(cards, _.filter(deckSorted, function (card) {
-        return card.cost || card.color != "C";
+        return !card.type.includes("Land");
     }));
 }
 

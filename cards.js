@@ -18,7 +18,7 @@ function toCost(text, altText) {
 function fillDeck(outputElt, deck, sideboard) {
     outputElt.empty();
     deck = _.sortBy(deck, function (card) {
-        return (card.cost ? "" : "_") + card.name;
+        return (card.type.includes("Land") ? "_" : "") + card.name;
     });
     for (var i = 0; i < deck.length; i++) {
         var card = deck[i];
@@ -48,7 +48,7 @@ function fillHand(outputElt, deck) {
     }
     animatingElements.push(outputElt[0]);
     deck = _.sortBy(deck, function (card) {
-        return (card.cost ? "" : "_") + card.name;
+        return (card.type.includes("Land") ? "_" : "") + card.name;
     });
     var cardPositions = new Map();
     var currentCards = outputElt.find(".card").toArray();
