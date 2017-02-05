@@ -133,7 +133,7 @@ body {
   padding-left: 60px;
 }
 
-.life, .poison, .wins {
+.life, .poison {
   transition: transform 400ms cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
@@ -202,6 +202,7 @@ body {
 
 .wins {
   display: inline-block;
+  position: relative;
 }
 
 .logo {
@@ -405,6 +406,59 @@ body {
 
 .updating {
   transform: rotateX(90deg);
+}
+
+.wins {
+  animation-duration: 5s;
+}
+
+.wins.updating {
+  transform: none;
+}
+
+@keyframes winAnimation {
+  0% {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.8);
+  }
+
+  5% {
+    opacity: 1;
+  }
+
+  10% {
+    transform: rotate(144deg) scale(1.2);
+  }
+
+  50% {
+    transform: rotate(720deg) scale(1.2);
+  }
+
+  90% {
+    transform: rotate(1296deg) scale(1.2);
+  }
+
+  95% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: rotate(1440deg) scale(0.9);
+  }
+}
+
+.wins.updating:before {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  top: -25px;
+  left: -32px;
+  background: url("burger_sandwich.png") no-repeat center;
+  background-size: contain;
+  animation: winAnimation 2s linear;
+  z-index: 5;
 }
 
 #chyron {

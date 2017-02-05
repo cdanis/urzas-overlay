@@ -89,20 +89,34 @@ function fillFeaturedCard(cardName, featuredCardSelector, handSelector) {
 
 function updateValue(elt, newValue, toggleOnZero) {
     if (elt.text() != newValue) {
-        elt.off("transitionend");
-        elt.addClass("updating");
-        var fallback;
-        var update = function () {
+        var event;
+        var duration;
+        if (elt.css("transition-duration") != "0s") {
+            event = "transitionend";
+            duration = elt.css("transition-duration");
+        } else if (elt.css("animation-duration") != "0s") {
+            event = "animationend";
+            duration = elt.css("animation-duration");
+        }
+        if (event) {
+            duration = parseFloat(duration.substring(0, duration.length - 1)) * 1000;
+            elt.off(event);
+            elt.addClass("updating");
+            var fallback;
+            var update = function () {
+                elt.text(newValue);
+                elt.removeClass("updating");
+                elt.off(event);
+                if (toggleOnZero) {
+                    elt.toggle(!!parseInt(newValue));
+                }
+                clearTimeout(fallback);
+            };
+            fallback = setTimeout(update, duration);
+            elt.on(event, update);
+        } else {
             elt.text(newValue);
-            elt.removeClass("updating");
-            elt.off("transitionend");
-            if (toggleOnZero) {
-                elt.toggle(!!parseInt(newValue));
-            }
-            clearTimeout(fallback);
-        };
-        fallback = setTimeout(update, 500);
-        elt.on("transitionend", update);
+        }
     }
 }
 
@@ -113,7 +127,11 @@ firebase.database().ref('player1').on('value', function (v) {
     updateValue(poisonElt, v.val().poison, true);
     $(".p1.name").text(v.val().name);
     $(".p1.deck").text(v.val().deck);
-    updateValue($(".p1.wins"), v.val().gamewins);
+    if (v.val().gamewins > 0) {
+        updateValue($(".p1.wins"), v.val().gamewins);
+    } else {
+        $(".p1.wins").text(v.val().gamewins);
+    }
     fillFeaturedCard(v.val().featuredcard, ".p1.featuredcard", ".p1.hand");
 });
 firebase.database().ref('p1deck').on('value', function (v) {
@@ -128,7 +146,11 @@ firebase.database().ref('player2').on('value', function (v) {
     updateValue(poisonElt, v.val().poison, true);
     $(".p2.name").text(v.val().name);
     $(".p2.deck").text(v.val().deck);
-    updateValue($(".p2.wins"), v.val().gamewins);
+    if (v.val().gamewins > 0) {
+        updateValue($(".p2.wins"), v.val().gamewins);
+    } else {
+        $(".p2.wins").text(v.val().gamewins);
+    }
     fillFeaturedCard(v.val().featuredcard, ".p2.featuredcard", ".p2.hand");
 });
 firebase.database().ref('p2deck').on('value', function (v) {
