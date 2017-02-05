@@ -161,6 +161,7 @@ firebase.database().ref('p2deck').on('value', function (v) {
 firebase.database().ref('chyron').on('value', function (v) {
     var single = $("#chyronSingle");
     single.text(v.val().single);
+    single.removeData("Emoji");
     single.Emoji({path: 'https://rodrigopolo.github.io/jqueryemoji/img/apple72/'});
     $("#chyronLeft").text(v.val().left);
     $("#chyronRight").text(v.val().right);
