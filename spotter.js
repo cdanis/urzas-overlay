@@ -27,7 +27,7 @@ function incrementCard(player, index) {
     updateValue(player, index, newVal);
 }
 
-function createSpotterControl(card, player, index) {
+function createSpotterControl(card, player) {
     var control = $(
         spotterControlTemplate(
             {
@@ -36,13 +36,13 @@ function createSpotterControl(card, player, index) {
                 color: card.color,
                 sideboard: card.sideboard,
                 player: player,
-                index: index
+                index: card.index
             }));
     control.find(".minus").click(function () {
-        decrementCard(player, index);
+        decrementCard(player, card.index);
     });
     control.find(".plus").click(function () {
-        incrementCard(player, index);
+        incrementCard(player, card.index);
     });
     control.find(".name").prepend("<span class='mana'>" + toCost(card.cost, card.altCost) + "</span>");
     return control;
@@ -62,7 +62,7 @@ function createSpotterControls(lands, cards, deck, player) {
             if (cardsCreated.indexOf(card.name) != -1) {
                 continue;
             }
-            output.append(createSpotterControl(card, player, deck.indexOf(card)));
+            output.append(createSpotterControl(card, player));
             cardsCreated.push(card.name);
         }
     }
@@ -94,7 +94,7 @@ firebase.database().ref('player1').on('value', function (v) {
 });
 firebase.database().ref('p1deck').on('value', function (v) {
     var p1tab = $("#p1tab");
-    var deck = v.val();
+    var deck = _.map(v.val(), function(card, idx) { card['index'] = idx; return card; });
     createSpotterControls(p1tab.find(".lands"), p1tab.find(".cards"), deck, 1);
     p1tab.find(".total").text(cardsInHand(deck) + " in hand");
 });
@@ -105,7 +105,7 @@ firebase.database().ref('player2').on('value', function (v) {
 });
 firebase.database().ref('p2deck').on('value', function (v) {
     var p2tab = $("#p2tab");
-    var deck = v.val();
+    var deck = _.map(v.val(), function(card, idx) { card['index'] = idx; return card; });
     createSpotterControls(p2tab.find(".lands"), p2tab.find(".cards"), deck, 2);
     p2tab.find(".total").text(cardsInHand(deck) + " in hand");
 });
