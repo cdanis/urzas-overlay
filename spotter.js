@@ -1,5 +1,5 @@
 var spotterControlTemplate = _.template(`
-<div class="cardControl <% if (count > 0) { %>inHand<% } %> <% if (sideboard) { %>sideboard<% } %>" 
+<div class="cardControl <% if (count > 0) { %>inHand<% } %> <% if (sideboard) { %>sideboard<% } %> <%= color %>" 
         id="card_<%= player %>_<%= index %>">
     <div class="minus button">-</div>
     <div class="name"><%= name %></div>
@@ -30,31 +30,49 @@ function incrementCard(player, index) {
 function createSpotterControl(card, player, index) {
     var control = $(
         spotterControlTemplate(
-            {name: card.name, count: card.inhand, sideboard: card.sideboard, player: player, index: index}));
+            {
+                name: card.name,
+                count: card.inhand,
+                color: card.color,
+                sideboard: card.sideboard,
+                player: player,
+                index: index
+            }));
     control.find(".minus").click(function () {
         decrementCard(player, index);
     });
     control.find(".plus").click(function () {
         incrementCard(player, index);
     });
+    control.find(".name").prepend("<span class='mana'>" + toCost(card.cost, card.altCost) + "</span>");
     return control;
 }
 
-function createSpotterControls(cards, deck, player) {
+function createSpotterControls(lands, cards, deck, player) {
+    lands.empty();
     cards.empty();
     var deckSorted = _.sortBy(deck, function (card) {
         return (card.cost ? "_" : "") + card.name + (card.sideboard ? "s" : "");
     });
     var cardsCreated = [];
-    for (var i = 0; i < deckSorted.length; i++) {
-        var card = deckSorted[i];
-        if (cardsCreated.indexOf(card.name) != -1) {
-            continue;
+
+    function createControls(output, deck) {
+        for (var i = 0; i < deck.length; i++) {
+            var card = deck[i];
+            if (cardsCreated.indexOf(card.name) != -1) {
+                continue;
+            }
+            output.append(createSpotterControl(card, player, deck.indexOf(card)));
+            cardsCreated.push(card.name);
         }
-        cards.append(createSpotterControl(card, player, deck.indexOf(card)));
-        cardsCreated.push(card.name);
     }
 
+    createControls(lands, _.filter(deckSorted, function (card) {
+        return !card.cost && card.color == "C";
+    }));
+    createControls(cards, _.filter(deckSorted, function (card) {
+        return card.cost || card.color != "C";
+    }));
 }
 
 function cardsInHand(deck) {
@@ -77,7 +95,7 @@ firebase.database().ref('player1').on('value', function (v) {
 firebase.database().ref('p1deck').on('value', function (v) {
     var p1tab = $("#p1tab");
     var deck = v.val();
-    createSpotterControls(p1tab.find(".cards"), deck, 1);
+    createSpotterControls(p1tab.find(".lands"), p1tab.find(".cards"), deck, 1);
     p1tab.find(".total").text(cardsInHand(deck) + " in hand");
 });
 firebase.database().ref('player2').on('value', function (v) {
@@ -88,7 +106,7 @@ firebase.database().ref('player2').on('value', function (v) {
 firebase.database().ref('p2deck').on('value', function (v) {
     var p2tab = $("#p2tab");
     var deck = v.val();
-    createSpotterControls(p2tab.find(".cards"), deck, 2);
+    createSpotterControls(p2tab.find(".lands"), p2tab.find(".cards"), deck, 2);
     p2tab.find(".total").text(cardsInHand(deck) + " in hand");
 });
 

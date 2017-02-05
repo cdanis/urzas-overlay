@@ -29,15 +29,20 @@
   display: inline-block;
 }
 
-.cards {
+.cards, .lands {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-.cards > * {
+.cards > *, .lands > * {
   margin-left: 30px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.lands {
+  border-bottom: 1px solid #ccc;
 }
 
 .cardControl {
@@ -48,11 +53,39 @@
   justify-content: space-between;
   align-items: center;
   width: 300px;
+  border-radius: 10px;
+}
+
+.cardControl.C {
+  background-color: #f2edeb;
+}
+
+.cardControl.W {
+  background-color: #ffffff;
+}
+
+.cardControl.U {
+  background-color: #e6eef2;
+}
+
+.cardControl.B {
+  background-color: #d9d2d2;
+}
+
+.cardControl.R {
+  background-color: #f5e7e1;
+}
+
+.cardControl.G {
+  background-color: #e5f2e1;
+}
+
+.cardControl.M {
+  background-color: #ebe2c7;
 }
 
 .cardControl.inHand {
   font-weight: bold;
-  background: #eee;
 }
 
 .cardControl > * ~ * {
@@ -72,6 +105,12 @@
   max-height: 2em;
   min-width: 0;
   flex-grow: 1;
+}
+
+.mana {
+  float: right;
+  font-size: 60%;
+  line-height: 20px;
 }
 
 .game1 .sideboard {
