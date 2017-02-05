@@ -424,16 +424,33 @@ body {
 
 #chyron > * {
   line-height: 100px;
+  transition: opacity 400ms cubic-bezier(0.4, 0.0, 0.2, 1);
+  text-align: center;
+}
+
+#chyronSingle {
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+#chyronLeft, #chyronRight, #chyron .logo {
+  position: absolute;
+  top: 0;
 }
 
 #chyronLeft {
-  float: left;
-  margin-left: 200px;
+  left: 200px;
+  right: 50%;
 }
 
 #chyronRight {
-  float: right;
-  margin-right: 200px;
+  right: 200px;
+  left: 50%;
+}
+
+#chyron .logo {
+  left: 50%;
+  margin-left: -1.5em;
 }
 
 #chyron:before, #chyron:after {
