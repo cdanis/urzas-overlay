@@ -49,6 +49,7 @@ function doRequest(names, counts, deck, output, sideboard, callback, page, reque
                     }
                     var cardOut = {
                         name: name,
+                        type: card.type,
                         color: color,
                         cost: cost,
                         count: counts[card.name.toLowerCase()],
