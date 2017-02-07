@@ -39,7 +39,7 @@ function doRequest(names, counts, deck, output, sideboard, callback, page, reque
                     }
                     var name = card.name;
                     var cost = card.manaCost || "";
-                    var altCost;
+                    var altCost = "";
                     if (card.layout == "split") {
                         name = card.names.join("//");
                         var altCostMatch = card.originalText.match(new RegExp("//\n" + card.names[1] + "\n([^\n]+)"));
@@ -52,6 +52,7 @@ function doRequest(names, counts, deck, output, sideboard, callback, page, reque
                         type: card.type,
                         color: color,
                         cost: cost,
+                        altCost: altCost,
                         count: counts[card.name.toLowerCase()],
                         inhand: 0,
                         sideboard: sideboard
