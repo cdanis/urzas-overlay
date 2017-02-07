@@ -26,6 +26,24 @@ app.post('/', function (req, response) {
                 mainboard += $(elem).text().replace(/\n/g, "").trim() + "\n";
             }
         });
+        var inSideboard = false;
+        $(".tab-pane.active .deck-view-decklist tr").each(function (i, elem) {
+            var header = $(elem).find(".deck-header");
+            if (header.length) {
+                if (header.text().includes("Sideboard")) {
+                    inSideboard = true;
+                }
+            } else {
+                var cardText = $(elem).find(".deck-col-qty").text().replace(/\n/g, "").trim() +
+                    " " + $(elem).find(".deck-col-card").text().replace(/\n/g, "").trim() +
+                    "\n";
+                if (inSideboard) {
+                    sideboard += cardText;
+                } else {
+                    mainboard += cardText;
+                }
+            }
+        });
         deckimport.import(player, mainboard, sideboard, firebase, function (url, succ, fail) {
                 request(url, function (error, response, body) {
                     if (error) {
