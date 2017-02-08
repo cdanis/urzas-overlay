@@ -1,0 +1,38 @@
+body {
+  font-size: 40px;
+  font-family: 'Roboto';
+  margin: 0;
+}
+
+.player {
+  height: 50%;
+  text-align: center;
+  position: relative;
+}
+
+.button {
+  border: 2px solid #888;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.plus {
+  float: right;
+  clear: right;
+}
+
+.minus {
+  float: left;
+  clear: left;
+}
+
+.life {
+  position: absolute;
+  top: 100px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 150px;
+  z-index: -1;
+}
