@@ -1,5 +1,5 @@
 var spotterControlTemplate = _.template(`
-<div class="cardControl <% if (count > 0) { %>inHand<% } %> <% if (sideboard) { %>sideboard<% } %> <%= color %>" 
+<div class="cardControl <% if (count > 0) { %>inHand<% } %> <% if (sideboard) { %>sideboard<% } %> bg-<%= bgColor %>" 
         id="card_<%= player %>_<%= index %>">
     <div class="minus button">-</div>
     <div class="name"><%= name %></div>
@@ -33,7 +33,7 @@ function createSpotterControl(card, player) {
             {
                 name: card.name,
                 count: card.inhand,
-                color: card.color,
+                bgColor: card.plateBackground,
                 sideboard: card.sideboard,
                 player: player,
                 index: card.index

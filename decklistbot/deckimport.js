@@ -29,14 +29,6 @@ function doRequest(names, counts, deck, output, sideboard, callback, page, reque
             for (i = 0; i < data.cards.length; i++) {
                 var card = data.cards[i];
                 if (counts.hasOwnProperty(card.name.toLowerCase())) {
-                    var color;
-                    if (!card.colorIdentity) {
-                        color = "C";
-                    } else if (card.colorIdentity.length == 1) {
-                        color = card.colorIdentity[0];
-                    } else {
-                        color = "M";
-                    }
                     var name = card.name;
                     var cost = card.manaCost || "";
                     var altCost = "";
@@ -50,7 +42,7 @@ function doRequest(names, counts, deck, output, sideboard, callback, page, reque
                     var cardOut = {
                         name: name,
                         type: card.type,
-                        color: color,
+                        plateBackground: getNameplateBackgroundColor(card),
                         cost: cost,
                         altCost: altCost,
                         count: counts[card.name.toLowerCase()],
@@ -137,6 +129,51 @@ if (typeof window !== "undefined") {
             }, requestor);
         });
     });
+}
+
+function getNameplateBackgroundColor(card) {
+    if (card.type && card.type.includes('Land')) {
+        if (card.supertypes && card.supertypes.includes('Basic')) {
+            // Basic land
+            return basicLandNameToBackgroundColorType(card.name);
+        } else {
+            // Nonbasic land
+            return 'land';
+        }
+    } else if (card.colors && card.colors.length > 0) {
+        if (card.colors.length >= 2) {
+            // Multicolor
+            return 'multicolor';
+        } else {
+            // Single color
+            return card.colors[0].toLowerCase();
+        }
+    } else {
+        if (card.types && card.types.includes('Artifact')) {
+            // Artifact
+            return 'artifact';
+        } else {
+            // Colorless
+            return 'colorless';
+        }
+    }
+}
+
+function basicLandNameToBackgroundColorType(basicLandName) {
+    switch (basicLandName) {
+        case 'Plains':
+            return 'white';
+        case 'Island':
+            return 'blue';
+        case 'Swamp':
+            return 'black';
+        case 'Mountain':
+            return 'red';
+        case 'Forest':
+            return 'green';
+        default:
+            return 'unknown';
+    }
 }
 
 (function (exports) {

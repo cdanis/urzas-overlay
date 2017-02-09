@@ -251,9 +251,6 @@ body {
   width: 235px;
   height: 29px;
   box-sizing: border-box;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   transition: transform 400ms cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
@@ -288,36 +285,11 @@ body {
   transform: translateX(100%);
 }
 
-.card-C {
-  background-color: #d7d1cf ! important;
-}
-
-.card-W {
-  background-color: #f5f6f1 ! important;
-}
-
-.card-U {
-  background-color: #c4dfed ! important;
-}
-
-.card-B {
-  background-color: #c0b9b9 ! important;
-}
-
-.card-R {
-  background-color: #f5d3c3 ! important;
-}
-
-.card-G {
-  background-color: #c2cebf ! important;
-}
-
-.card-M {
-  background-color: #ecd997 ! important;
-}
-
 .card-name {
   flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .mana {
