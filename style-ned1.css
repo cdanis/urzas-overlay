@@ -237,14 +237,17 @@ body {
 
 .hand {
   width: 235px;
-  font-size: 15px;
+  font-size: 14px;
   font-family: "Merriweather";
   color: black;
 }
 
 .card {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
   margin-bottom: 6px;
-  padding: 6px 12px;
+  padding: 0 12px;
   width: 235px;
   height: 29px;
   box-sizing: border-box;
@@ -266,11 +269,15 @@ body {
 .left .card {
   background: url(ned-card-background.svg) no-repeat;
   clip-path: url(#cardLeft);
+  padding-left: 6px;
+  padding-right: 7px;
 }
 
 .right .card {
   background: url(ned-card-background-right.svg) no-repeat;
   clip-path: url(#cardRight);
+  padding-left: 9px;
+  padding-right: 4px;
 }
 
 .left .card.entering, .left .card.leaving {
@@ -309,15 +316,20 @@ body {
   background-color: #ecd997 ! important;
 }
 
+.card-name {
+  flex: 1;
+}
+
 .mana {
-  font-size: 80%;
-  float: right;
-  padding-top: 2px;
+  font-size: 11px;
+  position: relative;
+  top: -0.5px;
 }
 
 .mana i {
   vertical-align: baseline;
-  box-shadow: 0 -1px 0 #000;
+  box-shadow: -0.5px 1px 0 #000;
+  margin-left: 1px;
 }
 
 .featuredcard {
