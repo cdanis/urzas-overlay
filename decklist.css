@@ -15,14 +15,21 @@ body {
   color: #eee;
 }
 
+.columns {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 200px;
+}
+
 .player {
-  display: inline-block;
-  vertical-align: top;
+  width: 0;
+  flex: 1;
+  max-width: 310px;
   text-align: left;
 }
 
-.player + .player {
-  margin-left: 50px;
+.column-spacer {
+  width: 140px;
 }
 
 .deck, .side {
@@ -30,11 +37,18 @@ body {
   line-height: 30px;
 }
 
-.sideTitle {
-  font-size: 20px;
-  line-height: 40px;
+.deck-name, .side-title {
+  font-size: 25px;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .mana {
   float: right;
+  position: relative;
+  top: -2px;
+}
+
+.mana > .ms {
+  margin-left: 2px;
 }
