@@ -88,7 +88,7 @@ function fillFeaturedCard(cardName, featuredCardSelector, handSelector) {
 }
 
 function updateValue(elt, newValue, toggleOnZero) {
-    if (elt.text() != newValue) {
+    if (!elt.text() || elt.text() != newValue) {
         var event;
         var duration;
         if (elt.css("transition-duration") != "0s") {
