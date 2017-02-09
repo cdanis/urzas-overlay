@@ -70,9 +70,8 @@ function fillHand(outputElt, deck) {
                 }
             }
             if (!exists) {
-                cardElt = $("<div>", {"class": "card card-" + card.color + " entering"});
+                cardElt = $("<div>", {"class": `card bg-${card.plateBackground} entering`});
                 cardElt.append($(`<span class="card-name">${card.name}</span>`));
-                // cardElt.text(card.name);
                 var costElt = $("<span>", {"class": "mana"});
                 costElt.html(toCost(card.cost && ("" + card.cost), card.altCost));
                 cardElt.prepend(costElt);

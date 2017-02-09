@@ -56,34 +56,6 @@
   border-radius: 10px;
 }
 
-.cardControl.C {
-  background-color: #f2edeb;
-}
-
-.cardControl.W {
-  background-color: #ffffff;
-}
-
-.cardControl.U {
-  background-color: #e6eef2;
-}
-
-.cardControl.B {
-  background-color: #d9d2d2;
-}
-
-.cardControl.R {
-  background-color: #f5e7e1;
-}
-
-.cardControl.G {
-  background-color: #e5f2e1;
-}
-
-.cardControl.M {
-  background-color: #ebe2c7;
-}
-
 .cardControl.inHand {
   font-weight: bold;
 }
