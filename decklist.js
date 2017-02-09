@@ -8,10 +8,16 @@ var config = {
 firebase.initializeApp(config);
 
 firebase.database().ref('player1').on('value', function (v) {
-    $("#p1").find(".name").text(v.val().name + " - " + v.val().deck);
+    $("#p1").find(".player-name").text(v.val().name);
 });
 firebase.database().ref('player2').on('value', function (v) {
-    $("#p2").find(".name").text(v.val().name + " - " + v.val().deck);
+    $("#p2").find(".player-name").text(v.val().name);
+});
+firebase.database().ref('player1').on('value', function (v) {
+    $("#p1").find(".deck-name").text(v.val().deck);
+});
+firebase.database().ref('player2').on('value', function (v) {
+    $("#p2").find(".deck-name").text(v.val().deck);
 });
 firebase.database().ref('p1deck').on('value', function (v) {
     if (v.val()) {
