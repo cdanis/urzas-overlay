@@ -120,18 +120,31 @@ function updateValue(elt, newValue, toggleOnZero) {
     }
 }
 
-firebase.database().ref('player1').on('value', function (v) {
+// Update life totals, with debouncing
+var updateP1Numbers = _.debounce(function(v) {
     updateValue($(".p1.life"), v.val().life);
-    var poison = v.val().poison;
-    var poisonElt = $(".p1.poison");
-    updateValue(poisonElt, v.val().poison, true);
-    $(".p1.name").text(v.val().name);
-    $(".p1.deck").text(v.val().deck);
+    updateValue($(".p1.poison"), v.val().poison, true);
     if (v.val().gamewins > 0) {
         updateValue($(".p1.wins"), v.val().gamewins);
     } else {
         $(".p1.wins").text(v.val().gamewins);
     }
+}, 1000);
+
+var updateP2Numbers = _.debounce(function(v) {
+    updateValue($(".p2.life"), v.val().life);
+    updateValue($(".p2.poison"), v.val().poison, true);
+    if (v.val().gamewins > 0) {
+        updateValue($(".p2.wins"), v.val().gamewins);
+    } else {
+        $(".p2.wins").text(v.val().gamewins);
+    }
+}, 1000);
+
+firebase.database().ref('player1').on('value', function (v) {
+    updateP1Numbers(v);
+    $(".p1.name").text(v.val().name);
+    $(".p1.deck").text(v.val().deck);
     fillFeaturedCard(v.val().featuredcard, ".p1.featuredcard", ".p1.hand");
 });
 firebase.database().ref('p1deck').on('value', function (v) {
@@ -140,17 +153,9 @@ firebase.database().ref('p1deck').on('value', function (v) {
     showSideboard($(".p1.sideboard"), v.val());
 });
 firebase.database().ref('player2').on('value', function (v) {
-    updateValue($(".p2.life"), v.val().life);
-    var poison = v.val().poison;
-    var poisonElt = $(".p2.poison");
-    updateValue(poisonElt, v.val().poison, true);
+    updateP2Numbers(v);
     $(".p2.name").text(v.val().name);
     $(".p2.deck").text(v.val().deck);
-    if (v.val().gamewins > 0) {
-        updateValue($(".p2.wins"), v.val().gamewins);
-    } else {
-        $(".p2.wins").text(v.val().gamewins);
-    }
     fillFeaturedCard(v.val().featuredcard, ".p2.featuredcard", ".p2.hand");
 });
 firebase.database().ref('p2deck').on('value', function (v) {
