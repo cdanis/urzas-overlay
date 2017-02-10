@@ -7,7 +7,7 @@ body {
 #title {
   font: 72pt 'Metal Mania';
   text-align: center;
-  top: 30%;
+  top: 0%;
   color: #eee;
   text-shadow: -1px -1px 0 #000,
   1px -1px 0 #000,
@@ -467,8 +467,8 @@ body {
 }
 
 #chyronSingle {
-  margin-left: 200px;
-  margin-right: 200px;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 
 #chyronLeft, #chyronRight, #chyron .logo {
