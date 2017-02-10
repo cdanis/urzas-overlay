@@ -63,7 +63,7 @@ function fillHand(outputElt, deck) {
             var exists = false;
             var cardElt;
             for (var k = 0; k < currentCards.length; k++) {
-                if (currentCards[k].innerHTML.endsWith("</span>" + card.name)) {
+                if ($(currentCards[k]).data("cardName") == card.name) {
                     exists = true;
                     cardElt = currentCards.splice(k, 1)[0];
                     break;
@@ -72,6 +72,7 @@ function fillHand(outputElt, deck) {
             if (!exists) {
                 cardElt = $("<div>", {"class": `card bg-${card.plateBackground} entering`});
                 cardElt.append($(`<span class="card-name">${card.name}</span>`));
+                cardElt.data("cardName", card.name);
                 var costElt = $("<span>", {"class": "mana"});
                 costElt.html(toCost(card.cost && ("" + card.cost), card.altCost));
                 cardElt.prepend(costElt);
