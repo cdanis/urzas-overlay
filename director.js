@@ -62,20 +62,14 @@ $(function () {
     $(".plus1").click(function () {
         adjustValue.call(this, 1);
     });
-    $(".plus2").click(function () {
-        adjustValue.call(this, 2);
-    });
-    $(".plus3").click(function () {
-        adjustValue.call(this, 3);
+    $(".plus5").click(function () {
+        adjustValue.call(this, 5);
     });
     $(".minus1").click(function () {
         adjustValue.call(this, -1);
     });
-    $(".minus2").click(function () {
-        adjustValue.call(this, -2);
-    });
-    $(".minus3").click(function () {
-        adjustValue.call(this, -3);
+    $(".minus5").click(function () {
+        adjustValue.call(this, -5);
     });
     $(".win").click(function () {
         var values = {};
