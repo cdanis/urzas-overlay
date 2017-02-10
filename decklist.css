@@ -28,8 +28,8 @@ body {
   text-align: left;
 }
 
-.column-spacer {
-  width: 140px;
+.player + .player {
+  margin-left: 140px;
 }
 
 .deck, .side {
