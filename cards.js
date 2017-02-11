@@ -24,7 +24,7 @@ function fillDeck(outputElt, deck, sideboard) {
         var card = deck[i];
         if (typeof sideboard == "undefined" || card.sideboard == sideboard) {
             var cardElt = $("<div>", {"class": "card card-" + card.color});
-            cardElt.text(card.count + "x " + card.name);
+            cardElt.append($(`<span class="card-name">${card.count}x ${card.name}</span>`));
             var costElt = $("<span>", {"class": "mana"});
             costElt.html(toCost(card.cost && ("" + card.cost), card.altCost));
             cardElt.prepend(costElt);
@@ -134,15 +134,4 @@ function fillHand(outputElt, deck) {
             queue.shift()();
         }
     }
-}
-
-function showSideboard(sideboardElt, deck) {
-    var text = "";
-    for (var i = 0; i < deck.length; i++) {
-        var card = deck[i];
-        if (card.sideboard) {
-            text += card.count + " " + card.name + "\n";
-        }
-    }
-    sideboardElt.text(text);
 }
