@@ -3,8 +3,28 @@ body, select, input, textarea {
   font-family: 'Roboto';
 }
 
+.header {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+#user-pic {
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  border-radius: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
 select, div {
   margin: 20px;
+}
+
+.header div {
+  margin: 0;
 }
 
 .ui-menu .ui-state-focus,

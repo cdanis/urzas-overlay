@@ -3,8 +3,8 @@ var path = require('path');
 var request = require('request');
 var cheerio = require('cheerio');
 var bodyParser = require('body-parser');
-var firebase = require('firebase');
 var deckimport = require('./deckimport.js');
+var firebase = require("firebase-admin");
 
 var app = express();
 
@@ -73,13 +73,8 @@ app.get('/_ah/health', function (req, response) {
 });
 
 firebase.initializeApp({
-    apiKey: "AIzaSyDqDSKWpdJJIDBIX5Xq7w24hYss0zliBp8",
-    authDomain: "urzaslunchbreak.firebaseapp.com",
+    credential: firebase.credential.cert(require("./account.json")),
     databaseURL: "https://urzaslunchbreak.firebaseio.com",
-    storageBucket: ""
 });
-var firebaseUsername = "urzaslunch@gmail.com";
-var firebasePassword = "ElkUtyDtI_tr";
-firebase.auth().signInWithEmailAndPassword(firebaseUsername, firebasePassword);
 
 module.exports = app;

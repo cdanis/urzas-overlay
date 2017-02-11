@@ -6,11 +6,31 @@ body {
   font-size: 20px;
 }
 
+.header {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.header .button {
+  display: inline-block;
+}
+
+#user-pic {
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  border-radius: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
 textarea, button {
   display: block;
 }
 
-button {
+button, .button {
   font-size: 16px;
   padding: 5px;
   border: 1px solid #555;
