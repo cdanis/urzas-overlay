@@ -35,6 +35,10 @@
   flex-wrap: wrap;
 }
 
+.cards {
+  margin-bottom: 250px;
+}
+
 .cards > *, .lands > * {
   margin-left: 30px;
   margin-top: 10px;
@@ -87,4 +91,15 @@
 
 .game1 .sideboard {
   display: none;
+}
+
+.hand {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.card.leaving {
+  position: fixed ! important;
 }

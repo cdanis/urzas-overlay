@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="css/cards.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Metal+Mania" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
     <link href="css/mana.css" rel="stylesheet" type="text/css"/>
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"
             integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
@@ -18,6 +19,19 @@
     <script type="text/javascript" src="spotter.js"></script>
 </head>
 <body>
+
+<svg height="0" width="0">
+    <defs>
+        <clipPath id="cardLeft" transform="translate(-68, -2)">
+            <path d="M200.430496,3 L299.319838,3 C299.319838,3 302.564538,6.89754972 302.718477,16.5 C302.872416,26.1024503 299.319838,30 299.319838,30 L200.430496,30 L3.40350126,30 C3.40350126,30 -0.149076946,26.1024503 0.00486211923,16.5 C0.158801185,6.89754972 3.40350126,3 3.40350126,3 L200.430496,3 Z"></path>
+        </clipPath>
+        <clipPath id="cardRight" transform="translate(1, -2)">
+            <path d="M200.430496,3 L299.319838,3 C299.319838,3 302.564538,6.89754972 302.718477,16.5 C302.872416,26.1024503 299.319838,30 299.319838,30 L200.430496,30 L3.40350126,30 C3.40350126,30 -0.149076946,26.1024503 0.00486211923,16.5 C0.158801185,6.89754972 3.40350126,3 3.40350126,3 L200.430496,3 Z"
+                  id="path-1"></path>
+        </clipPath>
+    </defs>
+</svg>
+
 <div id="p1" class="button selected"></div>
 <div id="p2" class="button"></div>
 <div id="p1tab" class="tab">
@@ -25,11 +39,13 @@
     <div class="total"></div>
     <div class="lands"></div>
     <div class="cards"></div>
+    <div class="hand left"></div>
 </div>
 <div id="p2tab" class="tab" style="display: none;">
     <div class="reset button" data-player="p2deck">Reset</div>
     <div class="total"></div>
     <div class="lands"></div>
     <div class="cards"></div>
+    <div class="hand left"></div>
 </div>
 </body>
