@@ -23,7 +23,7 @@ function fillDeck(outputElt, deck, sideboard) {
     for (var i = 0; i < deck.length; i++) {
         var card = deck[i];
         if (typeof sideboard == "undefined" || card.sideboard == sideboard) {
-            var cardElt = $("<div>", {"class": "card card-" + card.color});
+            var cardElt = $("<div>", {"class": `card bg-${card.plateBackground}`});
             cardElt.append($(`<span class="card-name">${card.count}x ${card.name}</span>`));
             var costElt = $("<span>", {"class": "mana"});
             costElt.html(toCost(card.cost && ("" + card.cost), card.altCost));
