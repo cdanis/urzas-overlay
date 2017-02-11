@@ -44,9 +44,7 @@ body {
   width: 40%;
   border: 10px solid #555;
   border-radius: 25px;
-
   padding-left: 1em;
-
   white-space: pre-line;
 }
 
@@ -233,75 +231,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-}
-
-.hand {
-  width: 235px;
-  font-size: 14px;
-  font-family: "Merriweather";
-  color: black;
-}
-
-.card {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  margin-bottom: 6px;
-  padding: 0 12px;
-  width: 235px;
-  height: 29px;
-  box-sizing: border-box;
-  transition: transform 400ms cubic-bezier(0.4, 0.0, 0.2, 1);
-}
-
-.card.entering {
-  transition: transform 400ms cubic-bezier(0.4, 0.0, 1, 1);
-}
-
-.card.leaving {
-  transition: transform 400ms cubic-bezier(0.0, 0.0, 0.2, 1);
-  position: absolute;
-}
-
-.left .card {
-  background: url(ned-card-background.svg) no-repeat;
-  clip-path: url(#cardLeft);
-  padding-left: 6px;
-  padding-right: 7px;
-}
-
-.right .card {
-  background: url(ned-card-background-right.svg) no-repeat;
-  clip-path: url(#cardRight);
-  padding-left: 9px;
-  padding-right: 4px;
-}
-
-.left .card.entering, .left .card.leaving {
-  transform: translateX(-100%);
-}
-
-.right .card.entering, .right .card.leaving {
-  transform: translateX(100%);
-}
-
-.card-name {
-  flex: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.mana {
-  font-size: 11px;
-  position: relative;
-  top: -0.5px;
-}
-
-.mana i {
-  vertical-align: baseline;
-  box-shadow: -0.5px 1px 0 #000;
-  margin-left: 1px;
 }
 
 .featuredcard {
