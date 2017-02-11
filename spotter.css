@@ -100,6 +100,26 @@
   pointer-events: none;
 }
 
+@media only screen and (max-width: 500px) {
+  .hand {
+    display: none;
+  }
+
+  .cards {
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 700px) {
+  .cards > *, .lands > * {
+    margin-left: 250px;
+  }
+
+  .cards {
+    margin-bottom: 0;
+  }
+}
+
 .card.leaving {
   position: fixed ! important;
 }
