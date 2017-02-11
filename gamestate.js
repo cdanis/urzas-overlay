@@ -1,7 +1,7 @@
 var modeRef = firebase.database().ref('mode');
 modeRef.on('value', function (v) {
-    mode = v.val();
-    modes = ["sideboard", "chyron", "game", "title", "freetext"];
+    var mode = v.val();
+    var modes = ["sideboard", "chyron", "game", "title", "freetext"];
     _.each(modes, function (ele, idx, list) {
         $("#" + ele).addClass("inactive");
     });
@@ -10,17 +10,20 @@ modeRef.on('value', function (v) {
     if (_.contains(modes, modePrefix)) {
         $("#" + modePrefix).removeClass("inactive");
     }
+    if (mode == "sideboard") {
+        $("#game").removeClass("inactive");
+    }
     if (modePrefix == "chyron") {
         if (modeSplit[1] == "single") {
             $("#chyronSingle").css("opacity", 1);
             $("#chyronLeft").css("opacity", 0);
             $("#chyronRight").css("opacity", 0);
-            $("#chyron .logo").css("opacity", 0);
+            $("#chyron").find(".logo").css("opacity", 0);
         } else {
             $("#chyronSingle").css("opacity", 0);
             $("#chyronLeft").css("opacity", 1);
             $("#chyronRight").css("opacity", 1);
-            $("#chyron .logo").css("opacity", 1);
+            $("#chyron").find(".logo").css("opacity", 1);
         }
     }
 });
@@ -44,7 +47,7 @@ $.get("https://api.magicthegathering.io/v1/sets",
             _.map(data.sets, function(x) { return x.magicCardsInfoCode || x.code; }));
     });
 
-function fillFeaturedCard(cardName, featuredCardSelector, handSelector) {
+function fillFeaturedCard(cardName, featuredCardSelector) {
     if (cardName != "") {
         // exact match on the name, because autocomplete in director.html should have
         // put an exact name there for us
@@ -145,23 +148,23 @@ firebase.database().ref('player1').on('value', function (v) {
     updateP1Numbers(v);
     $(".p1.name").text(v.val().name);
     $(".p1.deck").text(v.val().deck);
-    fillFeaturedCard(v.val().featuredcard, ".p1.featuredcard", ".p1.hand");
+    fillFeaturedCard(v.val().featuredcard, ".p1.featuredcard");
 });
 firebase.database().ref('p1deck').on('value', function (v) {
     var handElt = $(".p1.hand");
     fillHand(handElt, v.val());
-    showSideboard($(".p1.sideboard"), v.val());
+    fillDeck($(".p1.sideboard"), v.val(), true);
 });
 firebase.database().ref('player2').on('value', function (v) {
     updateP2Numbers(v);
     $(".p2.name").text(v.val().name);
     $(".p2.deck").text(v.val().deck);
-    fillFeaturedCard(v.val().featuredcard, ".p2.featuredcard", ".p2.hand");
+    fillFeaturedCard(v.val().featuredcard, ".p2.featuredcard");
 });
 firebase.database().ref('p2deck').on('value', function (v) {
     var handElt = $(".p2.hand");
     fillHand(handElt, v.val());
-    showSideboard($(".p2.sideboard"), v.val());
+    fillDeck($(".p2.sideboard"), v.val(), true);
 });
 firebase.database().ref('chyron').on('value', function (v) {
     var single = $("#chyronSingle");
