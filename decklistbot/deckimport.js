@@ -188,8 +188,13 @@ function basicLandNameToBackgroundColorType(basicLandName) {
         parseDeck(maindeckText, maindeck, outputFun, false, function () {
             parseDeck(sideboardText, sideboard, outputFun, true, function () {
                 if (maindeck && sideboard) {
-                    firebase.database().ref(player + "deck").set(maindeck.concat(sideboard));
-                    finished("Import ok! " + output);
+                    firebase.database().ref(player + "deck").set(maindeck.concat(sideboard), function (error) {
+                        if (error) {
+                            finished("Error writing to database: " + error);
+                        } else {
+                            finished("Import ok! " + output);
+                        }
+                    });
                 } else {
                     finished("Errors, not imported. " + output);
                 }
