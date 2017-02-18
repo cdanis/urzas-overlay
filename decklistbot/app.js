@@ -20,10 +20,12 @@ app.post('/', function (req, response) {
         var mainboard = "";
         var sideboard = "";
         $(".row.board-container .member").each(function (i, elem) {
+            var cardData = $(this).find("a.qty");
+            var card = `${cardData.data("qty")}x ${cardData.data("name")}\n`;
             if ($(elem).attr("id").includes("boardContainer-side-")) {
-                sideboard += $(elem).text().replace(/\n/g, "").trim() + "\n";
+                sideboard += card;
             } else {
-                mainboard += $(elem).text().replace(/\n/g, "").trim() + "\n";
+                mainboard += card;
             }
         });
         var inSideboard = false;
@@ -49,7 +51,11 @@ app.post('/', function (req, response) {
                     if (error) {
                         fail();
                     } else {
-                        succ(JSON.parse(body));
+                        try {
+                            succ(JSON.parse(body));
+                        } catch (e) {
+                            fail();
+                        }
                     }
                 });
             },
