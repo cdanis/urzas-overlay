@@ -94,12 +94,18 @@ if (typeof window !== "undefined") {
     });
     firebase.database().ref('p1deck').on('value', function (v) {
         if (v.val()) {
-            fillDeck($("#p1").find(".deck"), v.val());
+            var p1 = $("#p1");
+            fillDeck(p1.find(".deck"), v.val());
+            p1.find(".maindeck").val(getDeckText(v.val(), false));
+            p1.find(".sideboard").val(getDeckText(v.val(), true));
         }
     });
     firebase.database().ref('p2deck').on('value', function (v) {
         if (v.val()) {
-            fillDeck($("#p2").find(".deck"), v.val());
+            var p2 = $("#p2");
+            fillDeck(p2.find(".deck"), v.val());
+            p2.find(".maindeck").val(getDeckText(v.val(), false));
+            p2.find(".sideboard").val(getDeckText(v.val(), true));
         }
     });
 

@@ -33,6 +33,20 @@ function fillDeck(outputElt, deck, sideboard) {
     }
 }
 
+function getDeckText(deck, sideboard) {
+    var output = "";
+    deck = _.sortBy(deck, function (card) {
+        return (card.type.includes("Land") ? "_" : "") + card.name;
+    });
+    for (var i = 0; i < deck.length; i++) {
+        var card = deck[i];
+        if (typeof sideboard == "undefined" || card.sideboard == sideboard) {
+            output += `${card.count}x ${card.name}\n`;
+        }
+    }
+    return output;
+}
+
 var animationQueues = new Map();
 var animatingElements = [];
 
