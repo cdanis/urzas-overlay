@@ -107,11 +107,11 @@ function updateValue(elt, newValue, toggleOnZero) {
             elt.addClass("updating");
             var fallback;
             var update = function () {
-                elt.text(newValue);
+                elt.text(newValue == "inf" ? "∞" : newValue);
                 elt.removeClass("updating");
                 elt.off(event);
                 if (toggleOnZero) {
-                    elt.toggle(!!parseInt(newValue));
+                    elt.toggle(newValue == "inf" || !!parseInt(newValue));
                 }
                 clearTimeout(fallback);
             };
@@ -173,24 +173,4 @@ firebase.database().ref('chyron').on('value', function (v) {
     single.Emoji({path: 'https://rodrigopolo.github.io/jqueryemoji/img/apple72/'});
     $("#chyronLeft").text(v.val().left);
     $("#chyronRight").text(v.val().right);
-});
-var timerId = null;
-firebase.database().ref('end_of_round_epoch_ms').on('value', function (v) {
-    if (timerId) {
-        window.clearInterval(timerId);
-    }
-    var end_of_round_epoch_ms = v.val();
-    if ($.isNumeric(end_of_round_epoch_ms) && end_of_round_epoch_ms > 0) {
-        timerId = countdown(end_of_round_epoch_ms, function (ts) {
-            var timer = $(".scorebox.timer");
-            timer.text(ts.minutes + ":" + ("0" + ts.seconds).slice(-2));
-            if (ts.value > 0) {
-                timer.addClass("overtime");
-            } else {
-                timer.removeClass("overtime");
-            }
-        });
-    } else {
-        $(".scorebox.timer").text("");
-    }
 });

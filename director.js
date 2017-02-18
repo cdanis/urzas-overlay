@@ -31,7 +31,7 @@ firebase.database().ref('chyron').on('value', function (v) {
 
 function adjustValue(amount) {
     var input = $(this).siblings("input");
-    input.val(parseInt(input.val()) + amount).change();
+    input.val((parseInt(input.val()) || 0) + amount).change();
 }
 
 $(function () {
@@ -70,6 +70,10 @@ $(function () {
     });
     $(".minus5").click(function () {
         adjustValue.call(this, -5);
+    });
+    $(".infinity").click(function () {
+        var input = $(this).siblings("input");
+        input.val("∞").change();
     });
     $(".win").click(function () {
         var values = {};
