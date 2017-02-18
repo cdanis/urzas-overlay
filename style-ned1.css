@@ -395,34 +395,28 @@ body {
 }
 
 #chyron > * {
-  line-height: 100px;
+  line-height: 110px;
   transition: opacity 400ms cubic-bezier(0.4, 0.0, 0.2, 1);
   text-align: center;
 }
 
-#chyronSingle {
-  margin-left: 100px;
-  margin-right: 100px;
-}
-
-#chyronLeft, #chyronRight, #chyron .logo {
+#chyronSingle, #chyronSplit {
   position: absolute;
   top: 0;
+  left: 100px;
+  right: 100px;
+  bottom: 0;
 }
 
-#chyronLeft {
-  left: 200px;
-  right: 50%;
+#chyronSplit {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
 }
 
-#chyronRight {
-  right: 200px;
-  left: 50%;
-}
-
-#chyron .logo {
-  left: 50%;
-  margin-left: -1.5em;
+#chyronLeft, #chyronRight {
+  flex-grow: 1;
 }
 
 #chyron:before, #chyron:after {
