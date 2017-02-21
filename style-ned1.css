@@ -239,8 +239,8 @@ body {
   padding: 30px;
   padding-bottom: 100px;
   box-sizing: border-box;
-  font-style: italic;
-  background: linear-gradient(#313c56, #252b3e);
+  /* Background pattern from Subtle Patterns (https://www.toptal.com/designers/subtlepatterns) */
+  background: url("footer_lodyas.png");
   position: absolute;
   transition: transform 400ms cubic-bezier(0.0, 0.0, 0.2, 1);
 }

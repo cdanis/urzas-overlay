@@ -58,19 +58,25 @@ function fillFeaturedCard(cardName, featuredCardSelector) {
                         return sets.indexOf(c.set);
                     });
                     var card = data.cards[0];
-                    imageUrl = card.imageUrl;
+                    var imageUrl = card.imageUrl;
                     if (card.set && card.number) {
                         // not all cards have a number (e.g. LEA Lightning Bolt)
                         imageUrl = ("http://magiccards.info/scans/en/" + gathererToMagiccardsInfo[card.set]
                                     + "/" + card.number + ".jpg").toLowerCase();
                     }
+                    var setReq = Promise.resolve(null);
+                    if (card.set) {
+                        setReq = $.get("https://api.magicthegathering.io/v1/sets/" + card.set);
+                    }
                     var img = $(featuredCardSelector).find(".img");
                     img.attr("src", imageUrl);
-                    img.on("load", function () {
-                        $(featuredCardSelector).find(".cardName").text(card.name);
-                        $(featuredCardSelector).find(".cardType").text(card.types.join(" "));
-                        $(featuredCardSelector).find(".rarityAndSet").text(card.rarity + ", " + card.setName);
-                        $(featuredCardSelector).removeClass("offscreen");
+                    img.one("load", function () {
+                        setReq.done(function (data) {
+                            $(featuredCardSelector).find(".rarityAndSet").text(
+                                card.rarity + ", " + card.setName +
+                                (data && data.set ? " (" + data.set.releaseDate.substring(0, 4) + ")" : ""));
+                            $(featuredCardSelector).removeClass("offscreen");
+                        })
                     });
                     img.on("error", function () {
                         if ($(this).attr("src") != card.imageUrl) {
