@@ -62,7 +62,7 @@ $(function () {
         firebase.database().ref('mode').update(vals);
     });
     // don't stomp on the autocomplete change eventhandler
-    $("input[type!='checkbox'][type!='radio'][id!='player1_featuredcard'][id!='player2_featuredcard'], textarea").change(function () {
+    $("input[type!='checkbox'][type!='radio'][id!='player1_featuredcard'][id!='player2_featuredcard']").change(function () {
         firebase.database().ref($(this).attr("id").replace("_", "/")).set($(this).val());
     });
     $(".clear").click(function () {
@@ -97,7 +97,7 @@ $(function () {
         firebase.database().ref().update(values);
     });
     $(".preset-option").click(function () {
-        $(this).siblings("textarea").val($(this).text()).change();
+        $(this).siblings("input").val($(this).text()).change();
     });
     $(".swap").click(function () {
         firebase.database().ref().transaction(function (data) {
