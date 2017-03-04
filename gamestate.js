@@ -1,29 +1,22 @@
 var modeRef = firebase.database().ref('mode');
 modeRef.on('value', function (v) {
-    var mode = v.val();
-    var modes = ["sideboard", "chyron", "game", "title", "freetext"];
-    _.each(modes, function (ele, idx, list) {
-        $("#" + ele).addClass("inactive");
-    });
-    var modeSplit = mode.split("\.");
-    var modePrefix = modeSplit[0];
-    if (_.contains(modes, modePrefix)) {
-        $("#" + modePrefix).removeClass("inactive");
-    }
-    if (mode == "sideboard") {
-        $("#game").removeClass("inactive");
-    }
-    if (modePrefix == "chyron") {
-        if (modeSplit[1] == "single") {
-            $("#chyronSingle").css("opacity", 1);
-            $("#chyronLeft").css("opacity", 0);
-            $("#chyronRight").css("opacity", 0);
-            $("#chyron").find(".logo").css("opacity", 0);
-        } else {
-            $("#chyronSingle").css("opacity", 0);
-            $("#chyronLeft").css("opacity", 1);
-            $("#chyronRight").css("opacity", 1);
-            $("#chyron").find(".logo").css("opacity", 1);
+    var modes = v.val();
+    for (mode in modes) {
+        if (modes.hasOwnProperty(mode)) {
+            $("#" + mode).toggleClass("inactive", !modes[mode]);
+            if (mode == "chyron") {
+                if (modes[mode] == "single") {
+                    $("#chyronSingle").css("opacity", 1);
+                    $("#chyronLeft").css("opacity", 0);
+                    $("#chyronRight").css("opacity", 0);
+                    $("#chyron").find(".logo").css("opacity", 0);
+                } else {
+                    $("#chyronSingle").css("opacity", 0);
+                    $("#chyronLeft").css("opacity", 1);
+                    $("#chyronRight").css("opacity", 1);
+                    $("#chyron").find(".logo").css("opacity", 1);
+                }
+            }
         }
     }
 });

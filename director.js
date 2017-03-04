@@ -1,6 +1,10 @@
 var modeRef = firebase.database().ref('mode');
 modeRef.on('value', function (v) {
-    $("#mode").val(v.val());
+    var mode = v.val();
+    $("#mode_sideboard").prop("checked", mode.sideboard);
+    $("#mode_title").prop("checked", mode.title);
+    $("#mode_single").prop("checked", mode.chyron == "single");
+    $("#mode_split").prop("checked", mode.chyron == "split");
 });
 firebase.database().ref('player1').on('value', function (v) {
     if (v.val()) {
@@ -47,11 +51,18 @@ $(function () {
             firebase.database().ref($(this).attr("id").replace("_", "/")).set(ui.item.value);
         },
     });
-    $("#mode").change(function () {
-        firebase.database().ref('mode').set($(this).val());
+    $(".sideboard").change(function () {
+        firebase.database().ref($(this).attr("id").replace("_", "/")).set($(this).prop("checked"));
+    });
+    $(".commentator_mode").change(function () {
+        var vals = {};
+        vals['title'] = $("#mode_title").prop("checked");
+        var checkedChyron = $(".chyron_mode:checked");
+        vals['chyron'] = checkedChyron.length ? checkedChyron.data("value") : false;
+        firebase.database().ref('mode').update(vals);
     });
     // don't stomp on the autocomplete change eventhandler
-    $("input[id!='player1_featuredcard'][id!='player2_featuredcard'], textarea").change(function () {
+    $("input[type!='checkbox'][type!='radio'][id!='player1_featuredcard'][id!='player2_featuredcard'], textarea").change(function () {
         firebase.database().ref($(this).attr("id").replace("_", "/")).set($(this).val());
     });
     $(".clear").click(function () {
