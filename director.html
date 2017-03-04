@@ -30,25 +30,12 @@
         Sign in
     </div>
 </header>
-<input type="checkbox" id="mode_sideboard" class="sideboard"> Sideboard
-<input type="radio" name="commentator" id="mode_title" class="commentator_mode"> Title
-<input type="radio" name="commentator" id="mode_single" class="commentator_mode chyron_mode" data-value="single"> Single
-chyron
-<input type="radio" name="commentator" id="mode_split" class="commentator_mode chyron_mode" data-value="split"> Split
-chyron
 
-<select id="mode">
-    <option>title</option>
-    <option>chyron.single</option>
-    <option>chyron.split</option>
-    <option>game</option>
-    <option>sideboard</option>
-    <option>freetext</option>
-</select>
-<div class="player" id="p1">
-    <input id="player1_name" type="text"/>
-    <input id="player1_deck" type="text"/>
-    <input id="player1_gamewins" class="gamewins" type="number"/> wins
+<div class="gamestate">
+    <div class="player_data">
+        <input id="player1_name" type="text"/>
+        <input id="player1_deck" type="text"/>
+    </div>
     <div class="counter">
         <input id="player1_life" size="3"/>
         <div class="button plus5">+5</div>
@@ -58,25 +45,32 @@ chyron
         <div class="button infinity">∞</div>
     </div>
     <div class="counter">
-        &#x03d5;
         <input id="player1_poison" class="poison" type="number"/>
+        &#x03d5;
         <div class="button plus5">+5</div>
         <div class="button plus1">+1</div>
         <div class="button minus1">-1</div>
         <div class="button minus5">-5</div>
     </div>
-    <div>
-        Featured card:
-        <input id="player1_featuredcard"/>
-        <div class="button clear">clear</div>
+    <div class="gamewins_controls">
+        <input id="player1_gamewins" class="gamewins" type="number"/>
+        <div class="win button" data-winner="player1">WIN</div>
     </div>
-
-    <div class="win button" data-winner="player1">WIN</div>
-</div>
-<div class="player" id="p2">
-    <input id="player2_name" type="text"/>
-    <input id="player2_deck" type="text"/>
-    <input id="player2_gamewins" class="gamewins" type="number"/> wins
+    <div>
+        <div class="swap button">Swap</div>
+    </div>
+    <div class="gamewins_controls">
+        <input id="player2_gamewins" class="gamewins" type="number"/>
+        <div class="win button" data-winner="player2">WIN</div>
+    </div>
+    <div class="counter">
+        <input id="player2_poison" class="poison" type="number"/>
+        &#x03d5;
+        <div class="button plus5">+5</div>
+        <div class="button plus1">+1</div>
+        <div class="button minus1">-1</div>
+        <div class="button minus5">-5</div>
+    </div>
     <div class="counter">
         <input id="player2_life" size="3"/>
         <div class="button plus5">+5</div>
@@ -85,36 +79,46 @@ chyron
         <div class="button minus5">-5</div>
         <div class="button infinity">∞</div>
     </div>
-    <div class="counter">
-        &#x03d5;
-        <input id="player2_poison" class="poison" type="number"/>
-        <div class="button plus5">+5</div>
-        <div class="button plus1">+1</div>
-        <div class="button minus1">-1</div>
-        <div class="button minus5">-5</div>
+    <div class="player_data">
+        <input id="player2_name" type="text"/>
+        <input id="player2_deck" type="text"/>
+    </div>
+</div>
+<div class="featured">
+    <div>
+        Featured card:
+        <input id="player1_featuredcard"/>
+        <div class="button clear">clear</div>
+    </div>
+    <div>
+        <input type="checkbox" id="mode_sideboard" class="sideboard"> <label for="mode_sideboard">Sideboard</label>
     </div>
     <div>
         Featured card:
         <input id="player2_featuredcard"/>
         <div class="button clear">clear</div>
     </div>
-
-    <div class="win button" data-winner="player2">WIN</div>
 </div>
-<div class="swap button">Swap</div>
-<div>
-    Chyron single text:
-    <textarea id="chyron_single" rows="5"></textarea>
-    <button class="preset-option">😻 😻 please like and subscribe 😻 😻</button>
-</div>
-<div>
-    Chyron left:
-    <textarea id="chyron_left" rows="2"></textarea>
-    <button class="preset-option">Ned Burns</button>
-</div>
-<div>
-    Chyron right:
-    <textarea id="chyron_right" rows="2"></textarea>
-    <button class="preset-option">Mitch Foley</button>
+<div class="commentator">
+    <div>
+        <input type="radio" name="commentator" id="mode_title" class="commentator_mode"> Title
+    </div>
+    <div>
+        <input type="radio" name="commentator" id="mode_single" class="commentator_mode chyron_mode"
+               data-value="single">
+        <input type="text" id="chyron_single"/>
+        <button class="preset-option">😻 😻 please like and subscribe 😻 😻</button>
+    </div>
+    <div>
+        <input type="radio" name="commentator" id="mode_split" class="commentator_mode chyron_mode" data-value="split">
+        <span>
+            <input type="text" id="chyron_left"/>
+            <button class="preset-option">Ned Burns</button>
+        </span>
+        <span>
+            <input type="text" id="chyron_right"/>
+            <button class="preset-option">Mitch Foley</button>
+        </span>
+    </div>
 </div>
 </body>
