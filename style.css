@@ -418,6 +418,7 @@ body {
 
 #chyronLeft, #chyronRight {
   flex-grow: 1;
+  width: 0;
 }
 
 #chyron:before, #chyron:after {
