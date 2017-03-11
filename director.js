@@ -117,4 +117,21 @@ $(function () {
             return data;
         });
     });
+    $(".clearHands").click(function () {
+        firebase.database().ref().transaction(
+            function (data) {
+                function clearDeck(deck) {
+                    for (var i = 0; i < deck.length; i++) {
+                        deck[i].inhand = 0;
+                    }
+                }
+
+                if (data) {
+                    clearDeck(data.p1deck);
+                    clearDeck(data.p2deck);
+                }
+                return data;
+            }
+        )
+    });
 });
