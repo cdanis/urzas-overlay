@@ -32,6 +32,9 @@ firebase.database().ref('chyron').on('value', function (v) {
     $("#chyron_left").val(v.val().left);
     $("#chyron_right").val(v.val().right);
 });
+firebase.database().ref('streamStart').on('value', function (v) {
+    $("#streamStart").val(v.val());
+});
 
 function adjustValue(amount) {
     var input = $(this).siblings("input");
