@@ -97,3 +97,8 @@ input, textarea {
 .featured .button, header .button {
   display: inline-block;
 }
+
+.instructions {
+  font-size: 75%;
+  padding-left: 1em;
+}
