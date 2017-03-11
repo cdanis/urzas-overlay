@@ -7,6 +7,10 @@ body {
   text-align: center;
 }
 
+a {
+  color: #eee;
+}
+
 .title {
   font: 72pt 'Metal Mania';
   text-align: center;
