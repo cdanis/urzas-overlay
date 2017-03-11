@@ -242,6 +242,7 @@ body {
   /* Background pattern from Subtle Patterns (https://www.toptal.com/designers/subtlepatterns) */
   background: url("footer_lodyas.png");
   position: absolute;
+  z-index: 2;
   transition: transform 400ms cubic-bezier(0.0, 0.0, 0.2, 1);
 }
 
@@ -277,7 +278,7 @@ body {
 
 .sideboard {
   position: absolute;
-  top: 400px;
+  top: 100px;
   font: 16pt 'Roboto Condensed';
   background: linear-gradient(#313c56, #252b3e);
   column-count: 2;
@@ -300,7 +301,7 @@ body {
 }
 
 .sideboard.p1 {
-  left: 5%;
+  left: 3%;
 }
 
 .inactive .sideboard.p1 {
@@ -308,7 +309,7 @@ body {
 }
 
 .sideboard.p2 {
-  right: 5%;
+  right: 3%;
 }
 
 .inactive .sideboard.p2 {
