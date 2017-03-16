@@ -1,7 +1,12 @@
+@font-face {
+  font-family: Beleren;
+  src: url(../fonts/beleren-bold-webfont.ttf);
+}
+
 .hand {
   width: 235px;
   font-size: 14px;
-  font-family: "Merriweather";
+  font-family: "Beleren";
   color: black;
 }
 
