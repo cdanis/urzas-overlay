@@ -146,7 +146,10 @@ var updateP2Numbers = _.debounce(function(v) {
 firebase.database().ref('player1').on('value', function (v) {
     updateP1Numbers(v);
     $(".p1.name").text(v.val().name);
-    $(".p1.deck").text(v.val().deck);
+    var deck = $(".p1.deck");
+    deck.text(v.val().deck);
+    deck.removeData("Emoji");
+    deck.Emoji({path: 'https://rodrigopolo.github.io/jqueryemoji/img/apple72/'});
     fillFeaturedCard(v.val().featuredcard, ".p1.featuredcard");
 });
 firebase.database().ref('p1deck').on('value', function (v) {
@@ -157,7 +160,10 @@ firebase.database().ref('p1deck').on('value', function (v) {
 firebase.database().ref('player2').on('value', function (v) {
     updateP2Numbers(v);
     $(".p2.name").text(v.val().name);
-    $(".p2.deck").text(v.val().deck);
+    var deck = $(".p2.deck");
+    deck.text(v.val().deck);
+    deck.removeData("Emoji");
+    deck.Emoji({path: 'https://rodrigopolo.github.io/jqueryemoji/img/apple72/'});
     fillFeaturedCard(v.val().featuredcard, ".p2.featuredcard");
 });
 firebase.database().ref('p2deck').on('value', function (v) {
