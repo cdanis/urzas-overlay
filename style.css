@@ -443,3 +443,15 @@ body {
   clip-path: url(#clipRight);
   transform: scaleY(-1);
 }
+
+#testBgd {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url(background.png) no-repeat;
+  background-size: cover;
+  display: none;
+  z-index: -1;
+}
