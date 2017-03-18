@@ -75,8 +75,12 @@
   background-color: #d7d1cf ! important;
 }
 
-.bg-artifact {
+.bg-colorless {
   background-color: #dee6e9 ! important;
+}
+
+.bg-artifact {
+  background-color: #ebe2c7 ! important;
 }
 
 .bg-white {
