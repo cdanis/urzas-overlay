@@ -27,7 +27,7 @@ function fillDeck(outputElt, deck, sideboard) {
             cardElt.append($(`<span class="card-name">${card.count}x ${card.name}</span>`));
             var costElt = $("<span>", {"class": "mana"});
             costElt.html(toCost(card.cost && ("" + card.cost), card.altCost));
-            cardElt.prepend(costElt);
+            cardElt.append(costElt);
             outputElt.append(cardElt);
         }
     }

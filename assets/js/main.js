@@ -35,49 +35,51 @@
         // Header.
         var ids = [];
 
-        // Set up nav items.
-        $nav_a
-            .scrolly({offset: 44})
-            .on('click', function (event) {
+        if ($nav_a.length) {
+            // Set up nav items.
+            $nav_a
+                .scrolly({offset: 44})
+                .on('click', function (event) {
 
-                var $this = $(this),
-                    href = $this.attr('href');
+                    var $this = $(this),
+                        href = $this.attr('href');
 
-                // Not an internal link? Bail.
-                if (href.charAt(0) != '#')
-                    return;
+                    // Not an internal link? Bail.
+                    if (href.charAt(0) != '#')
+                        return;
 
-                // Prevent default behavior.
-                event.preventDefault();
+                    // Prevent default behavior.
+                    event.preventDefault();
 
-                // Remove active class from all links and mark them as locked (so scrollzer leaves them alone).
-                $nav_a
-                    .removeClass('active')
-                    .addClass('scrollzer-locked');
+                    // Remove active class from all links and mark them as locked (so scrollzer leaves them alone).
+                    $nav_a
+                        .removeClass('active')
+                        .addClass('scrollzer-locked');
 
-                // Set active class on this link.
-                $this.addClass('active');
+                    // Set active class on this link.
+                    $this.addClass('active');
 
-            })
-            .each(function () {
+                })
+                .each(function () {
 
-                var $this = $(this),
-                    href = $this.attr('href'),
-                    id;
+                    var $this = $(this),
+                        href = $this.attr('href'),
+                        id;
 
-                // Not an internal link? Bail.
-                if (href.charAt(0) != '#')
-                    return;
+                    // Not an internal link? Bail.
+                    if (href.charAt(0) != '#')
+                        return;
 
-                // Add to scrollzer ID list.
-                id = href.substring(1);
-                $this.attr('id', id + '-link');
-                ids.push(id);
+                    // Add to scrollzer ID list.
+                    id = href.substring(1);
+                    $this.attr('id', id + '-link');
+                    ids.push(id);
 
-            });
+                });
 
-        // Initialize scrollzer.
-        $.scrollzer(ids, {pad: 300, lastHack: true});
+            // Initialize scrollzer.
+            $.scrollzer(ids, {pad: 300, lastHack: true});
+        }
 
         // Off-Canvas Navigation.
 
