@@ -56,7 +56,7 @@ function createCardElt(card) {
     cardElt.data("cardName", card.name);
     var costElt = $("<span>", {"class": "mana"});
     costElt.html(toCost(card.cost && ("" + card.cost), card.altCost));
-    cardElt.prepend(costElt);
+    cardElt.append(costElt);
     return cardElt;
 }
 
