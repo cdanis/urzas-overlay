@@ -236,18 +236,21 @@ body {
 .featuredcard {
   width: 20%;
   font-size: 10pt;
-  padding: 30px;
-  padding-bottom: 100px;
+  padding: 30px 30px 100px;
   box-sizing: border-box;
   /* Background pattern from Subtle Patterns (https://www.toptal.com/designers/subtlepatterns) */
   background: url("footer_lodyas.png");
   position: absolute;
+  bottom: 0;
   z-index: 2;
-  transition: transform 400ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: transform 400ms cubic-bezier(0.0, 0.0, 0.2, 1),
+  opacity 400ms cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
 .featuredcard.offscreen {
-  transition: transform 400ms cubic-bezier(0.4, 0.0, 1, 1);
+  opacity: 0;
+  transition: transform 400ms cubic-bezier(0.4, 0.0, 1, 1),
+  opacity 400ms cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
 .featuredcard.left {
@@ -259,6 +262,18 @@ body {
   border-top-left-radius: 10px;
   right: 0;
   transform-origin: right bottom;
+}
+
+#sideboard:not(.inactive) ~ .featuredcard {
+  left: 40%;
+  right: auto;
+  bottom: 20%;
+  padding-bottom: 30px;
+  border-radius: 10px;
+}
+
+#sideboard:not(.inactive) ~ .featuredcard.offscreen {
+  transform: translateY(50px);
 }
 
 .featuredcard .cardname {
@@ -278,22 +293,20 @@ body {
 
 .sideboard {
   position: absolute;
-  top: 100px;
+  top: 150px;
   font: 16pt 'Roboto Condensed';
   background: linear-gradient(#313c56, #252b3e);
-  column-count: 2;
-  width: 40%;
-  padding: 10px;
-  border-radius: 25px;
-  padding-left: 1em;
+  width: 20%;
+  border-radius: 10px;
+  padding: 10px 1em 10px 1em;
   transition: transform 500ms cubic-bezier(0.0, 0.0, 0.2, 1);
 }
 
 .sideboard .card {
   padding: 0;
   margin: 0;
-  break-inside: avoid-column;
   background: none ! important;
+  width: auto;
 }
 
 .inactive .sideboard {
@@ -301,7 +314,7 @@ body {
 }
 
 .sideboard.p1 {
-  left: 3%;
+  left: -10px;
 }
 
 .inactive .sideboard.p1 {
@@ -309,7 +322,7 @@ body {
 }
 
 .sideboard.p2 {
-  right: 3%;
+  right: -10px;
 }
 
 .inactive .sideboard.p2 {
