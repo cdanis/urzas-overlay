@@ -33,6 +33,9 @@ function doRequest(names, counts, deck, output, sideboard, callback, page, reque
                     var cost = card.manaCost || "";
                     var altCost = "";
                     if (card.layout == "split") {
+                        if (!card.originalText) {
+                            continue;
+                        }
                         name = card.names.join("//");
                         var altCostMatch = card.originalText.match(new RegExp("//\n" + card.names[1] + "\n([^\n]+)"));
                         if (altCostMatch && altCostMatch.length > 1) {
@@ -198,7 +201,7 @@ function basicLandNameToBackgroundColorType(basicLandName) {
                         if (error) {
                             finished("Error writing to database: " + error);
                         } else {
-                            finished("Import ok! " + output);
+                            finished(output || "Import ok!");
                         }
                     });
                 } else {
