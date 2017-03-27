@@ -1,0 +1,25 @@
+body {
+  color: white;
+  font: 36pt 'Roboto';
+  margin: 0;
+  background: url(wildtextures-creased-black-paper-texture.jpg);
+  background-size: cover;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.title {
+  font: 50pt 'Metal Mania';
+  margin-top: 100px;
+  color: #eee;
+}
+
+.sandwich {
+  content: '';
+  margin-top: 40px;
+  margin-right: 20px;
+  height: 270px;
+  background: url(burger_sandwich_big.png) no-repeat center;
+  background-size: contain;
+  opacity: 0.6;
+}

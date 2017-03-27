@@ -3,8 +3,28 @@ body, select, input, textarea {
   font-family: 'Roboto';
 }
 
+.header {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+#user-pic {
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  border-radius: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
 select, div {
   margin: 20px;
+}
+
+.header div {
+  margin: 0;
 }
 
 .ui-menu .ui-state-focus,
@@ -12,9 +32,10 @@ select, div {
   margin: 20px ! important;
 }
 
-select, input[type=text] {
-  display: block;
-  margin-bottom: 20px;
+.gamestate {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .player {
@@ -25,14 +46,19 @@ input[type=number] {
   width: 4em;
 }
 
+#chyron_single {
+  width: 20em;
+}
+
 .counter {
-  margin-left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .button {
-  display: inline-block;
   font-size: 16px;
-  padding: 5px;
+  padding: 5px 15px;
   border: 1px solid #555;
   border-radius: 3px;
   margin: 5px;
@@ -40,14 +66,14 @@ input[type=number] {
   cursor: pointer;
 }
 
-.swap {
-  display: block;
-  width: fit-content;
-  margin-left: 25px;
+.player_data {
+  flex-grow: 1;
 }
 
-.preset-option {
-  display: block;
+.gamewins_controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 input.poison {
@@ -60,4 +86,19 @@ textarea {
 
 input, textarea {
   padding: 10px;
+}
+
+.featured {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.featured .button, header .button {
+  display: inline-block;
+}
+
+.instructions {
+  font-size: 75%;
+  padding-left: 1em;
 }

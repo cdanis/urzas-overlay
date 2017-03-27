@@ -1,3 +1,24 @@
+.header {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.header .button {
+  display: inline-block;
+  padding: 20px;
+}
+
+#user-pic {
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  border-radius: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
 #p1, #p2 {
   display: inline-block;
   padding: 20px 40px;
@@ -33,6 +54,10 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.cards {
+  margin-bottom: 250px;
 }
 
 .cards > *, .lands > * {
@@ -87,4 +112,41 @@
 
 .game1 .sideboard {
   display: none;
+}
+
+.hand {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+@media only screen and (max-width: 500px) {
+  .hand {
+    display: none;
+  }
+
+  .cards {
+    margin-bottom: 0;
+  }
+
+  .header {
+    position: static;
+    margin-bottom: 40px;
+    text-align: right;
+  }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 700px) {
+  .cards > *, .lands > * {
+    margin-left: 250px;
+  }
+
+  .cards {
+    margin-bottom: 0;
+  }
+}
+
+.card.leaving {
+  position: fixed ! important;
 }

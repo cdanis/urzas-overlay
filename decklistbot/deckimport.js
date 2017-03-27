@@ -94,12 +94,18 @@ if (typeof window !== "undefined") {
     });
     firebase.database().ref('p1deck').on('value', function (v) {
         if (v.val()) {
-            fillDeck($("#p1").find(".deck"), v.val());
+            var p1 = $("#p1");
+            fillDeck(p1.find(".deck"), v.val());
+            p1.find(".maindeck").val(getDeckText(v.val(), false));
+            p1.find(".sideboard").val(getDeckText(v.val(), true));
         }
     });
     firebase.database().ref('p2deck').on('value', function (v) {
         if (v.val()) {
-            fillDeck($("#p2").find(".deck"), v.val());
+            var p2 = $("#p2");
+            fillDeck(p2.find(".deck"), v.val());
+            p2.find(".maindeck").val(getDeckText(v.val(), false));
+            p2.find(".sideboard").val(getDeckText(v.val(), true));
         }
     });
 
@@ -188,8 +194,13 @@ function basicLandNameToBackgroundColorType(basicLandName) {
         parseDeck(maindeckText, maindeck, outputFun, false, function () {
             parseDeck(sideboardText, sideboard, outputFun, true, function () {
                 if (maindeck && sideboard) {
-                    firebase.database().ref(player + "deck").set(maindeck.concat(sideboard));
-                    finished("Import ok! " + output);
+                    firebase.database().ref(player + "deck").set(maindeck.concat(sideboard), function (error) {
+                        if (error) {
+                            finished("Error writing to database: " + error);
+                        } else {
+                            finished("Import ok! " + output);
+                        }
+                    });
                 } else {
                     finished("Errors, not imported. " + output);
                 }

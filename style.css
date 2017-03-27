@@ -1,101 +1,470 @@
 body {
-	color: white;
-	font: 36pt 'Roboto';
-	text-shadow: -1px -1px 0 #000,  
-		1px -1px 0 #000,
-		-1px 1px 0 #000,
-		1px 1px 0 #000;
+  color: white;
+  font: 36pt 'Roboto';
+  margin: 0;
 }
-
-/*#game {
-	visibility: visible;
-}
-
-#sideboard {
-	visibility: hidden;
-}*/
 
 #title {
-	font: 72pt 'Sigmar One';
-	text-align: center;
-	margin-top: 30%;
-	color: #eee;
+  font: 72pt 'Metal Mania';
+  text-align: center;
+  top: 0%;
+  color: #eee;
+  text-shadow: -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000;
 }
 
 #freetext {
-	font-size: 48pt;
-	text-align: center;
-	margin-top: 40%;	
+  font-size: 48pt;
+  text-align: center;
+  top: 40%;
+}
+
+#title, #freetext {
+  position: absolute;
+  left: 0;
+  right: 0;
+  transition: transform 400ms cubic-bezier(0.4, 0.0, 0.2, 1),
+  opacity 400ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+#title.inactive, #freetext.inactive {
+  display: block;
+  opacity: 0;
+  transform: translateY(50px) scale(0.9);
 }
 
 .decklist {
-	position: absolute;
-	top: 400px;
-	font: 16pt 'Roboto Condensed';
-	background-color: #555;
-	column-count: 2;
-	width: 40%;
-	border: 10px solid #555;
-	border-radius: 25px;
-
-	padding-left: 1em;
-
-	white-space: pre-line;
+  position: absolute;
+  top: 400px;
+  font: 16pt 'Roboto Condensed';
+  background-color: #555;
+  column-count: 2;
+  width: 40%;
+  border: 10px solid #555;
+  border-radius: 25px;
+  padding-left: 1em;
+  white-space: pre-line;
 }
 
 .decklist.left {
-	left: 5%;
+  left: 5%;
 }
 
 .decklist.right {
-	right: 5%;
+  right: 5%;
 }
 
-
-.lifetotal {
-	font-size: 64pt;
+#game {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  transition: transform 400ms cubic-bezier(0.4, 0.0, 0.2, 1),
+  opacity 400ms cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
-.scorebox, .lifetotal {
-	position: absolute;
-	top: 575px;
+#game.inactive {
+  opacity: 0;
 }
 
-.game {
-	position: absolute;
-	top: 575px;
-	background-color: rgba(0, 0, 0, 0.5);
-	height: 200px;
+.header {
+  height: 130px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 8.3%;
+  position: relative;
+}
+
+.recordAndTime, .lifetotal, .scorebox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.recordAndTime, .lifetotal:before, .scorebox, .scorebox:before {
+  box-shadow: rgba(64, 64, 64, 0.7) 0 0 20px;
+}
+
+.scorebox {
+  flex-grow: 1;
+  flex-basis: 0;
+  height: 72px;
 }
 
 .scorebox.left {
-	left: 25%;
+  align-items: flex-end;
+  background: linear-gradient(to right, #2c2c2c, #121212);
+  padding-right: 60px;
 }
+
+.scorebox:before {
+  content: '';
+  position: absolute;
+  width: 7.3%;
+  top: 0;
+  height: 72px;
+  background: #2c2c2c;
+}
+
+.scorebox.left:before {
+  left: 1%;
+  clip-path: url(#clipLeft);
+}
+
+.scorebox.right:before {
+  right: 1%;
+  clip-path: url(#clipRight);
+}
+
 .scorebox.right {
-	right: 25%;
-	text-align: right;
+  align-items: flex-start;
+  background: linear-gradient(to left, #2c2c2c, #121212);
+  padding-left: 60px;
 }
 
-.gamerecord {
-	margin-top: 0px;
-	width: 100%;
-	text-align: center;;
+.life, .poison {
+  transition: transform 400ms cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
-.timer {
-	margin-top: 50px;
-	width: 100%;
-	text-align: center;
+.life, .poison {
+  z-index: 1;
 }
 
-.overtime {
-	color: orange;
+.life {
+  font-size: 40px;
+}
+
+.poison {
+  font-size: 14px;
+}
+
+.poison:before {
+  content: "\03d5";
+  font-size: 12px;
+  vertical-align: top;
+  color: #35db3d;
+}
+
+.lifetotal {
+  width: 0;
+  height: 85px;
+  z-index: 1;
+  font-family: 'Cantata One';
+  position: relative;
+}
+
+.lifetotal:before {
+  content: '';
+  position: absolute;
+  background: linear-gradient(#313c56, #252b3e);
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
 }
 
 .lifetotal.left {
-	left: 15%;
 }
+
 .lifetotal.right {
-	right: 15%;
-	text-align: right;
+}
+
+.name {
+  font-size: 26px;
+}
+
+.deck {
+  font-size: 20px;
+}
+
+.recordAndTime {
+  width: 180px;
+  height: 150px;
+  border-radius: 50%;
+  background: linear-gradient(#494949, #1b1b1b);
+  justify-content: center;
+  font-size: 30px;
+  margin-top: -50px;
+  padding-top: 40px;
+  line-height: .9;
+  box-sizing: border-box;
+}
+
+.wins {
+  display: inline-block;
+  position: relative;
+}
+
+.logo {
+  font-family: "Metal Mania";
+  text-align: center;
+  font-size: 30px;
+}
+
+.header .logo {
+  color: #705134;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -43px;
+  width: 87px;
+  height: 57px;
+  line-height: 57px;
+  box-sizing: border-box;
+  background: url(ned-logo.svg);
+}
+
+.overtime {
+  color: orange;
+}
+
+.sidebars {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.featuredcard {
+  width: 20%;
+  font-size: 10pt;
+  padding: 30px 30px 100px;
+  box-sizing: border-box;
+  /* Background pattern from Subtle Patterns (https://www.toptal.com/designers/subtlepatterns) */
+  background: url("footer_lodyas.png");
+  position: absolute;
+  bottom: 0;
+  z-index: 2;
+  transition: transform 400ms cubic-bezier(0.0, 0.0, 0.2, 1),
+  opacity 400ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.featuredcard.offscreen {
+  opacity: 0;
+  transition: transform 400ms cubic-bezier(0.4, 0.0, 1, 1),
+  opacity 400ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.featuredcard.left {
+  border-top-right-radius: 10px;
+  transform-origin: left bottom;
+}
+
+.featuredcard.right {
+  border-top-left-radius: 10px;
+  right: 0;
+  transform-origin: right bottom;
+}
+
+#sideboard:not(.inactive) ~ .featuredcard {
+  left: 40%;
+  right: auto;
+  bottom: 20%;
+  padding-bottom: 30px;
+  border-radius: 10px;
+}
+
+#sideboard:not(.inactive) ~ .featuredcard.offscreen {
+  transform: translateY(50px);
+}
+
+.featuredcard .cardname {
+  font-size: 140%;
+  font-style: oblique;
+}
+
+.featuredcard .img {
+  width: 100%;
+  border-radius: 13px;
+  margin-bottom: 20px;
+}
+
+.featuredcard > div {
+  padding: 3px 10px;
+}
+
+.sideboard {
+  position: absolute;
+  top: 150px;
+  font: 16pt 'Roboto Condensed';
+  background: linear-gradient(#313c56, #252b3e);
+  width: 20%;
+  border-radius: 10px;
+  padding: 10px 1em 10px 1em;
+  transition: transform 500ms cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.sideboard .card {
+  padding: 0;
+  margin: 0;
+  background: none ! important;
+  width: auto;
+}
+
+.inactive .sideboard {
+  transition: transform 500ms cubic-bezier(0.4, 0.0, 1, 1);
+}
+
+.sideboard.p1 {
+  left: -10px;
+}
+
+.inactive .sideboard.p1 {
+  transform: translateX(-150%);
+}
+
+.sideboard.p2 {
+  right: -10px;
+}
+
+.inactive .sideboard.p2 {
+  transform: translateX(150%);
+}
+
+.left.offscreen {
+  transform: translateX(-100%) scale(0.8) rotateZ(5deg);
+}
+
+.right.offscreen {
+  transform: translateX(100%) scale(0.8) rotateZ(-5deg);
+}
+
+.updating {
+  transform: rotateX(90deg);
+}
+
+.wins {
+  animation-duration: 5s;
+}
+
+.wins.updating {
+  transform: none;
+}
+
+@keyframes winAnimation {
+  0% {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.8);
+  }
+
+  5% {
+    opacity: 1;
+  }
+
+  10% {
+    transform: rotate(144deg) scale(1.2);
+  }
+
+  50% {
+    transform: rotate(720deg) scale(1.2);
+  }
+
+  90% {
+    transform: rotate(1296deg) scale(1.2);
+  }
+
+  95% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: rotate(1440deg) scale(0.9);
+  }
+}
+
+.wins.updating:before {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  top: -25px;
+  left: -32px;
+  background: url("burger_sandwich.png") no-repeat center;
+  background-size: contain;
+  animation: winAnimation 2s linear;
+  z-index: 5;
+}
+
+#chyron {
+  position: absolute;
+  bottom: 0;
+  left: 50px;
+  right: 50px;
+  height: 100px;
+  background: linear-gradient(to right, #2c2c2c, #121212);
+  transition: transform 500ms cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+#chyron.inactive {
+  transition: transform 500ms cubic-bezier(0.4, 0.0, 1, 1);
+  transform: translateY(100%);
+}
+
+#chyron > * {
+  line-height: 110px;
+  transition: opacity 400ms cubic-bezier(0.4, 0.0, 0.2, 1);
+  text-align: center;
+}
+
+#chyronSingle, #chyronSplit {
+  position: absolute;
+  top: 0;
+  left: 100px;
+  right: 100px;
+  bottom: 0;
+}
+
+#chyronSplit {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
+}
+
+#chyronLeft, #chyronRight {
+  flex-grow: 1;
+  width: 0;
+}
+
+#chyron:before, #chyron:after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  top: 0;
+  height: 250px;
+}
+
+#chyron:before {
+  background: #2c2c2c;
+  left: -100px;
+  clip-path: url(#clipLeft);
+  transform: scaleY(-1);
+}
+
+#chyron:after {
+  background: #121212;
+  right: -100px;
+  clip-path: url(#clipRight);
+  transform: scaleY(-1);
+}
+
+#testBgd {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url(background.png) no-repeat;
+  background-size: cover;
+  display: none;
+  z-index: -1;
 }

@@ -7,12 +7,20 @@ body {
   text-align: center;
 }
 
+a {
+  color: #eee;
+}
+
 .title {
   font: 72pt 'Metal Mania';
   text-align: center;
   margin-top: 40px;
   margin-bottom: 30px;
   color: #eee;
+}
+
+.date {
+  margin-bottom: 30px;
 }
 
 .columns {

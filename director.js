@@ -1,6 +1,10 @@
 var modeRef = firebase.database().ref('mode');
 modeRef.on('value', function (v) {
-    $("#mode").val(v.val());
+    var mode = v.val();
+    $("#mode_sideboard").prop("checked", mode.sideboard);
+    $("#mode_title").prop("checked", mode.title);
+    $("#mode_single").prop("checked", mode.chyron == "single");
+    $("#mode_split").prop("checked", mode.chyron == "split");
 });
 firebase.database().ref('player1').on('value', function (v) {
     if (v.val()) {
@@ -28,10 +32,13 @@ firebase.database().ref('chyron').on('value', function (v) {
     $("#chyron_left").val(v.val().left);
     $("#chyron_right").val(v.val().right);
 });
+firebase.database().ref('streamStart').on('value', function (v) {
+    $("#streamStart").val(v.val());
+});
 
 function adjustValue(amount) {
     var input = $(this).siblings("input");
-    input.val(parseInt(input.val()) + amount).change();
+    input.val((parseInt(input.val()) || 0) + amount).change();
 }
 
 $(function () {
@@ -47,11 +54,18 @@ $(function () {
             firebase.database().ref($(this).attr("id").replace("_", "/")).set(ui.item.value);
         },
     });
-    $("#mode").change(function () {
-        firebase.database().ref('mode').set($(this).val());
+    $(".sideboard").change(function () {
+        firebase.database().ref($(this).attr("id").replace("_", "/")).set($(this).prop("checked"));
+    });
+    $(".commentator_mode").change(function () {
+        var vals = {};
+        vals['title'] = $("#mode_title").prop("checked");
+        var checkedChyron = $(".chyron_mode:checked");
+        vals['chyron'] = checkedChyron.length ? checkedChyron.data("value") : false;
+        firebase.database().ref('mode').update(vals);
     });
     // don't stomp on the autocomplete change eventhandler
-    $("input[id!='player1_featuredcard'][id!='player2_featuredcard'], textarea").change(function () {
+    $("input[type!='checkbox'][type!='radio'][id!='player1_featuredcard'][id!='player2_featuredcard']").change(function () {
         firebase.database().ref($(this).attr("id").replace("_", "/")).set($(this).val());
     });
     $(".clear").click(function () {
@@ -71,6 +85,10 @@ $(function () {
     $(".minus5").click(function () {
         adjustValue.call(this, -5);
     });
+    $(".infinity").click(function () {
+        var input = $(this).siblings("input");
+        input.val("∞").change();
+    });
     $(".win").click(function () {
         var values = {};
         values["player1/life"] = 20;
@@ -82,7 +100,7 @@ $(function () {
         firebase.database().ref().update(values);
     });
     $(".preset-option").click(function () {
-        $(this).siblings("textarea").val($(this).text()).change();
+        $(this).siblings("input").val($(this).text()).change();
     });
     $(".swap").click(function () {
         firebase.database().ref().transaction(function (data) {
@@ -101,5 +119,22 @@ $(function () {
             }
             return data;
         });
+    });
+    $(".clearHands").click(function () {
+        firebase.database().ref().transaction(
+            function (data) {
+                function clearDeck(deck) {
+                    for (var i = 0; i < deck.length; i++) {
+                        deck[i].inhand = 0;
+                    }
+                }
+
+                if (data) {
+                    clearDeck(data.p1deck);
+                    clearDeck(data.p2deck);
+                }
+                return data;
+            }
+        )
     });
 });

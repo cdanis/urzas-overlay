@@ -96,6 +96,7 @@ firebase.database().ref('p1deck').on('value', function (v) {
     var p1tab = $("#p1tab");
     var deck = _.map(v.val(), function(card, idx) { card['index'] = idx; return card; });
     createSpotterControls(p1tab.find(".lands"), p1tab.find(".cards"), deck, 1);
+    fillHand(p1tab.find(".hand"), deck);
     p1tab.find(".total").text(cardsInHand(deck) + " in hand");
 });
 firebase.database().ref('player2').on('value', function (v) {
@@ -107,6 +108,7 @@ firebase.database().ref('p2deck').on('value', function (v) {
     var p2tab = $("#p2tab");
     var deck = _.map(v.val(), function(card, idx) { card['index'] = idx; return card; });
     createSpotterControls(p2tab.find(".lands"), p2tab.find(".cards"), deck, 2);
+    fillHand(p2tab.find(".hand"), deck);
     p2tab.find(".total").text(cardsInHand(deck) + " in hand");
 });
 

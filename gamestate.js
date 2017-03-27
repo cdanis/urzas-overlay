@@ -1,26 +1,22 @@
 var modeRef = firebase.database().ref('mode');
 modeRef.on('value', function (v) {
-    mode = v.val();
-    modes = ["sideboard", "chyron", "game", "title", "freetext"];
-    _.each(modes, function (ele, idx, list) {
-        $("#" + ele).addClass("inactive");
-    });
-    var modeSplit = mode.split("\.");
-    var modePrefix = modeSplit[0];
-    if (_.contains(modes, modePrefix)) {
-        $("#" + modePrefix).removeClass("inactive");
-    }
-    if (modePrefix == "chyron") {
-        if (modeSplit[1] == "single") {
-            $("#chyronSingle").css("opacity", 1);
-            $("#chyronLeft").css("opacity", 0);
-            $("#chyronRight").css("opacity", 0);
-            $("#chyron .logo").css("opacity", 0);
-        } else {
-            $("#chyronSingle").css("opacity", 0);
-            $("#chyronLeft").css("opacity", 1);
-            $("#chyronRight").css("opacity", 1);
-            $("#chyron .logo").css("opacity", 1);
+    var modes = v.val();
+    for (mode in modes) {
+        if (modes.hasOwnProperty(mode)) {
+            $("#" + mode).toggleClass("inactive", !modes[mode]);
+            if (mode == "chyron") {
+                if (modes[mode] == "single") {
+                    $("#chyronSingle").css("opacity", 1);
+                    $("#chyronLeft").css("opacity", 0);
+                    $("#chyronRight").css("opacity", 0);
+                    $("#chyron").find(".logo").css("opacity", 0);
+                } else {
+                    $("#chyronSingle").css("opacity", 0);
+                    $("#chyronLeft").css("opacity", 1);
+                    $("#chyronRight").css("opacity", 1);
+                    $("#chyron").find(".logo").css("opacity", 1);
+                }
+            }
         }
     }
 });
@@ -44,7 +40,7 @@ $.get("https://api.magicthegathering.io/v1/sets",
             _.map(data.sets, function(x) { return x.magicCardsInfoCode || x.code; }));
     });
 
-function fillFeaturedCard(cardName, featuredCardSelector, handSelector) {
+function fillFeaturedCard(cardName, featuredCardSelector) {
     if (cardName != "") {
         // exact match on the name, because autocomplete in director.html should have
         // put an exact name there for us
@@ -55,19 +51,25 @@ function fillFeaturedCard(cardName, featuredCardSelector, handSelector) {
                         return sets.indexOf(c.set);
                     });
                     var card = data.cards[0];
-                    imageUrl = card.imageUrl;
+                    var imageUrl = card.imageUrl;
                     if (card.set && card.number) {
                         // not all cards have a number (e.g. LEA Lightning Bolt)
                         imageUrl = ("http://magiccards.info/scans/en/" + gathererToMagiccardsInfo[card.set]
                                     + "/" + card.number + ".jpg").toLowerCase();
                     }
+                    var setReq = Promise.resolve(null);
+                    if (card.set) {
+                        setReq = $.get("https://api.magicthegathering.io/v1/sets/" + card.set);
+                    }
                     var img = $(featuredCardSelector).find(".img");
                     img.attr("src", imageUrl);
-                    img.on("load", function () {
-                        $(featuredCardSelector).find(".cardName").text(card.name);
-                        $(featuredCardSelector).find(".cardType").text(card.types.join(" "));
-                        $(featuredCardSelector).find(".rarityAndSet").text(card.rarity + ", " + card.setName);
-                        $(featuredCardSelector).removeClass("offscreen");
+                    img.one("load", function () {
+                        setReq.done(function (data) {
+                            $(featuredCardSelector).find(".rarityAndSet").text(
+                                card.rarity + ", " + card.setName +
+                                (data && data.set ? " (" + data.set.releaseDate.substring(0, 4) + ")" : ""));
+                            $(featuredCardSelector).removeClass("offscreen");
+                        })
                     });
                     img.on("error", function () {
                         if ($(this).attr("src") != card.imageUrl) {
@@ -104,11 +106,11 @@ function updateValue(elt, newValue, toggleOnZero) {
             elt.addClass("updating");
             var fallback;
             var update = function () {
-                elt.text(newValue);
+                elt.text(newValue == "inf" ? "∞" : newValue);
                 elt.removeClass("updating");
                 elt.off(event);
                 if (toggleOnZero) {
-                    elt.toggle(!!parseInt(newValue));
+                    elt.toggle(newValue == "inf" || !!parseInt(newValue));
                 }
                 clearTimeout(fallback);
             };
@@ -144,24 +146,30 @@ var updateP2Numbers = _.debounce(function(v) {
 firebase.database().ref('player1').on('value', function (v) {
     updateP1Numbers(v);
     $(".p1.name").text(v.val().name);
-    $(".p1.deck").text(v.val().deck);
-    fillFeaturedCard(v.val().featuredcard, ".p1.featuredcard", ".p1.hand");
+    var deck = $(".p1.deck");
+    deck.text(v.val().deck);
+    deck.removeData("Emoji");
+    deck.Emoji({path: 'https://rodrigopolo.github.io/jqueryemoji/img/apple72/'});
+    fillFeaturedCard(v.val().featuredcard, ".p1.featuredcard");
 });
 firebase.database().ref('p1deck').on('value', function (v) {
     var handElt = $(".p1.hand");
     fillHand(handElt, v.val());
-    showSideboard($(".p1.sideboard"), v.val());
+    fillDeck($(".p1.sideboard"), v.val(), true);
 });
 firebase.database().ref('player2').on('value', function (v) {
     updateP2Numbers(v);
     $(".p2.name").text(v.val().name);
-    $(".p2.deck").text(v.val().deck);
-    fillFeaturedCard(v.val().featuredcard, ".p2.featuredcard", ".p2.hand");
+    var deck = $(".p2.deck");
+    deck.text(v.val().deck);
+    deck.removeData("Emoji");
+    deck.Emoji({path: 'https://rodrigopolo.github.io/jqueryemoji/img/apple72/'});
+    fillFeaturedCard(v.val().featuredcard, ".p2.featuredcard");
 });
 firebase.database().ref('p2deck').on('value', function (v) {
     var handElt = $(".p2.hand");
     fillHand(handElt, v.val());
-    showSideboard($(".p2.sideboard"), v.val());
+    fillDeck($(".p2.sideboard"), v.val(), true);
 });
 firebase.database().ref('chyron').on('value', function (v) {
     var single = $("#chyronSingle");
@@ -170,24 +178,4 @@ firebase.database().ref('chyron').on('value', function (v) {
     single.Emoji({path: 'https://rodrigopolo.github.io/jqueryemoji/img/apple72/'});
     $("#chyronLeft").text(v.val().left);
     $("#chyronRight").text(v.val().right);
-});
-var timerId = null;
-firebase.database().ref('end_of_round_epoch_ms').on('value', function (v) {
-    if (timerId) {
-        window.clearInterval(timerId);
-    }
-    var end_of_round_epoch_ms = v.val();
-    if ($.isNumeric(end_of_round_epoch_ms) && end_of_round_epoch_ms > 0) {
-        timerId = countdown(end_of_round_epoch_ms, function (ts) {
-            var timer = $(".scorebox.timer");
-            timer.text(ts.minutes + ":" + ("0" + ts.seconds).slice(-2));
-            if (ts.value > 0) {
-                timer.addClass("overtime");
-            } else {
-                timer.removeClass("overtime");
-            }
-        });
-    } else {
-        $(".scorebox.timer").text("");
-    }
 });

@@ -4,6 +4,3 @@
   	databaseURL: "https://urzaslunchbreak.firebaseio.com",
   	storageBucket: "",
   };
-
-  var firebaseUsername = "urzaslunch@gmail.com";
-  var firebasePassword = "ElkUtyDtI_tr";
