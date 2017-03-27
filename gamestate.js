@@ -123,28 +123,23 @@ function updateValue(elt, newValue, toggleOnZero) {
 }
 
 // Update life totals, with debouncing
-var updateP1Numbers = _.debounce(function(v) {
-    updateValue($(".p1.life"), v.val().life);
-    updateValue($(".p1.poison"), v.val().poison, true);
+function updateSide(prefix, v) {
+    updateValue($(prefix + ".life"), v.val().life);
+    updateValue($(prefix + ".poison"), v.val().poison, true);
     if (v.val().gamewins > 0) {
-        updateValue($(".p1.wins"), v.val().gamewins);
+        updateValue($(prefix + ".wins"), v.val().gamewins);
     } else {
-        $(".p1.wins").text(v.val().gamewins);
+        $(prefix + ".wins").text(v.val().gamewins);
     }
-}, 1000);
+}
 
-var updateP2Numbers = _.debounce(function(v) {
-    updateValue($(".p2.life"), v.val().life);
-    updateValue($(".p2.poison"), v.val().poison, true);
-    if (v.val().gamewins > 0) {
-        updateValue($(".p2.wins"), v.val().gamewins);
-    } else {
-        $(".p2.wins").text(v.val().gamewins);
-    }
+var updateAllNumbers = _.debounce(function () {
+    firebase.database().ref('player1').once('value', updateSide.bind(null, ".p1"));
+    firebase.database().ref('player2').once('value', updateSide.bind(null, ".p2"));
 }, 1000);
 
 firebase.database().ref('player1').on('value', function (v) {
-    updateP1Numbers(v);
+    updateAllNumbers();
     $(".p1.name").text(v.val().name);
     var deck = $(".p1.deck");
     deck.text(v.val().deck);
@@ -158,7 +153,7 @@ firebase.database().ref('p1deck').on('value', function (v) {
     fillDeck($(".p1.sideboard"), v.val(), true);
 });
 firebase.database().ref('player2').on('value', function (v) {
-    updateP2Numbers(v);
+    updateAllNumbers();
     $(".p2.name").text(v.val().name);
     var deck = $(".p2.deck");
     deck.text(v.val().deck);
