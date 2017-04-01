@@ -20,7 +20,7 @@ function gen(github, resp) {
         repo.getContents("master", "decklist.html", true,
             function (error, result, request) {
                 var decklistHtml = result;
-                decklistHtml = spliceString(decklistHtml, decklistHtml.indexOf("<!-- TITLE_DATE -->"), 0,
+                decklistHtml = spliceString(decklistHtml, decklistHtml.indexOf("</title>"), 0,
                     ` - ${moment().format("MMMM Do YYYY")}`);
                 decklistHtml = spliceString(decklistHtml, decklistHtml.indexOf("<!-- DATE -->"), 0,
                     `<div class="date">${moment().format("MMMM Do YYYY")}</div>`);
