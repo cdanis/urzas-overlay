@@ -201,7 +201,14 @@ function basicLandNameToBackgroundColorType(basicLandName) {
                         if (error) {
                             finished("Error writing to database: " + error);
                         } else {
-                            finished(output || "Import ok!");
+                            var cardCount = 0;
+                            for (card of maindeck) {
+                                cardCount += card.count;
+                            }
+                            for (card of sideboard) {
+                                cardCount += card.count;
+                            }
+                            finished(output || `Import ok!  ${cardCount} cards imported.`);
                         }
                     });
                 } else {
