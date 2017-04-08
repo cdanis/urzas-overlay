@@ -241,7 +241,7 @@ body {
   /* Background pattern from Subtle Patterns (https://www.toptal.com/designers/subtlepatterns) */
   background: url("footer_lodyas.png");
   position: absolute;
-  bottom: 0;
+  top: 120px;
   z-index: 2;
   transition: transform 400ms cubic-bezier(0.0, 0.0, 0.2, 1),
   opacity 400ms cubic-bezier(0.4, 0.0, 0.2, 1);
@@ -255,18 +255,21 @@ body {
 
 .featuredcard.left {
   border-top-right-radius: 10px;
-  transform-origin: left bottom;
+  border-bottom-right-radius: 10px;
+  transform-origin: left top;
 }
 
 .featuredcard.right {
   border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
   right: 0;
-  transform-origin: right bottom;
+  transform-origin: right top;
 }
 
 #sideboard:not(.inactive) ~ .featuredcard {
   left: 40%;
   right: auto;
+  top: auto;
   bottom: 20%;
   padding-bottom: 30px;
   border-radius: 10px;
