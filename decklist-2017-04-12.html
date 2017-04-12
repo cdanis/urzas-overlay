@@ -1,0 +1,133 @@
+<!--
+	Read Only by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <title>Urza's Lunch Break deck lists - April 12th 2017</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="google-site-verification" content="HVDr5I5AdDnxu9rheNnwII0m5s20tPULpeedxXV5fuQ"/>
+    <!--[if lte IE 8]>
+    <script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/main.css"/>
+    <link href="css/mana.css" rel="stylesheet" type="text/css"/>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"
+            integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="underscore-min.js"></script>
+
+    <script type="text/javascript">
+                    $(function() {
+                        var p1 = $("#p1");
+                        var p2 = $("#p2");
+                        p1.find(".player-name").text("Zhe");
+                        p2.find(".player-name").text("Dom");
+                        p1.find(".deck-name").text("Mono-U Tron");
+                        p2.find(".deck-name").text("BtL Scapeshift");
+                        fillDeck(p1.find(".deck"), [{"altCost":"","cost":"","count":1,"inhand":0,"name":"Academy Ruins","plateBackground":"land","sideboard":false,"type":"Legendary Land"},{"altCost":"","cost":"{1}{U}","count":1,"inhand":0,"name":"Anticipate","plateBackground":"blue","sideboard":false,"type":"Instant"},{"altCost":"","cost":"{X}{X}","count":2,"inhand":0,"name":"Chalice of the Void","plateBackground":"artifact","sideboard":false,"type":"Artifact"},{"altCost":"","cost":"{X}{U}","count":4,"inhand":0,"name":"Condescend","plateBackground":"blue","sideboard":false,"type":"Instant"},{"altCost":"","cost":"{1}{U}","count":1,"inhand":0,"name":"Cyclonic Rift","plateBackground":"blue","sideboard":false,"type":"Instant"},{"altCost":"","cost":"{X}{U}","count":1,"inhand":0,"name":"Epiphany at the Drownyard","plateBackground":"blue","sideboard":false,"type":"Instant"},{"altCost":"","cost":"{1}","count":4,"inhand":0,"name":"Expedition Map","plateBackground":"artifact","sideboard":false,"type":"Artifact"},{"altCost":"","cost":"","count":1,"inhand":0,"name":"Gemstone Caverns","plateBackground":"land","sideboard":false,"type":"Legendary Land"},{"altCost":"","cost":"","count":1,"inhand":0,"name":"Ghost Quarter","plateBackground":"land","sideboard":false,"type":"Land"},{"altCost":"","cost":"","count":7,"inhand":0,"name":"Island","plateBackground":"blue","sideboard":false,"type":"Basic Land — Island"},{"altCost":"","cost":"{1}{U}","count":1,"inhand":0,"name":"Mana Leak","plateBackground":"blue","sideboard":false,"type":"Instant"},{"altCost":"","cost":"","count":1,"inhand":0,"name":"Minamo, School at Water's Edge","plateBackground":"land","sideboard":false,"type":"Legendary Land"},{"altCost":"","cost":"{6}","count":1,"inhand":0,"name":"Mindslaver","plateBackground":"artifact","sideboard":false,"type":"Legendary Artifact"},{"altCost":"","cost":"{3}","count":1,"inhand":0,"name":"Oblivion Stone","plateBackground":"artifact","sideboard":false,"type":"Artifact"},{"altCost":"","cost":"","count":1,"inhand":0,"name":"Oboro, Palace in the Clouds","plateBackground":"land","sideboard":false,"type":"Legendary Land"},{"altCost":"","cost":"{7}","count":1,"inhand":0,"name":"Platinum Angel","plateBackground":"artifact","sideboard":false,"type":"Artifact Creature — Angel"},{"altCost":"","cost":"{1}{U}","count":2,"inhand":0,"name":"Remand","plateBackground":"blue","sideboard":false,"type":"Instant"},{"altCost":"","cost":"{X}{U}","count":2,"inhand":0,"name":"Repeal","plateBackground":"blue","sideboard":false,"type":"Instant"},{"altCost":"","cost":"{1}{U}","count":1,"inhand":0,"name":"Snapcaster Mage","plateBackground":"blue","sideboard":false,"type":"Creature — Human Wizard"},{"altCost":"","cost":"{1}{C}","count":2,"inhand":0,"name":"Spatial Contortion","plateBackground":"colorless","sideboard":false,"type":"Instant"},{"altCost":"","cost":"{2}{U}","count":4,"inhand":0,"name":"Thirst for Knowledge","plateBackground":"blue","sideboard":false,"type":"Instant"},{"altCost":"","cost":"{3}{C}","count":2,"inhand":0,"name":"Thought-Knot Seer","plateBackground":"colorless","sideboard":false,"type":"Creature — Eldrazi"},{"altCost":"","cost":"","count":1,"inhand":0,"name":"Tolaria West","plateBackground":"land","sideboard":false,"type":"Land"},{"altCost":"","cost":"{4}{U}{U}","count":1,"inhand":0,"name":"Torrential Gearhulk","plateBackground":"blue","sideboard":false,"type":"Artifact Creature — Construct"},{"altCost":"","cost":"{2}{U}","count":1,"inhand":0,"name":"Treasure Mage","plateBackground":"blue","sideboard":false,"type":"Creature — Human Wizard"},{"altCost":"","cost":"{8}","count":1,"inhand":0,"name":"Ugin, the Spirit Dragon","plateBackground":"colorless","sideboard":false,"type":"Planeswalker — Ugin"},{"altCost":"","cost":"","count":4,"inhand":0,"name":"Urza's Mine","plateBackground":"land","sideboard":false,"type":"Land — Urza’s Mine"},{"altCost":"","cost":"","count":4,"inhand":0,"name":"Urza's Power Plant","plateBackground":"land","sideboard":false,"type":"Land — Urza’s Power-Plant"},{"altCost":"","cost":"","count":4,"inhand":0,"name":"Urza's Tower","plateBackground":"land","sideboard":false,"type":"Land — Urza’s Tower"},{"altCost":"","cost":"{6}","count":2,"inhand":0,"name":"Wurmcoil Engine","plateBackground":"artifact","sideboard":false,"type":"Artifact Creature — Wurm"},{"altCost":"","cost":"{X}{X}","count":2,"inhand":0,"name":"Chalice of the Void","plateBackground":"artifact","sideboard":true,"type":"Artifact"},{"altCost":"","cost":"{1}{B/P}{B/P}","count":2,"inhand":0,"name":"Dismember","plateBackground":"black","sideboard":true,"type":"Instant"},{"altCost":"","cost":"{1}{U}","count":2,"inhand":0,"name":"Hurkyl's Recall","plateBackground":"blue","sideboard":true,"type":"Instant"},{"altCost":"","cost":"{4}","count":1,"inhand":0,"name":"Jester's Cap","plateBackground":"artifact","sideboard":true,"type":"Artifact"},{"altCost":"","cost":"{1}{U}","count":2,"inhand":0,"name":"Negate","plateBackground":"blue","sideboard":true,"type":"Instant"},{"altCost":"","cost":"{1}{U}","count":2,"inhand":0,"name":"Spreading Seas","plateBackground":"blue","sideboard":true,"type":"Enchantment — Aura"},{"altCost":"","cost":"{2}{U}{U}","count":2,"inhand":0,"name":"Summary Dismissal","plateBackground":"blue","sideboard":true,"type":"Instant"},{"altCost":"","cost":"{B/P}","count":2,"inhand":0,"name":"Surgical Extraction","plateBackground":"black","sideboard":true,"type":"Instant"}], false);
+                        fillDeck(p1.find(".side"), [{"altCost":"","cost":"","count":1,"inhand":0,"name":"Academy Ruins","plateBackground":"land","sideboard":false,"type":"Legendary Land"},{"altCost":"","cost":"{1}{U}","count":1,"inhand":0,"name":"Anticipate","plateBackground":"blue","sideboard":false,"type":"Instant"},{"altCost":"","cost":"{X}{X}","count":2,"inhand":0,"name":"Chalice of the Void","plateBackground":"artifact","sideboard":false,"type":"Artifact"},{"altCost":"","cost":"{X}{U}","count":4,"inhand":0,"name":"Condescend","plateBackground":"blue","sideboard":false,"type":"Instant"},{"altCost":"","cost":"{1}{U}","count":1,"inhand":0,"name":"Cyclonic Rift","plateBackground":"blue","sideboard":false,"type":"Instant"},{"altCost":"","cost":"{X}{U}","count":1,"inhand":0,"name":"Epiphany at the Drownyard","plateBackground":"blue","sideboard":false,"type":"Instant"},{"altCost":"","cost":"{1}","count":4,"inhand":0,"name":"Expedition Map","plateBackground":"artifact","sideboard":false,"type":"Artifact"},{"altCost":"","cost":"","count":1,"inhand":0,"name":"Gemstone Caverns","plateBackground":"land","sideboard":false,"type":"Legendary Land"},{"altCost":"","cost":"","count":1,"inhand":0,"name":"Ghost Quarter","plateBackground":"land","sideboard":false,"type":"Land"},{"altCost":"","cost":"","count":7,"inhand":0,"name":"Island","plateBackground":"blue","sideboard":false,"type":"Basic Land — Island"},{"altCost":"","cost":"{1}{U}","count":1,"inhand":0,"name":"Mana Leak","plateBackground":"blue","sideboard":false,"type":"Instant"},{"altCost":"","cost":"","count":1,"inhand":0,"name":"Minamo, School at Water's Edge","plateBackground":"land","sideboard":false,"type":"Legendary Land"},{"altCost":"","cost":"{6}","count":1,"inhand":0,"name":"Mindslaver","plateBackground":"artifact","sideboard":false,"type":"Legendary Artifact"},{"altCost":"","cost":"{3}","count":1,"inhand":0,"name":"Oblivion Stone","plateBackground":"artifact","sideboard":false,"type":"Artifact"},{"altCost":"","cost":"","count":1,"inhand":0,"name":"Oboro, Palace in the Clouds","plateBackground":"land","sideboard":false,"type":"Legendary Land"},{"altCost":"","cost":"{7}","count":1,"inhand":0,"name":"Platinum Angel","plateBackground":"artifact","sideboard":false,"type":"Artifact Creature — Angel"},{"altCost":"","cost":"{1}{U}","count":2,"inhand":0,"name":"Remand","plateBackground":"blue","sideboard":false,"type":"Instant"},{"altCost":"","cost":"{X}{U}","count":2,"inhand":0,"name":"Repeal","plateBackground":"blue","sideboard":false,"type":"Instant"},{"altCost":"","cost":"{1}{U}","count":1,"inhand":0,"name":"Snapcaster Mage","plateBackground":"blue","sideboard":false,"type":"Creature — Human Wizard"},{"altCost":"","cost":"{1}{C}","count":2,"inhand":0,"name":"Spatial Contortion","plateBackground":"colorless","sideboard":false,"type":"Instant"},{"altCost":"","cost":"{2}{U}","count":4,"inhand":0,"name":"Thirst for Knowledge","plateBackground":"blue","sideboard":false,"type":"Instant"},{"altCost":"","cost":"{3}{C}","count":2,"inhand":0,"name":"Thought-Knot Seer","plateBackground":"colorless","sideboard":false,"type":"Creature — Eldrazi"},{"altCost":"","cost":"","count":1,"inhand":0,"name":"Tolaria West","plateBackground":"land","sideboard":false,"type":"Land"},{"altCost":"","cost":"{4}{U}{U}","count":1,"inhand":0,"name":"Torrential Gearhulk","plateBackground":"blue","sideboard":false,"type":"Artifact Creature — Construct"},{"altCost":"","cost":"{2}{U}","count":1,"inhand":0,"name":"Treasure Mage","plateBackground":"blue","sideboard":false,"type":"Creature — Human Wizard"},{"altCost":"","cost":"{8}","count":1,"inhand":0,"name":"Ugin, the Spirit Dragon","plateBackground":"colorless","sideboard":false,"type":"Planeswalker — Ugin"},{"altCost":"","cost":"","count":4,"inhand":0,"name":"Urza's Mine","plateBackground":"land","sideboard":false,"type":"Land — Urza’s Mine"},{"altCost":"","cost":"","count":4,"inhand":0,"name":"Urza's Power Plant","plateBackground":"land","sideboard":false,"type":"Land — Urza’s Power-Plant"},{"altCost":"","cost":"","count":4,"inhand":0,"name":"Urza's Tower","plateBackground":"land","sideboard":false,"type":"Land — Urza’s Tower"},{"altCost":"","cost":"{6}","count":2,"inhand":0,"name":"Wurmcoil Engine","plateBackground":"artifact","sideboard":false,"type":"Artifact Creature — Wurm"},{"altCost":"","cost":"{X}{X}","count":2,"inhand":0,"name":"Chalice of the Void","plateBackground":"artifact","sideboard":true,"type":"Artifact"},{"altCost":"","cost":"{1}{B/P}{B/P}","count":2,"inhand":0,"name":"Dismember","plateBackground":"black","sideboard":true,"type":"Instant"},{"altCost":"","cost":"{1}{U}","count":2,"inhand":0,"name":"Hurkyl's Recall","plateBackground":"blue","sideboard":true,"type":"Instant"},{"altCost":"","cost":"{4}","count":1,"inhand":0,"name":"Jester's Cap","plateBackground":"artifact","sideboard":true,"type":"Artifact"},{"altCost":"","cost":"{1}{U}","count":2,"inhand":0,"name":"Negate","plateBackground":"blue","sideboard":true,"type":"Instant"},{"altCost":"","cost":"{1}{U}","count":2,"inhand":0,"name":"Spreading Seas","plateBackground":"blue","sideboard":true,"type":"Enchantment — Aura"},{"altCost":"","cost":"{2}{U}{U}","count":2,"inhand":0,"name":"Summary Dismissal","plateBackground":"blue","sideboard":true,"type":"Instant"},{"altCost":"","cost":"{B/P}","count":2,"inhand":0,"name":"Surgical Extraction","plateBackground":"black","sideboard":true,"type":"Instant"}], true);
+                        fillDeck(p2.find(".deck"), [{"altCost":"","cost":"{1}{R}{R}","count":1,"inhand":0,"name":"Anger of the Gods","plateBackground":"red","sideboard":false,"type":"Sorcery"},{"altCost":"","cost":"","count":2,"inhand":0,"name":"Breeding Pool","plateBackground":"land","sideboard":false,"type":"Land — Forest Island"},{"altCost":"","cost":"{3}{G}{U}","count":4,"inhand":0,"name":"Bring to Light","plateBackground":"multicolor","sideboard":false,"type":"Sorcery"},{"altCost":"","cost":"","count":1,"inhand":0,"name":"Cinder Glade","plateBackground":"land","sideboard":false,"type":"Land — Mountain Forest"},{"altCost":"","cost":"{1}{U}{U}{U}","count":4,"inhand":0,"name":"Cryptic Command","plateBackground":"blue","sideboard":false,"type":"Instant"},{"altCost":"","cost":"{X}","count":2,"inhand":0,"name":"Engineered Explosives","plateBackground":"artifact","sideboard":false,"type":"Artifact"},{"altCost":"","cost":"{1}{G}","count":2,"inhand":0,"name":"Farseek","plateBackground":"green","sideboard":false,"type":"Sorcery"},{"altCost":"","cost":"","count":2,"inhand":0,"name":"Forest","plateBackground":"green","sideboard":false,"type":"Basic Land — Forest"},{"altCost":"","cost":"","count":3,"inhand":0,"name":"Island","plateBackground":"blue","sideboard":false,"type":"Basic Land — Island"},{"altCost":"","cost":"{U}{R}","count":2,"inhand":0,"name":"Izzet Charm","plateBackground":"multicolor","sideboard":false,"type":"Instant"},{"altCost":"","cost":"{1}{B}{G}","count":1,"inhand":0,"name":"Maelstrom Pulse","plateBackground":"multicolor","sideboard":false,"type":"Sorcery"},{"altCost":"","cost":"","count":2,"inhand":0,"name":"Mountain","plateBackground":"red","sideboard":false,"type":"Basic Land — Mountain"},{"altCost":"","cost":"{1}{U}","count":1,"inhand":0,"name":"Negate","plateBackground":"blue","sideboard":false,"type":"Instant"},{"altCost":"","cost":"","count":1,"inhand":0,"name":"Overgrown Tomb","plateBackground":"land","sideboard":false,"type":"Land — Swamp Forest"},{"altCost":"","cost":"{1}{U}","count":4,"inhand":0,"name":"Remand","plateBackground":"blue","sideboard":false,"type":"Instant"},{"altCost":"","cost":"{1}{G}","count":4,"inhand":0,"name":"Sakura-Tribe Elder","plateBackground":"green","sideboard":false,"type":"Creature — Snake Shaman"},{"altCost":"","cost":"{2}{G}{G}","count":3,"inhand":0,"name":"Scapeshift","plateBackground":"green","sideboard":false,"type":"Sorcery"},{"altCost":"","cost":"{2}{G}","count":4,"inhand":0,"name":"Search for Tomorrow","plateBackground":"green","sideboard":false,"type":"Sorcery"},{"altCost":"","cost":"{1}{U}","count":1,"inhand":0,"name":"Snapcaster Mage","plateBackground":"blue","sideboard":false,"type":"Creature — Human Wizard"},{"altCost":"","cost":"","count":4,"inhand":0,"name":"Steam Vents","plateBackground":"land","sideboard":false,"type":"Land — Island Mountain"},{"altCost":"","cost":"","count":4,"inhand":0,"name":"Stomping Ground","plateBackground":"land","sideboard":false,"type":"Land — Mountain Forest"},{"altCost":"","cost":"","count":1,"inhand":0,"name":"Swamp","plateBackground":"black","sideboard":false,"type":"Basic Land — Swamp"},{"altCost":"","cost":"","count":2,"inhand":0,"name":"Valakut, the Molten Pinnacle","plateBackground":"land","sideboard":false,"type":"Land"},{"altCost":"","cost":"","count":4,"inhand":0,"name":"Verdant Catacombs","plateBackground":"land","sideboard":false,"type":"Land"},{"altCost":"","cost":"","count":1,"inhand":0,"name":"Watery Grave","plateBackground":"land","sideboard":false,"type":"Land — Island Swamp"},{"altCost":"","cost":"{U}{U}{R}","count":1,"inhand":0,"name":"Counterflux","plateBackground":"multicolor","sideboard":true,"type":"Instant"},{"altCost":"","cost":"{2}{B}{B}","count":1,"inhand":0,"name":"Damnation","plateBackground":"black","sideboard":true,"type":"Sorcery"},{"altCost":"","cost":"{U}","count":2,"inhand":0,"name":"Dispel","plateBackground":"blue","sideboard":true,"type":"Instant"},{"altCost":"","cost":"{1}","count":1,"inhand":0,"name":"Grafdigger's Cage","plateBackground":"artifact","sideboard":true,"type":"Artifact"},{"altCost":"","cost":"{3}{R}","count":1,"inhand":0,"name":"Madcap Experiment","plateBackground":"red","sideboard":true,"type":"Sorcery"},{"altCost":"","cost":"{1}{U}","count":1,"inhand":0,"name":"Negate","plateBackground":"blue","sideboard":true,"type":"Instant"},{"altCost":"","cost":"{2}{G}{G}","count":2,"inhand":0,"name":"Obstinate Baloth","plateBackground":"green","sideboard":true,"type":"Creature — Beast"},{"altCost":"","cost":"{8}","count":1,"inhand":0,"name":"Platinum Emperion","plateBackground":"artifact","sideboard":true,"type":"Artifact Creature — Golem"},{"altCost":"","cost":"{2}{R}{R}","count":1,"inhand":0,"name":"Shatterstorm","plateBackground":"red","sideboard":true,"type":"Sorcery"},{"altCost":"","cost":"{2}{B}{R}","count":1,"inhand":0,"name":"Slaughter Games","plateBackground":"multicolor","sideboard":true,"type":"Sorcery"},{"altCost":"","cost":"{2}","count":1,"inhand":0,"name":"Spellskite","plateBackground":"artifact","sideboard":true,"type":"Artifact Creature — Horror"},{"altCost":"","cost":"{B/P}","count":1,"inhand":0,"name":"Surgical Extraction","plateBackground":"black","sideboard":true,"type":"Instant"},{"altCost":"","cost":"{2}{G}{G}","count":1,"inhand":0,"name":"Thrun, the Last Troll","plateBackground":"green","sideboard":true,"type":"Legendary Creature — Troll Shaman"}], false);
+                        fillDeck(p2.find(".side"), [{"altCost":"","cost":"{1}{R}{R}","count":1,"inhand":0,"name":"Anger of the Gods","plateBackground":"red","sideboard":false,"type":"Sorcery"},{"altCost":"","cost":"","count":2,"inhand":0,"name":"Breeding Pool","plateBackground":"land","sideboard":false,"type":"Land — Forest Island"},{"altCost":"","cost":"{3}{G}{U}","count":4,"inhand":0,"name":"Bring to Light","plateBackground":"multicolor","sideboard":false,"type":"Sorcery"},{"altCost":"","cost":"","count":1,"inhand":0,"name":"Cinder Glade","plateBackground":"land","sideboard":false,"type":"Land — Mountain Forest"},{"altCost":"","cost":"{1}{U}{U}{U}","count":4,"inhand":0,"name":"Cryptic Command","plateBackground":"blue","sideboard":false,"type":"Instant"},{"altCost":"","cost":"{X}","count":2,"inhand":0,"name":"Engineered Explosives","plateBackground":"artifact","sideboard":false,"type":"Artifact"},{"altCost":"","cost":"{1}{G}","count":2,"inhand":0,"name":"Farseek","plateBackground":"green","sideboard":false,"type":"Sorcery"},{"altCost":"","cost":"","count":2,"inhand":0,"name":"Forest","plateBackground":"green","sideboard":false,"type":"Basic Land — Forest"},{"altCost":"","cost":"","count":3,"inhand":0,"name":"Island","plateBackground":"blue","sideboard":false,"type":"Basic Land — Island"},{"altCost":"","cost":"{U}{R}","count":2,"inhand":0,"name":"Izzet Charm","plateBackground":"multicolor","sideboard":false,"type":"Instant"},{"altCost":"","cost":"{1}{B}{G}","count":1,"inhand":0,"name":"Maelstrom Pulse","plateBackground":"multicolor","sideboard":false,"type":"Sorcery"},{"altCost":"","cost":"","count":2,"inhand":0,"name":"Mountain","plateBackground":"red","sideboard":false,"type":"Basic Land — Mountain"},{"altCost":"","cost":"{1}{U}","count":1,"inhand":0,"name":"Negate","plateBackground":"blue","sideboard":false,"type":"Instant"},{"altCost":"","cost":"","count":1,"inhand":0,"name":"Overgrown Tomb","plateBackground":"land","sideboard":false,"type":"Land — Swamp Forest"},{"altCost":"","cost":"{1}{U}","count":4,"inhand":0,"name":"Remand","plateBackground":"blue","sideboard":false,"type":"Instant"},{"altCost":"","cost":"{1}{G}","count":4,"inhand":0,"name":"Sakura-Tribe Elder","plateBackground":"green","sideboard":false,"type":"Creature — Snake Shaman"},{"altCost":"","cost":"{2}{G}{G}","count":3,"inhand":0,"name":"Scapeshift","plateBackground":"green","sideboard":false,"type":"Sorcery"},{"altCost":"","cost":"{2}{G}","count":4,"inhand":0,"name":"Search for Tomorrow","plateBackground":"green","sideboard":false,"type":"Sorcery"},{"altCost":"","cost":"{1}{U}","count":1,"inhand":0,"name":"Snapcaster Mage","plateBackground":"blue","sideboard":false,"type":"Creature — Human Wizard"},{"altCost":"","cost":"","count":4,"inhand":0,"name":"Steam Vents","plateBackground":"land","sideboard":false,"type":"Land — Island Mountain"},{"altCost":"","cost":"","count":4,"inhand":0,"name":"Stomping Ground","plateBackground":"land","sideboard":false,"type":"Land — Mountain Forest"},{"altCost":"","cost":"","count":1,"inhand":0,"name":"Swamp","plateBackground":"black","sideboard":false,"type":"Basic Land — Swamp"},{"altCost":"","cost":"","count":2,"inhand":0,"name":"Valakut, the Molten Pinnacle","plateBackground":"land","sideboard":false,"type":"Land"},{"altCost":"","cost":"","count":4,"inhand":0,"name":"Verdant Catacombs","plateBackground":"land","sideboard":false,"type":"Land"},{"altCost":"","cost":"","count":1,"inhand":0,"name":"Watery Grave","plateBackground":"land","sideboard":false,"type":"Land — Island Swamp"},{"altCost":"","cost":"{U}{U}{R}","count":1,"inhand":0,"name":"Counterflux","plateBackground":"multicolor","sideboard":true,"type":"Instant"},{"altCost":"","cost":"{2}{B}{B}","count":1,"inhand":0,"name":"Damnation","plateBackground":"black","sideboard":true,"type":"Sorcery"},{"altCost":"","cost":"{U}","count":2,"inhand":0,"name":"Dispel","plateBackground":"blue","sideboard":true,"type":"Instant"},{"altCost":"","cost":"{1}","count":1,"inhand":0,"name":"Grafdigger's Cage","plateBackground":"artifact","sideboard":true,"type":"Artifact"},{"altCost":"","cost":"{3}{R}","count":1,"inhand":0,"name":"Madcap Experiment","plateBackground":"red","sideboard":true,"type":"Sorcery"},{"altCost":"","cost":"{1}{U}","count":1,"inhand":0,"name":"Negate","plateBackground":"blue","sideboard":true,"type":"Instant"},{"altCost":"","cost":"{2}{G}{G}","count":2,"inhand":0,"name":"Obstinate Baloth","plateBackground":"green","sideboard":true,"type":"Creature — Beast"},{"altCost":"","cost":"{8}","count":1,"inhand":0,"name":"Platinum Emperion","plateBackground":"artifact","sideboard":true,"type":"Artifact Creature — Golem"},{"altCost":"","cost":"{2}{R}{R}","count":1,"inhand":0,"name":"Shatterstorm","plateBackground":"red","sideboard":true,"type":"Sorcery"},{"altCost":"","cost":"{2}{B}{R}","count":1,"inhand":0,"name":"Slaughter Games","plateBackground":"multicolor","sideboard":true,"type":"Sorcery"},{"altCost":"","cost":"{2}","count":1,"inhand":0,"name":"Spellskite","plateBackground":"artifact","sideboard":true,"type":"Artifact Creature — Horror"},{"altCost":"","cost":"{B/P}","count":1,"inhand":0,"name":"Surgical Extraction","plateBackground":"black","sideboard":true,"type":"Instant"},{"altCost":"","cost":"{2}{G}{G}","count":1,"inhand":0,"name":"Thrun, the Last Troll","plateBackground":"green","sideboard":true,"type":"Legendary Creature — Troll Shaman"}], true);            
+                    })
+                    </script><!-- SCRIPT_END -->
+    <script type="text/javascript" src="cards.js"></script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-93416056-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+</head>
+<body>
+
+<!-- Header -->
+<section id="header">
+    <header>
+        <span class="image avatar"><img src="images/avatar.png" alt=""/></span>
+        <h1 id="logo"><a href="#">Urza's Lunch Break</a></h1>
+        <p>Streaming paper Magic: the Gathering games with commentary.</p>
+    </header>
+    <nav id="nav">
+        <ul>
+            <li><a href="index.html#one" class="active">About</a></li>
+            <li><a href="index.html#two">Bracket</a></li>
+            <li><a href="index.html#three">Schedule</a></li>
+        </ul>
+    </nav>
+    <footer>
+        <ul class="icons">
+            <li><a href="https://www.twitch.tv/urzaslunchbreak" class="icon fa-twitch" target="_blank"><span
+                    class="label">Twitch</span></a>
+            </li>
+            <li><a href="https://www.youtube.com/c/UrzasLunchBreak" class="icon fa-youtube" target="_blank"><span
+                    class="label">Youtube</span></a></li>
+            <li><a href="https://twitter.com/urzaslunchbreak" class="icon fa-twitter" target="_blank"><span
+                    class="label">Twitter</span></a>
+            </li>
+
+        </ul>
+    </footer>
+</section>
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+
+        <!-- One -->
+        <section id="one">
+            <div class="date">April 12th 2017</div><!-- DATE -->
+            <div class="columns">
+                <div class="player" id="p1">
+                    <h3 class="player-name"></h3>
+                    <h4 class="deck-name"></h4>
+                    <div class="deck"></div>
+                    <h4 class="side-title">Sideboard</h4>
+                    <div class="side"></div>
+                </div>
+                <div class="player" id="p2">
+                    <h3 class="player-name"></h3>
+                    <h4 class="deck-name"></h4>
+                    <div class="deck"></div>
+                    <h4 class="side-title">Sideboard</h4>
+                    <div class="side"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <section id="footer">
+            <div class="container">
+                <ul class="copyright">
+                    <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                </ul>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollzer.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <!--[if lte IE 8]>
+    <script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="assets/js/main.js"></script>
+
+</body>
+</html>
