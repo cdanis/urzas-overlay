@@ -3484,3 +3484,7 @@ input[type="button"]:disabled,
   font-weight: 700;
   margin: 20px;
 }
+
+.side-title {
+  margin-top: 0.5625em;
+}
