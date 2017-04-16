@@ -1,0 +1,56 @@
+<html>
+<head>
+    <title>featured card dashboard</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="featured.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Metal+Mania" rel="stylesheet">
+    <link href="css/mana.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"
+            integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script
+            src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="underscore-min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+    <script type="text/javascript" src="config.js"></script>
+    <script type="text/javascript" src="firebase.js"></script>
+    <script type="text/javascript" src="director.js"></script>
+    <script type="text/javascript" src="cards.js"></script>
+    <script type="text/javascript" src="featured.js"></script>
+</head>
+<body>
+<header class="header">
+    <div id="user-pic" style="display:none;"></div>
+    <div id="sign-out" class="button" style="display:none;">
+        Sign out
+    </div>
+    <div id="sign-in" class="button" style="display:none;">
+        Sign in
+    </div>
+</header>
+
+<div class="gamestate">
+    <div class="featured">
+        <div>
+            <div>
+                Featured card:
+                <input id="player1_featuredcard"/>
+                <div class="button clear">clear</div>
+            </div>
+            <div id="player1_cards"></div>
+        </div>
+        <div>
+            <div>
+                Featured card:
+                <input id="player2_featuredcard"/>
+                <div class="button clear">clear</div>
+            </div>
+            <div id="player2_cards"></div>
+        </div>
+    </div>
+</div>
+</body>

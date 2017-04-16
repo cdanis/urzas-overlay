@@ -1,0 +1,65 @@
+body, select, input, textarea {
+  font-family: 'Roboto';
+}
+
+.header {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+#user-pic {
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  border-radius: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+div {
+  padding: 5px;
+  flex-grow: 1;
+}
+
+.header #user-pic {
+  padding: 0;
+}
+
+.ui-menu .ui-state-focus,
+.ui-menu .ui-state-active {
+  margin: 20px ! important;
+}
+
+.button {
+  font-size: 16px;
+  padding: 5px 15px;
+  border: 1px solid #555;
+  border-radius: 3px;
+  margin: 5px;
+  user-select: none;
+  cursor: pointer;
+}
+
+input, textarea {
+  padding: 10px;
+}
+
+.featured {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.featured .button, header .button {
+  display: inline-block;
+}
+
+.card {
+  cursor: pointer;
+}
+
+.card:hover {
+  background: #ddd;
+}
