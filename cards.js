@@ -15,7 +15,7 @@ function toCost(text, altText) {
     return cost;
 }
 
-function fillDeck(outputElt, deck, sideboard) {
+function fillDeck(outputElt, deck, sideboard, showCounts = true) {
     outputElt.empty();
     deck = _.sortBy(deck, function (card) {
         return (card.type.includes("Land") ? "_" : "") + card.name;
@@ -24,7 +24,11 @@ function fillDeck(outputElt, deck, sideboard) {
         var card = deck[i];
         if (typeof sideboard == "undefined" || card.sideboard == sideboard) {
             var cardElt = $("<div>", {"class": `card bg-${card.plateBackground}`});
-            cardElt.append($(`<span class="card-name">${card.count}x ${card.name}</span>`));
+            if (showCounts) {
+                cardElt.append($(`<span class="card-name">${card.count}x ${card.name}</span>`));
+            } else {
+                cardElt.append($(`<span class="card-name">${card.name}</span>`));
+            }
             var costElt = $("<span>", {"class": "mana"});
             costElt.html(toCost(card.cost && ("" + card.cost), card.altCost));
             cardElt.append(costElt);
