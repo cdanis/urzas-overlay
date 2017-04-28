@@ -1,0 +1,133 @@
+<!--
+	Read Only by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <title>Urza's Lunch Break deck lists - April 28th 2017</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="google-site-verification" content="HVDr5I5AdDnxu9rheNnwII0m5s20tPULpeedxXV5fuQ"/>
+    <!--[if lte IE 8]>
+    <script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/main.css"/>
+    <link href="css/mana.css" rel="stylesheet" type="text/css"/>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"
+            integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="underscore-min.js"></script>
+
+    <script type="text/javascript">
+                    $(function() {
+                        var p1 = $("#p1");
+                        var p2 = $("#p2");
+                        p1.find(".player-name").text("Greg");
+                        p2.find(".player-name").text("Terry");
+                        p1.find(".deck-name").text("Madcap Ponza");
+                        p2.find(".deck-name").text("Vialless Taxes");
+                        fillDeck(p1.find(".deck"), [{"altCost":"","cost":"{G}","count":4,"inhand":0,"name":"Arbor Elf","plateBackground":"green","sideboard":false,"type":"Creature — Elf Druid"},{"altCost":"","cost":"{2}{G}","count":1,"inhand":0,"name":"Beast Within","plateBackground":"green","sideboard":false,"type":"Instant"},{"altCost":"","cost":"{G}","count":1,"inhand":0,"name":"Birds of Paradise","plateBackground":"green","sideboard":false,"type":"Creature — Bird"},{"altCost":"","cost":"{2}{R}","count":4,"inhand":0,"name":"Blood Moon","plateBackground":"red","sideboard":false,"type":"Enchantment"},{"altCost":"","cost":"{X}{X}{R}","count":4,"inhand":0,"name":"Bonfire of the Damned","plateBackground":"red","sideboard":false,"type":"Sorcery"},{"altCost":"","cost":"","count":10,"inhand":0,"name":"Forest","plateBackground":"green","sideboard":false,"type":"Basic Land — Forest"},{"altCost":"","cost":"{4}{R}{R}","count":2,"inhand":0,"name":"Inferno Titan","plateBackground":"red","sideboard":false,"type":"Creature — Giant"},{"altCost":"","cost":"{3}{R}","count":4,"inhand":0,"name":"Madcap Experiment","plateBackground":"red","sideboard":false,"type":"Sorcery"},{"altCost":"","cost":"","count":4,"inhand":0,"name":"Misty Rainforest","plateBackground":"land","sideboard":false,"type":"Land"},{"altCost":"","cost":"","count":1,"inhand":0,"name":"Mountain","plateBackground":"red","sideboard":false,"type":"Basic Land — Mountain"},{"altCost":"","cost":"{2}{G}{G}","count":4,"inhand":0,"name":"Mwonvuli Acid-Moss","plateBackground":"green","sideboard":false,"type":"Sorcery"},{"altCost":"","cost":"{8}","count":2,"inhand":0,"name":"Platinum Emperion","plateBackground":"artifact","sideboard":false,"type":"Artifact Creature — Golem"},{"altCost":"","cost":"{3}{G}{G}","count":2,"inhand":0,"name":"Primal Command","plateBackground":"green","sideboard":false,"type":"Sorcery"},{"altCost":"","cost":"","count":3,"inhand":0,"name":"Stomping Ground","plateBackground":"land","sideboard":false,"type":"Land — Mountain Forest"},{"altCost":"","cost":"{2}{R}","count":3,"inhand":0,"name":"Stone Rain","plateBackground":"red","sideboard":false,"type":"Sorcery"},{"altCost":"","cost":"{3}{R}{R}","count":2,"inhand":0,"name":"Stormbreath Dragon","plateBackground":"red","sideboard":false,"type":"Creature — Dragon"},{"altCost":"","cost":"{2}{G}{G}","count":1,"inhand":0,"name":"Thrun, the Last Troll","plateBackground":"green","sideboard":false,"type":"Legendary Creature — Troll Shaman"},{"altCost":"","cost":"{G}","count":4,"inhand":0,"name":"Utopia Sprawl","plateBackground":"green","sideboard":false,"type":"Enchantment — Aura"},{"altCost":"","cost":"","count":4,"inhand":0,"name":"Wooded Foothills","plateBackground":"land","sideboard":false,"type":"Land"},{"altCost":"","cost":"{1}{R}","count":2,"inhand":0,"name":"Ancient Grudge","plateBackground":"red","sideboard":true,"type":"Instant"},{"altCost":"","cost":"{2}{G}","count":1,"inhand":0,"name":"Beast Within","plateBackground":"green","sideboard":true,"type":"Instant"},{"altCost":"","cost":"{3}{R}","count":1,"inhand":0,"name":"Boil","plateBackground":"red","sideboard":true,"type":"Instant"},{"altCost":"","cost":"{1}","count":1,"inhand":0,"name":"Grafdigger's Cage","plateBackground":"artifact","sideboard":true,"type":"Artifact"},{"altCost":"","cost":"{1}{G/W}{G/W}","count":1,"inhand":0,"name":"Kitchen Finks","plateBackground":"multicolor","sideboard":true,"type":"Creature — Ouphe"},{"altCost":"","cost":"{2}{G}{G}","count":1,"inhand":0,"name":"Obstinate Baloth","plateBackground":"green","sideboard":true,"type":"Creature — Beast"},{"altCost":"","cost":"{3}{R}","count":2,"inhand":0,"name":"Ricochet Trap","plateBackground":"red","sideboard":true,"type":"Instant — Trap"},{"altCost":"","cost":"{B/P}","count":2,"inhand":0,"name":"Surgical Extraction","plateBackground":"black","sideboard":true,"type":"Instant"},{"altCost":"","cost":"{4}{G}","count":1,"inhand":0,"name":"Thragtusk","plateBackground":"green","sideboard":true,"type":"Creature — Beast"},{"altCost":"","cost":"{2}{G}{G}","count":1,"inhand":0,"name":"Thrun, the Last Troll","plateBackground":"green","sideboard":true,"type":"Legendary Creature — Troll Shaman"},{"altCost":"","cost":"{3}","count":2,"inhand":0,"name":"Trinisphere","plateBackground":"artifact","sideboard":true,"type":"Artifact"}], false);
+                        fillDeck(p1.find(".side"), [{"altCost":"","cost":"{G}","count":4,"inhand":0,"name":"Arbor Elf","plateBackground":"green","sideboard":false,"type":"Creature — Elf Druid"},{"altCost":"","cost":"{2}{G}","count":1,"inhand":0,"name":"Beast Within","plateBackground":"green","sideboard":false,"type":"Instant"},{"altCost":"","cost":"{G}","count":1,"inhand":0,"name":"Birds of Paradise","plateBackground":"green","sideboard":false,"type":"Creature — Bird"},{"altCost":"","cost":"{2}{R}","count":4,"inhand":0,"name":"Blood Moon","plateBackground":"red","sideboard":false,"type":"Enchantment"},{"altCost":"","cost":"{X}{X}{R}","count":4,"inhand":0,"name":"Bonfire of the Damned","plateBackground":"red","sideboard":false,"type":"Sorcery"},{"altCost":"","cost":"","count":10,"inhand":0,"name":"Forest","plateBackground":"green","sideboard":false,"type":"Basic Land — Forest"},{"altCost":"","cost":"{4}{R}{R}","count":2,"inhand":0,"name":"Inferno Titan","plateBackground":"red","sideboard":false,"type":"Creature — Giant"},{"altCost":"","cost":"{3}{R}","count":4,"inhand":0,"name":"Madcap Experiment","plateBackground":"red","sideboard":false,"type":"Sorcery"},{"altCost":"","cost":"","count":4,"inhand":0,"name":"Misty Rainforest","plateBackground":"land","sideboard":false,"type":"Land"},{"altCost":"","cost":"","count":1,"inhand":0,"name":"Mountain","plateBackground":"red","sideboard":false,"type":"Basic Land — Mountain"},{"altCost":"","cost":"{2}{G}{G}","count":4,"inhand":0,"name":"Mwonvuli Acid-Moss","plateBackground":"green","sideboard":false,"type":"Sorcery"},{"altCost":"","cost":"{8}","count":2,"inhand":0,"name":"Platinum Emperion","plateBackground":"artifact","sideboard":false,"type":"Artifact Creature — Golem"},{"altCost":"","cost":"{3}{G}{G}","count":2,"inhand":0,"name":"Primal Command","plateBackground":"green","sideboard":false,"type":"Sorcery"},{"altCost":"","cost":"","count":3,"inhand":0,"name":"Stomping Ground","plateBackground":"land","sideboard":false,"type":"Land — Mountain Forest"},{"altCost":"","cost":"{2}{R}","count":3,"inhand":0,"name":"Stone Rain","plateBackground":"red","sideboard":false,"type":"Sorcery"},{"altCost":"","cost":"{3}{R}{R}","count":2,"inhand":0,"name":"Stormbreath Dragon","plateBackground":"red","sideboard":false,"type":"Creature — Dragon"},{"altCost":"","cost":"{2}{G}{G}","count":1,"inhand":0,"name":"Thrun, the Last Troll","plateBackground":"green","sideboard":false,"type":"Legendary Creature — Troll Shaman"},{"altCost":"","cost":"{G}","count":4,"inhand":0,"name":"Utopia Sprawl","plateBackground":"green","sideboard":false,"type":"Enchantment — Aura"},{"altCost":"","cost":"","count":4,"inhand":0,"name":"Wooded Foothills","plateBackground":"land","sideboard":false,"type":"Land"},{"altCost":"","cost":"{1}{R}","count":2,"inhand":0,"name":"Ancient Grudge","plateBackground":"red","sideboard":true,"type":"Instant"},{"altCost":"","cost":"{2}{G}","count":1,"inhand":0,"name":"Beast Within","plateBackground":"green","sideboard":true,"type":"Instant"},{"altCost":"","cost":"{3}{R}","count":1,"inhand":0,"name":"Boil","plateBackground":"red","sideboard":true,"type":"Instant"},{"altCost":"","cost":"{1}","count":1,"inhand":0,"name":"Grafdigger's Cage","plateBackground":"artifact","sideboard":true,"type":"Artifact"},{"altCost":"","cost":"{1}{G/W}{G/W}","count":1,"inhand":0,"name":"Kitchen Finks","plateBackground":"multicolor","sideboard":true,"type":"Creature — Ouphe"},{"altCost":"","cost":"{2}{G}{G}","count":1,"inhand":0,"name":"Obstinate Baloth","plateBackground":"green","sideboard":true,"type":"Creature — Beast"},{"altCost":"","cost":"{3}{R}","count":2,"inhand":0,"name":"Ricochet Trap","plateBackground":"red","sideboard":true,"type":"Instant — Trap"},{"altCost":"","cost":"{B/P}","count":2,"inhand":0,"name":"Surgical Extraction","plateBackground":"black","sideboard":true,"type":"Instant"},{"altCost":"","cost":"{4}{G}","count":1,"inhand":0,"name":"Thragtusk","plateBackground":"green","sideboard":true,"type":"Creature — Beast"},{"altCost":"","cost":"{2}{G}{G}","count":1,"inhand":0,"name":"Thrun, the Last Troll","plateBackground":"green","sideboard":true,"type":"Legendary Creature — Troll Shaman"},{"altCost":"","cost":"{3}","count":2,"inhand":0,"name":"Trinisphere","plateBackground":"artifact","sideboard":true,"type":"Artifact"}], true);
+                        fillDeck(p2.find(".deck"), [{"altCost":"","cost":"{2}{W}","count":1,"inhand":0,"name":"Aven Mindcensor","plateBackground":"white","sideboard":false,"type":"Creature — Bird Wizard"},{"altCost":"","cost":"{2}{W}","count":4,"inhand":0,"name":"Blade Splicer","plateBackground":"white","sideboard":false,"type":"Creature — Human Artificer"},{"altCost":"","cost":"","count":2,"inhand":0,"name":"Caves of Koilos","plateBackground":"land","sideboard":false,"type":"Land"},{"altCost":"","cost":"{2}{W}","count":2,"inhand":0,"name":"Eldrazi Displacer","plateBackground":"colorless","sideboard":false,"type":"Creature — Eldrazi"},{"altCost":"","cost":"","count":3,"inhand":0,"name":"Eldrazi Temple","plateBackground":"land","sideboard":false,"type":"Land"},{"altCost":"","cost":"{1}{W}{W}","count":2,"inhand":0,"name":"Flickerwisp","plateBackground":"white","sideboard":false,"type":"Creature — Elemental"},{"altCost":"","cost":"","count":4,"inhand":0,"name":"Ghost Quarter","plateBackground":"land","sideboard":false,"type":"Land"},{"altCost":"","cost":"{1}{W}","count":4,"inhand":0,"name":"Leonin Arbiter","plateBackground":"white","sideboard":false,"type":"Creature — Cat Cleric"},{"altCost":"","cost":"","count":4,"inhand":0,"name":"Mutavault","plateBackground":"land","sideboard":false,"type":"Land"},{"altCost":"","cost":"{W}","count":4,"inhand":0,"name":"Path to Exile","plateBackground":"white","sideboard":false,"type":"Instant"},{"altCost":"","cost":"","count":7,"inhand":0,"name":"Plains","plateBackground":"white","sideboard":false,"type":"Basic Land — Plains"},{"altCost":"","cost":"{3}{W}","count":4,"inhand":0,"name":"Restoration Angel","plateBackground":"white","sideboard":false,"type":"Creature — Angel"},{"altCost":"","cost":"{1}{W}","count":3,"inhand":0,"name":"Selfless Spirit","plateBackground":"white","sideboard":false,"type":"Creature — Spirit Cleric"},{"altCost":"","cost":"{X}{W}{W}","count":2,"inhand":0,"name":"Shining Shoal","plateBackground":"white","sideboard":false,"type":"Instant — Arcane"},{"altCost":"","cost":"{1}{W}","count":4,"inhand":0,"name":"Thalia, Guardian of Thraben","plateBackground":"white","sideboard":false,"type":"Legendary Creature — Human Soldier"},{"altCost":"","cost":"{3}{C}","count":3,"inhand":0,"name":"Thought-Knot Seer","plateBackground":"colorless","sideboard":false,"type":"Creature — Eldrazi"},{"altCost":"","cost":"{1}{W}","count":3,"inhand":3,"name":"Wall of Omens","plateBackground":"white","sideboard":false,"type":"Creature — Wall"},{"altCost":"","cost":"","count":4,"inhand":4,"name":"Windbrisk Heights","plateBackground":"land","sideboard":false,"type":"Land"},{"altCost":"","cost":"{2}{W}","count":1,"inhand":0,"name":"Aven Mindcensor","plateBackground":"white","sideboard":true,"type":"Creature — Bird Wizard"},{"altCost":"","cost":"{3}","count":1,"inhand":0,"name":"Crucible of Worlds","plateBackground":"artifact","sideboard":true,"type":"Artifact"},{"altCost":"","cost":"{1}{W}","count":1,"inhand":0,"name":"Disenchant","plateBackground":"white","sideboard":true,"type":"Instant"},{"altCost":"","cost":"{1}","count":1,"inhand":0,"name":"Grafdigger's Cage","plateBackground":"artifact","sideboard":true,"type":"Artifact"},{"altCost":"","cost":"{1}{W}","count":1,"inhand":0,"name":"Kataki, War's Wage","plateBackground":"white","sideboard":true,"type":"Legendary Creature — Spirit"},{"altCost":"","cost":"{2}{W}","count":1,"inhand":0,"name":"Oblivion Ring","plateBackground":"white","sideboard":true,"type":"Enchantment"},{"altCost":"","cost":"{1}","count":1,"inhand":0,"name":"Pithing Needle","plateBackground":"artifact","sideboard":true,"type":"Artifact"},{"altCost":"","cost":"{1}{W}","count":3,"inhand":0,"name":"Rest in Peace","plateBackground":"white","sideboard":true,"type":"Enchantment"},{"altCost":"","cost":"{X}{W}{W}","count":2,"inhand":0,"name":"Shining Shoal","plateBackground":"white","sideboard":true,"type":"Instant — Arcane"},{"altCost":"","cost":"{1}{W}","count":2,"inhand":0,"name":"Stony Silence","plateBackground":"white","sideboard":true,"type":"Enchantment"},{"altCost":"","cost":"{0}","count":1,"inhand":0,"name":"Tormod's Crypt","plateBackground":"artifact","sideboard":true,"type":"Artifact"}], false);
+                        fillDeck(p2.find(".side"), [{"altCost":"","cost":"{2}{W}","count":1,"inhand":0,"name":"Aven Mindcensor","plateBackground":"white","sideboard":false,"type":"Creature — Bird Wizard"},{"altCost":"","cost":"{2}{W}","count":4,"inhand":0,"name":"Blade Splicer","plateBackground":"white","sideboard":false,"type":"Creature — Human Artificer"},{"altCost":"","cost":"","count":2,"inhand":0,"name":"Caves of Koilos","plateBackground":"land","sideboard":false,"type":"Land"},{"altCost":"","cost":"{2}{W}","count":2,"inhand":0,"name":"Eldrazi Displacer","plateBackground":"colorless","sideboard":false,"type":"Creature — Eldrazi"},{"altCost":"","cost":"","count":3,"inhand":0,"name":"Eldrazi Temple","plateBackground":"land","sideboard":false,"type":"Land"},{"altCost":"","cost":"{1}{W}{W}","count":2,"inhand":0,"name":"Flickerwisp","plateBackground":"white","sideboard":false,"type":"Creature — Elemental"},{"altCost":"","cost":"","count":4,"inhand":0,"name":"Ghost Quarter","plateBackground":"land","sideboard":false,"type":"Land"},{"altCost":"","cost":"{1}{W}","count":4,"inhand":0,"name":"Leonin Arbiter","plateBackground":"white","sideboard":false,"type":"Creature — Cat Cleric"},{"altCost":"","cost":"","count":4,"inhand":0,"name":"Mutavault","plateBackground":"land","sideboard":false,"type":"Land"},{"altCost":"","cost":"{W}","count":4,"inhand":0,"name":"Path to Exile","plateBackground":"white","sideboard":false,"type":"Instant"},{"altCost":"","cost":"","count":7,"inhand":0,"name":"Plains","plateBackground":"white","sideboard":false,"type":"Basic Land — Plains"},{"altCost":"","cost":"{3}{W}","count":4,"inhand":0,"name":"Restoration Angel","plateBackground":"white","sideboard":false,"type":"Creature — Angel"},{"altCost":"","cost":"{1}{W}","count":3,"inhand":0,"name":"Selfless Spirit","plateBackground":"white","sideboard":false,"type":"Creature — Spirit Cleric"},{"altCost":"","cost":"{X}{W}{W}","count":2,"inhand":0,"name":"Shining Shoal","plateBackground":"white","sideboard":false,"type":"Instant — Arcane"},{"altCost":"","cost":"{1}{W}","count":4,"inhand":0,"name":"Thalia, Guardian of Thraben","plateBackground":"white","sideboard":false,"type":"Legendary Creature — Human Soldier"},{"altCost":"","cost":"{3}{C}","count":3,"inhand":0,"name":"Thought-Knot Seer","plateBackground":"colorless","sideboard":false,"type":"Creature — Eldrazi"},{"altCost":"","cost":"{1}{W}","count":3,"inhand":3,"name":"Wall of Omens","plateBackground":"white","sideboard":false,"type":"Creature — Wall"},{"altCost":"","cost":"","count":4,"inhand":4,"name":"Windbrisk Heights","plateBackground":"land","sideboard":false,"type":"Land"},{"altCost":"","cost":"{2}{W}","count":1,"inhand":0,"name":"Aven Mindcensor","plateBackground":"white","sideboard":true,"type":"Creature — Bird Wizard"},{"altCost":"","cost":"{3}","count":1,"inhand":0,"name":"Crucible of Worlds","plateBackground":"artifact","sideboard":true,"type":"Artifact"},{"altCost":"","cost":"{1}{W}","count":1,"inhand":0,"name":"Disenchant","plateBackground":"white","sideboard":true,"type":"Instant"},{"altCost":"","cost":"{1}","count":1,"inhand":0,"name":"Grafdigger's Cage","plateBackground":"artifact","sideboard":true,"type":"Artifact"},{"altCost":"","cost":"{1}{W}","count":1,"inhand":0,"name":"Kataki, War's Wage","plateBackground":"white","sideboard":true,"type":"Legendary Creature — Spirit"},{"altCost":"","cost":"{2}{W}","count":1,"inhand":0,"name":"Oblivion Ring","plateBackground":"white","sideboard":true,"type":"Enchantment"},{"altCost":"","cost":"{1}","count":1,"inhand":0,"name":"Pithing Needle","plateBackground":"artifact","sideboard":true,"type":"Artifact"},{"altCost":"","cost":"{1}{W}","count":3,"inhand":0,"name":"Rest in Peace","plateBackground":"white","sideboard":true,"type":"Enchantment"},{"altCost":"","cost":"{X}{W}{W}","count":2,"inhand":0,"name":"Shining Shoal","plateBackground":"white","sideboard":true,"type":"Instant — Arcane"},{"altCost":"","cost":"{1}{W}","count":2,"inhand":0,"name":"Stony Silence","plateBackground":"white","sideboard":true,"type":"Enchantment"},{"altCost":"","cost":"{0}","count":1,"inhand":0,"name":"Tormod's Crypt","plateBackground":"artifact","sideboard":true,"type":"Artifact"}], true);            
+                    })
+                    </script><!-- SCRIPT_END -->
+    <script type="text/javascript" src="cards.js"></script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-93416056-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+</head>
+<body>
+
+<!-- Header -->
+<section id="header">
+    <header>
+        <span class="image avatar"><img src="images/avatar.png" alt=""/></span>
+        <h1 id="logo"><a href="#">Urza's Lunch Break</a></h1>
+        <p>Streaming paper Magic: the Gathering games with commentary.</p>
+    </header>
+    <nav id="nav">
+        <ul>
+            <li><a href="index.html#one" class="active">About</a></li>
+            <li><a href="index.html#two">Bracket</a></li>
+            <li><a href="index.html#three">Schedule</a></li>
+        </ul>
+    </nav>
+    <footer>
+        <ul class="icons">
+            <li><a href="https://www.twitch.tv/urzaslunchbreak" class="icon fa-twitch" target="_blank"><span
+                    class="label">Twitch</span></a>
+            </li>
+            <li><a href="https://www.youtube.com/c/UrzasLunchBreak" class="icon fa-youtube" target="_blank"><span
+                    class="label">Youtube</span></a></li>
+            <li><a href="https://twitter.com/urzaslunchbreak" class="icon fa-twitter" target="_blank"><span
+                    class="label">Twitter</span></a>
+            </li>
+
+        </ul>
+    </footer>
+</section>
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+
+        <!-- One -->
+        <section id="one">
+            <div class="date">April 28th 2017</div><!-- DATE -->
+            <div class="columns">
+                <div class="player" id="p1">
+                    <h3 class="player-name"></h3>
+                    <h4 class="deck-name"></h4>
+                    <div class="deck"></div>
+                    <h4 class="side-title">Sideboard</h4>
+                    <div class="side"></div>
+                </div>
+                <div class="player" id="p2">
+                    <h3 class="player-name"></h3>
+                    <h4 class="deck-name"></h4>
+                    <div class="deck"></div>
+                    <h4 class="side-title">Sideboard</h4>
+                    <div class="side"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <section id="footer">
+            <div class="container">
+                <ul class="copyright">
+                    <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                </ul>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollzer.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <!--[if lte IE 8]>
+    <script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="assets/js/main.js"></script>
+
+</body>
+</html>
